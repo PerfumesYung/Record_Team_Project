@@ -31,7 +31,14 @@ jobs:
           kind = os.environ["GITHUB_EVENT_NAME"]
           repo = os.environ["GITHUB_REPOSITORY"]
           actor = os.environ["GITHUB_ACTOR"]
-          actor_name = "재영" if actor == "PerfumesYung" else actor + "님"
+          member_names = {
+              "perfumesyung": "재영",
+              "alsgh2030": "민호님",
+              "asjiu-stack": "아름님",
+              "edwin11031103-design": "진규님",
+              "sy752724": "서윤님",
+          }
+          actor_name = member_names.get(actor.lower(), actor + "님")
           base = "https://github.com/" + repo
           fields = [{"name": "작업자", "value": actor_name, "inline": True}]
           title, color, description, url = "💿 Record Team · 연결 테스트", 5793266, "GitHub 알림이 정상적으로 연결되었습니다.", base
