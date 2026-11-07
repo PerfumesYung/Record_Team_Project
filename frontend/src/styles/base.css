@@ -1,0 +1,6 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--color-background); color: var(--color-text); font-family: var(--font-body); }
+.starter { max-width: 1080px; margin: 0 auto; padding: 120px 32px; }
+.starter h1 { font-size: clamp(2.5rem, 7vw, 5rem); letter-spacing: -0.04em; }
+.starter-label { color: var(--color-accent); font-size: 0.8rem; letter-spacing: 0.12em; }
+.starter-note { color: var(--color-text-muted); }
