@@ -1,6 +1,6 @@
 export default function App() {
   return (
-    <main className="starter">
+    <main className="starter min-h-screen">
       <p className="starter-label">TEAM PROJECT · LP &amp; CD</p>
       <h1 className="font-heading">NAKWON RECORDS</h1>
       <p>낙원레코드 프로젝트가 시작됐어요.</p>
