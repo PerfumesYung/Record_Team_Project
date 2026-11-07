@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="title">
+<title id="title">음반 이미지 준비 중</title>
+<rect width="600" height="600" fill="#161615"/>
+<circle cx="300" cy="275" r="155" fill="#242422" stroke="#30302e" stroke-width="3"/>
+<circle cx="300" cy="275" r="111" fill="none" stroke="#30302e" stroke-width="2"/>
+<circle cx="300" cy="275" r="38" fill="#ff6b2c"/>
+<circle cx="300" cy="275" r="5" fill="#161615"/>
+<text x="300" y="505" fill="#a3a3a6" font-family="sans-serif" font-size="21" text-anchor="middle" letter-spacing="4">NAKWON RECORDS</text>
+</svg>
