@@ -23,7 +23,7 @@ export default function Wishlist({ isAuthenticated }) {
     catch (e) {setError(e.message);}
   }
 
-  if (!isAuthenticated) return <p>찜 목록은 로그인 후 이용할 수 있습니다.</p>;
+  if (!isAuthenticated) return <p>로그인 후 이용할 수 있습니다.</p>;
   if (loading) return <p>Loading</p>;
   return <main>
     <h1>찜한 음반</h1>
