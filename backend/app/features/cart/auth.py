@@ -13,7 +13,6 @@ def current_user_id(credentials: Annotated[HTTPAuthorizationCredentials | None, 
     if credentials is None:
         raise HTTPException(401, "로그인이 필요합니다", headers={"WWW-Authenticate": "Bearer"})
     try:
-        # 팀 공통 기준: HS256, sub=문자열 형태의 users.id, exp 필수.
         payload = jwt.decode(credentials.credentials, settings.secret_key,
                              algorithms=["HS256"], options={"require": ["sub", "exp"]})
         user_id = int(payload["sub"])

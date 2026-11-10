@@ -31,7 +31,6 @@ def read_cart(db: Session, user_id: int) -> CartRead:
         quantity=row["quantity"], line_total=row["price"] * row["quantity"])
         for row in rows]
     subtotal = sum(item.line_total for item in items)
-    # 프로젝트 DB는 배송비 컬럼을 갖고 있지 않습니다. 실제 결제/배송 미구현.
     return CartRead(items=items, subtotal=subtotal, total=subtotal)
 
 

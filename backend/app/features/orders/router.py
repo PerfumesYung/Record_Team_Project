@@ -14,7 +14,6 @@ DB = Annotated[Session, Depends(get_db)]
 
 @router.post("", status_code=201, response_model=OrderRead)
 def create_order(user_id: CurrentUserId, db: DB):
-    # 실제 결제 API가 아닙니다. 주문 접수만 수행합니다.
     return checkout(db, user_id)
 
 
