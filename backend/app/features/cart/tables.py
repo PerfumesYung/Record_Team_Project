@@ -1,28 +1,19 @@
-from sqlalchemy import BigInteger, Column, DateTime, Integer, MetaData, String, Table
+from sqlalchemy import Column, MetaData, Table, text
+from sqlalchemy.dialects.mysql import BIGINT, DATETIME, INTEGER
 
 metadata = MetaData()
 
-users = Table("users", metadata,
-    Column("id", BigInteger, primary_key=True),
+users = Table(
+    "users", metadata,
+    Column("id", BIGINT(unsigned=True), primary_key=True),
 )
 
-albums = Table("albums", metadata,
-    Column("id", BigInteger, primary_key=True),
-    Column("title", String(120)),
-    Column("artist", String(100)),
-    Column("price", Integer),
-    Column("genre", String(50)),
-    Column("format", String(2)),
-    Column("image_url", String(2048)),
-    Column("stock", Integer),
-    Column("hidden", Integer),
-)
-
-cart_items = Table("cart_items", metadata,
-    Column("id", BigInteger, primary_key=True),
-    Column("user_id", BigInteger),
-    Column("album_id", BigInteger),
-    Column("quantity", Integer),
-    Column("created_at", DateTime),
-    Column("updated_at", DateTime),
+cart_items = Table(
+    "cart_items", metadata,
+    Column("id", BIGINT(unsigned=True), primary_key=True),
+    Column("user_id", BIGINT(unsigned=True), nullable=False),
+    Column("album_id", BIGINT(unsigned=True), nullable=False),
+    Column("quantity", INTEGER(unsigned=True), nullable=False),
+    Column("created_at", DATETIME(fsp=6), nullable=False, server_default=text("CURRENT_TIMESTAMP(6)")),
+    Column("updated_at", DATETIME(fsp=6), nullable=False, server_default=text("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)")),
 )

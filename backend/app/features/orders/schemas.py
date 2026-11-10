@@ -1,25 +1,29 @@
-from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, Field
 
 
-class OrderItemRead(BaseModel):
-    album_id: int
+class CartQuantity(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    quantity: int = Field(strict=True, ge=1, le=20)
+
+
+class CartAlbum(BaseModel):
+    id: int
     title: str
-    unit_price: int
+    artist: str
+    format: str
+    image_url: str | None
+    price: int
+    stock: int
+    hidden: int
+
+
+class CartLine(BaseModel):
+    album: CartAlbum
     quantity: int
     line_total: int
 
 
-class OrderRead(BaseModel):
-    id: int
-    status: str
-    total_amount: int
-    created_at: datetime
-    items: list[OrderItemRead]
-
-
-class OrderPage(BaseModel):
-    items: list[OrderRead]
+class CartRead(BaseModel):
+    items: list[CartLine]
+    subtotal: int
     total: int
-    page: int
-    page_size: int
