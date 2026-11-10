@@ -53,7 +53,7 @@ def list_orders(db: Session, user_id: int, page: int, page_size: int) -> OrderPa
 def checkout(db: Session, user_id: int) -> OrderRead:
 
     try:
-        require_user(db, user_id, lock=True)
+        require_user(db, user_id)
         cart = db.execute(select(cart_items.c.album_id, cart_items.c.quantity)
                           .where(cart_items.c.user_id == user_id)
                           .order_by(cart_items.c.album_id).with_for_update()).mappings().all()
