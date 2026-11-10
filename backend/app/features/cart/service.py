@@ -1,4 +1,3 @@
-"""장바구니 읽기/수정. 사용자 행 잠금으로 주문 생성과의 충돌을 방지합니다."""
 from fastapi import HTTPException
 from sqlalchemy import delete, insert, select, update
 from sqlalchemy.orm import Session

@@ -1,4 +1,3 @@
-"""/api/cart - hoso 프로젝트처럼 PUT으로 수량 설정, DELETE로 삭제."""
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, Path
