@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { createAlbumReview, deleteReview, getAlbumReviews, updateReview } from './api'
-import StarRating from '../../components/ui/icons'
+import { createAlbumReview, deleteReview, getAlbumReviews, updateReview } from '../../utils/api'
+import StarRating from '../../components/ui/icons/StarRating'
 
 const emptyForm = {rating: 5, content: ''}
 
@@ -22,7 +22,7 @@ export default function Reviews({ albumId, isAuthenticated }) {
     finally {setLoading(false)}
   }
 
-  useEffect(() => {refresh()}, [albumId])
+  useEffect(() => {refresh()}, [albumId, isAuthenticated])
 
   function edit(review) {
     setEditingId(review.id)
@@ -32,6 +32,7 @@ export default function Reviews({ albumId, isAuthenticated }) {
   async function submit(event) {
     event.preventDefault()
     if (!isAuthenticated) {setError('로그인 후 이용할 수 있습니다.'); return}
+    if (!form.content.trim()) { setError('리뷰 내용을 입력해 주세요.'); return }
 
     setSubmitting(true); setError('')
     try {
@@ -65,12 +66,11 @@ export default function Reviews({ albumId, isAuthenticated }) {
     {loading ? <p>리뷰를 불러오는 중입니다.</p> : reviews.length === 0
       ? <p>등록된 리뷰가 없습니다.</p>
       : reviews.map((review) => <article key={review.id}>
-        <p>{review.rating}점 - 작성자 {review.user_id}</p>
+        <p>{review.rating}점 - 작성자 {review.username}</p>
         <p>{review.content}</p>
-        <small>작성 {new Date(review.created_at).toLocaleString()}
-          {review.updated_at !== review.created_at && `수정 ${new Date(review.updated_at).toLocaleString()}`}</small>
+        <small>작성 {new Date(review.created_at).toLocaleString()}</small>
         {review.is_mine && <div><button onClick={() => edit(review)}>수정</button>
           <button onClick={() => remove(review.id)}>삭제</button></div>}
-      </article>)}
+      </article>)} 
   </section>;
 }

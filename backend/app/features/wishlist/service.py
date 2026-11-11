@@ -22,6 +22,7 @@ def _album_to_item(album: Album) -> dict:
         "format": _enum_value(album.format),
         "genre": _enum_value(album.genre),
         "image_url": album.image_url,
+        "stock": album.stock,
     }
 
 

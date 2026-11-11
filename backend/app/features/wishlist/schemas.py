@@ -10,6 +10,7 @@ class WishlistAlbumItem(BaseModel):
     format: str
     genre: str
     image_url: Optional[str]
+    stock: int
 
 
 class WishlistListResponse(BaseModel):

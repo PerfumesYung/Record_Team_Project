@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getWishlist, removeWishlist } from './api'
+import { getWishlist, removeWishlist } from '../../utils/api'
+import HeartIcon from '../../components/ui/icons/HeartIcon'
 
 export default function Wishlist({ isAuthenticated }) {
   const [albums, setAlbums] = useState([])
@@ -35,7 +36,9 @@ export default function Wishlist({ isAuthenticated }) {
           <span>{album.title}</span><span>{album.artist}</span>
         </Link>
         {album.stock <= 0 && <span>품절</span>}
-        <button onClick={() => unWish(album.id)}>찜 해제</button>
+        <button type="button" onClick={() => unWish(album.id)} aria-label={`${album.title} 찜 해제`}>
+          <HeartIcon filled />
+        </button>
       </li>)}
     </ul>}
   </main>

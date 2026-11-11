@@ -32,3 +32,9 @@ export const updateReview = (reviewId, data) => request(`/api/reviews/${reviewId
 })
 
 export const deleteReview = (reviewId) => request(`/api/reviews/${reviewId}`, {method: 'DELETE'});
+
+export const getWishlist = () => request('/api/users/me/wishlist')
+
+export const addWishlist = (albumId) => request(`/api/users/me/wishlist/${albumId}`, { method: 'PUT' })
+
+export const removeWishlist = (albumId) => request(`/api/users/me/wishlist/${albumId}`, { method: 'DELETE' })
