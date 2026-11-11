@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getWishlist, removeWishlist } from './api';
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { getWishlist, removeWishlist } from './api'
 
 export default function Wishlist({ isAuthenticated }) {
   const [albums, setAlbums] = useState([])
@@ -16,15 +16,15 @@ export default function Wishlist({ isAuthenticated }) {
     finally {setLoading(false)}
   }
 
-  useEffect(() => {if (isAuthenticated) refresh(); else setLoading(false);}, [isAuthenticated]);
+  useEffect(() => {if (isAuthenticated) refresh(); else setLoading(false);}, [isAuthenticated])
 
   async function unWish(albumId) {
     try {await removeWishlist(albumId); setAlbums((items) => items.filter((a) => a.id !== albumId))}
     catch (e) {setError(e.message);}
   }
 
-  if (!isAuthenticated) return <p>로그인 후 이용할 수 있습니다.</p>;
-  if (loading) return <p>Loading</p>;
+  if (!isAuthenticated) return <p>로그인 후 이용할 수 있습니다.</p>
+  if (loading) return <p>Loading</p>
   return <main>
     <h1>찜한 음반</h1>
     {error && <p role="alert">{error}</p>}
