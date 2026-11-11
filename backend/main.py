@@ -23,4 +23,10 @@ def health_check():
     """서버가 실행 중인지 확인합니다. DB 연결 검사는 아닙니다."""
     return {"status": "ok"}
 
+from app.features.cart.auth import current_user_id
 
+# 로그인 기능 완성 전 임시 테스트
+def test_user_id():
+    return 1
+
+app.dependency_overrides[current_user_id] = test_user_id
