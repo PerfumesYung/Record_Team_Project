@@ -69,6 +69,7 @@ def create_review(db: Session, album_id: int, user: User, data: ReviewCreate) ->
         db.query(Order.id)
         .join(OrderItem, OrderItem.order_id == Order.id)
         .filter(Order.user_id == user.id, OrderItem.album_id == album_id)
+        .first()
         is not None
     )
     if not has_ordered:
