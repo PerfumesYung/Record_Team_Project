@@ -1,7 +1,10 @@
 from sqlalchemy import Column, MetaData, Table, text
 from sqlalchemy.dialects.mysql import BIGINT, DATETIME, INTEGER
+from app.models.album import Album
 
 metadata = MetaData()
+
+albums = Album.__table__
 
 users = Table(
     "users", metadata,

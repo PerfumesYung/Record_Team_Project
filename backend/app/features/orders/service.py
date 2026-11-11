@@ -7,7 +7,7 @@ from .schemas import OrderItemRead, OrderPage, OrderRead
 from .tables import order_items, orders
 
 
-def _serialize_orders(db: Session, rows):
+def make_order_list(db: Session, rows):
     if not rows:
         return []
 
@@ -55,7 +55,7 @@ def read_order(db: Session, order_id: int, user_id: int):
     if order is None:
         raise HTTPException(404, "주문을 찾을 수 없습니다")
 
-    result = _serialize_orders(db, [order])
+    result = make_order_list(db, [order])
     return result[0]
 
 def list_orders(db: Session, user_id: int, page: int, page_size: int):
@@ -69,7 +69,7 @@ def list_orders(db: Session, user_id: int, page: int, page_size: int):
         select(orders).where(orders.c.user_id == user_id).order_by(orders.c.created_at.desc(), orders.c.id.desc()).offset((page - 1) * page_size).limit(page_size)
     ).mappings().all()
 
-    items = _serialize_orders(db, rows)
+    items = make_order_list(db, rows)
 
     return OrderPage(items=items, total=total, page=page, page_size=page_size)
 
