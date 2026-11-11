@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
-import { createAlbumReview, deleteReview, getAlbumReviews, updateReview } from './api';
+import { useEffect, useState } from 'react'
+import { createAlbumReview, deleteReview, getAlbumReviews, updateReview } from './api'
+import StarRating from '../../components/ui/icons'
 
-const emptyForm = {rating: 5, content: ''};
+const emptyForm = {rating: 5, content: ''}
 
 export default function Reviews({ albumId, isAuthenticated }) {
   const [reviews, setReviews] = useState([])
@@ -50,12 +51,7 @@ export default function Reviews({ albumId, isAuthenticated }) {
   return <section aria-labelledby="reviews-heading">
     <h2 id="reviews-heading">리뷰</h2>
     {isAuthenticated && <form onSubmit={submit}>
-
-      <label>평점
-        <select value={form.rating} onChange={(e) => setForm({...form, rating: Number(e.target.value)})}>
-          {[5, 4, 3, 2, 1].map((n) => <option key={n} value={n}>{n}점</option>)}
-        </select>
-      </label>
+      <StarRating value={form.rating} onChange={(rating) => setForm({...form, rating})} />
       <label>내용
         <textarea required minLength={1} maxLength={1000} value={form.content}
           onChange={(e) => setForm({ ...form, content: e.target.value })} />
