@@ -45,7 +45,11 @@ export default function Reviews({ albumId, isAuthenticated }) {
 
   async function remove(reviewId) {
     if (!window.confirm('리뷰를 삭제하시겠습니까?')) return;
-    try {await deleteReview(reviewId); await refresh()}
+    try {
+      await deleteReview(reviewId)
+      if (reviewId === editingId) { setEditingId(null); setForm(emptyForm) }
+      await refresh()
+    }
     catch (e) {setError(e.message)}
   }
 
