@@ -1,4 +1,8 @@
-export default function App() {
+import { Route, Routes } from 'react-router-dom';
+import Header from '../components/layout/Header';
+import Footer from '../components/layout/Footer';
+
+function HomePage() {
   return (
     <main className="starter min-h-screen">
       <p className="starter-label">TEAM PROJECT · LP &amp; CD</p>
@@ -6,5 +10,18 @@ export default function App() {
       <p>낙원레코드 프로젝트가 시작됐어요.</p>
       <p className="starter-note">이 화면은 각 기능을 개발하면서 교체할 기본 화면입니다.</p>
     </main>
+  );
+}
+
+//화면 준비되면 라우터 추가
+export default function App() {
+  return (
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
