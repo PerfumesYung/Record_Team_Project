@@ -5,8 +5,8 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.models.album import Album 
-from app.models.order_item import OrderItem     
-from app.models.order import Order      
+from app.features.orders.tables import OrderItem     
+from app.features.orders.tables import Order      
 from app.models.review import Review
 from app.models.user import User      
 
