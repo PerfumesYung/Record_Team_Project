@@ -9,6 +9,13 @@ const FORMATS = [
   { label: 'CD', value: 'CD' },
 ];
 
+const SORT_OPTIONS = [
+  { label: '최신 등록순', value: 'latest' },
+  { label: '낮은 가격순', value: 'price_asc' },
+  { label: '높은 가격순', value: 'price_desc' },
+  { label: '제목순', value: 'title' },
+];
+
 function AlbumList() {
   const [albums, setAlbums] = useState([]);
   const [total, setTotal] = useState(0);
@@ -17,6 +24,7 @@ function AlbumList() {
 
   const [selectedGenre, setSelectedGenre] = useState('');
   const [selectedFormat, setSelectedFormat] = useState('');
+  const [sort, setSort] = useState('latest');
   const [searchInput, setSearchInput] = useState('');
   const [keyword, setKeyword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -27,11 +35,12 @@ function AlbumList() {
     const fetchAlbums = async () => {
       setLoading(true);
       try {
-        // [API 명세 v0.3 일치] keyword, format, genre, page, size 쿼리 파라미터 조립
+        // [API 명세 v0.3 일치] keyword, format, genre, sort, page, size 쿼리 파라미터 조립
         const params = new URLSearchParams();
         if (keyword) params.append('keyword', keyword);
         if (selectedFormat) params.append('format', selectedFormat);
         if (selectedGenre) params.append('genre', selectedGenre);
+        if (sort) params.append('sort', sort);
         params.append('page', String(page));
         params.append('size', String(size));
 
@@ -53,9 +62,9 @@ function AlbumList() {
     };
 
     fetchAlbums();
-  }, [keyword, selectedFormat, selectedGenre, page]);
+  }, [keyword, selectedFormat, selectedGenre, sort, page]);
 
-  // 필터나 검색어가 바뀔 때는 항상 1페이지부터 다시 조회
+  // 필터나 검색어, 정렬 기준이 바뀔 때는 항상 1페이지부터 다시 조회
   const handleSelectGenre = (genre) => {
     setSelectedGenre(genre);
     setPage(1);
@@ -63,6 +72,11 @@ function AlbumList() {
 
   const handleSelectFormat = (format) => {
     setSelectedFormat(format);
+    setPage(1);
+  };
+
+  const handleSelectSort = (e) => {
+    setSort(e.target.value);
     setPage(1);
   };
 
@@ -77,6 +91,7 @@ function AlbumList() {
     setKeyword('');
     setSelectedGenre('');
     setSelectedFormat('');
+    setSort('latest');
     setPage(1);
   };
 
@@ -109,7 +124,7 @@ function AlbumList() {
           >
             검색
           </button>
-          {(keyword || selectedGenre || selectedFormat) && (
+          {(keyword || selectedGenre || selectedFormat || sort !== 'latest') && (
             <button
               type="button"
               onClick={handleReset}
@@ -121,28 +136,44 @@ function AlbumList() {
         </form>
       </header>
 
-      {/* 포맷(LP/CD) 및 장르 필터 영역 */}
+      {/* 포맷(LP/CD), 정렬 기준 및 장르 필터 영역 */}
       <div className="flex flex-col gap-2">
-        <div className="flex gap-2">
-          {FORMATS.map((item) => {
-            const isSelected = selectedFormat === item.value;
-            return (
-              <button
-                key={item.label}
-                type="button"
-                onClick={() => handleSelectFormat(item.value)}
-                className="font-heading px-3.5 py-1.5 rounded-md text-xs border transition-colors cursor-pointer"
-                style={{
-                  backgroundColor: isSelected ? 'var(--color-text)' : 'var(--color-surface)',
-                  borderColor: isSelected ? 'var(--color-text)' : 'var(--color-border)',
-                  color: isSelected ? 'var(--color-background)' : 'var(--color-text-muted)',
-                  fontWeight: isSelected ? '700' : '400',
-                }}
-              >
-                {item.label}
-              </button>
-            );
-          })}
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex gap-2">
+            {FORMATS.map((item) => {
+              const isSelected = selectedFormat === item.value;
+              return (
+                <button
+                  key={item.label}
+                  type="button"
+                  onClick={() => handleSelectFormat(item.value)}
+                  className="font-heading px-3.5 py-1.5 rounded-md text-xs border transition-colors cursor-pointer"
+                  style={{
+                    backgroundColor: isSelected ? 'var(--color-text)' : 'var(--color-surface)',
+                    borderColor: isSelected ? 'var(--color-text)' : 'var(--color-border)',
+                    color: isSelected ? 'var(--color-background)' : 'var(--color-text-muted)',
+                    fontWeight: isSelected ? '700' : '400',
+                  }}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* 정렬 UI (sort) */}
+          <select
+            value={sort}
+            onChange={handleSelectSort}
+            aria-label="음반 정렬 기준"
+            className="font-heading px-3 py-1.5 rounded-md text-xs bg-(--color-surface) border border-(--color-border) text-(--color-text) focus:outline-none focus:border-(--color-accent) cursor-pointer"
+          >
+            {SORT_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
         </div>
 
         <GenreFilter currentGenre={selectedGenre} onSelectGenre={handleSelectGenre} />
