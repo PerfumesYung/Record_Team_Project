@@ -1,9 +1,8 @@
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, Field
 
 
 class CartQuantity(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-    quantity: int = Field(strict=True, ge=1, le=20)
+    quantity: int = Field(ge=1)
 
 
 class CartAlbum(BaseModel):
@@ -14,7 +13,7 @@ class CartAlbum(BaseModel):
     image_url: str | None
     price: int
     stock: int
-    hidden: bool
+    hidden: int
 
 
 class CartLine(BaseModel):

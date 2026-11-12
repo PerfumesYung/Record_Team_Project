@@ -1,105 +1,71 @@
 from fastapi import HTTPException
-from sqlalchemy import delete, insert, select, update
 from sqlalchemy.orm import Session
-
+from app.models.album import Album
 from .schemas import CartAlbum, CartLine, CartRead
-from .tables import albums, cart_items, users
-
+from .tables import CartItem, users
 
 def require_user(db: Session, user_id: int):
-    user = db.execute(
-        select(users.c.id).where(users.c.id == user_id)
-    ).first()
-
+    user = db.query(users.c.id).filter(users.c.id == user_id).first()
     if user is None:
         raise HTTPException(401, "로그인한 회원을 찾을 수 없습니다")
 
 def read_cart(db: Session, user_id: int):
     require_user(db, user_id)
-
-    rows = db.execute(
-        select(
-            cart_items.c.quantity,
-            albums.c.id,
-            albums.c.title,
-            albums.c.artist,
-            albums.c.format,
-            albums.c.image_url,
-            albums.c.price,
-            albums.c.stock,
-            albums.c.hidden
-        ).select_from(cart_items.join(albums, cart_items.c.album_id == albums.c.id)).where(cart_items.c.user_id == user_id).order_by(cart_items.c.id)
-    ).mappings().all()
+    cart_list = db.query(CartItem).filter(CartItem.user_id == user_id).all()
 
     items = []
-    subtotal = 0
+    total = 0
 
-    for row in rows:
-        album = CartAlbum(
-            id=row["id"],
-            title=row["title"],
-            artist=row["artist"],
-            format=row["format"],
-            image_url=row["image_url"],
-            price=row["price"],
-            stock=row["stock"],
-            hidden=row["hidden"]
+    for cart in cart_list:
+        album = db.query(Album).filter(Album.id == cart.album_id).first()
+
+        album_data = CartAlbum(
+            id=album.id,
+            title=album.title,
+            artist=album.artist,
+            format=album.format,
+            image_url=album.image_url,
+            price=album.price,
+            stock=album.stock,
+            hidden=album.hidden
         )
+        line_total = album.price * cart.quantity
+        items.append(CartLine(album=album_data, quantity=cart.quantity, line_total=line_total))
+        total += line_total
 
-        line_total = row["price"] * row["quantity"]
-        item = CartLine(album=album, quantity=row["quantity"], line_total=line_total)
-
-        items.append(item)
-        subtotal += line_total
-
-    return CartRead(items=items, subtotal=subtotal, total=subtotal)
+    return CartRead(items=items, subtotal=total, total=total)
 
 def set_quantity(db: Session, user_id: int, album_id: int, quantity: int):
-    try:
-        require_user(db, user_id)
+    require_user(db, user_id)
 
-        album = db.execute(
-            select(albums.c.id, albums.c.stock, albums.c.hidden).where(albums.c.id == album_id).with_for_update()
-        ).mappings().first()
+    album = db.query(Album).filter(Album.id == album_id).first()
+    if album is None or album.hidden == 1:
+        raise HTTPException(404, "구매 가능한 음반을 찾을 수 없습니다")
+    if album.stock < quantity:
+        raise HTTPException(409, "재고가 부족합니다")
 
-        if album is None or album["hidden"]:
-            raise HTTPException(404, "구매 가능한 음반을 찾을 수 없습니다")
+    cart = db.query(CartItem).filter(
+        CartItem.user_id == user_id, CartItem.album_id == album_id
+    ).first()
 
-        if album["stock"] < quantity:
-            raise HTTPException(409, "재고가 부족합니다")
+    if cart is None:
+        cart = CartItem(user_id=user_id, album_id=album_id, quantity=quantity)
+        db.add(cart)
+    else:
+        cart.quantity = quantity
 
-        existing = db.execute(
-            select(cart_items.c.id).where(cart_items.c.user_id == user_id, cart_items.c.album_id == album_id).with_for_update()
-            ).scalar()
-
-        if existing is None:
-            db.execute(
-                insert(cart_items).values(user_id=user_id, album_id=album_id, quantity=quantity)
-            )
-        else:
-            db.execute(update(cart_items).where(cart_items.c.id == existing).values(quantity=quantity)
-            )
-
-        db.commit()
-
-    except Exception:
-        db.rollback()
-        raise
-
+    db.commit()
     return read_cart(db, user_id)
 
 def remove_item(db: Session, user_id: int, album_id: int):
-    try:
-        require_user(db, user_id)
+    require_user(db, user_id)
 
-        db.execute(
-            delete(cart_items).where(cart_items.c.user_id == user_id, cart_items.c.album_id == album_id)
-        )
+    cart = db.query(CartItem).filter(
+        CartItem.user_id == user_id, CartItem.album_id == album_id
+    ).first()
 
+    if cart is not None:
+        db.delete(cart)
         db.commit()
-
-    except Exception:
-        db.rollback()
-        raise
 
     return read_cart(db, user_id)
