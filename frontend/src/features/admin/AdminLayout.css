@@ -1,0 +1,138 @@
+    /* 관리자 화면 전체 */
+    .admin-layout {
+    max-width: 1440px;
+    min-height: 65vh;
+    margin: 0 auto;
+    padding: 72px 32px;
+    color: var(--color-text);
+    }
+
+    /* 상단 제목 */
+    .admin-heading {
+    margin-bottom: 36px;
+    }
+
+    .admin-label {
+    margin: 0 0 12px;
+    color: var(--color-text-muted);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    }
+
+    .admin-heading h1 {
+    margin: 0;
+    font-size: 36px;
+    }
+
+    .admin-description {
+    margin: 14px 0 0;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    }
+
+    /* 왼쪽 메뉴 + 오른쪽 내용 */
+    .admin-body {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 32px;
+    }
+
+    /* 왼쪽 메뉴 */
+    .admin-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    }
+
+    .admin-menu a {
+    padding: 14px 16px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: 14px;
+    text-decoration: none;
+    }
+
+    .admin-menu a:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    }
+
+    .admin-menu a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    }
+
+    /* 오른쪽 내용 */
+    .admin-content h2 {
+    margin: 0 0 24px;
+    font-size: 26px;
+    }
+
+    .admin-content p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    }
+
+    /* 관리자 홈 카드 */
+    .admin-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    }
+
+    .admin-card {
+    padding: 28px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    }
+
+    .admin-card h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
+    }
+
+    .admin-card p {
+    margin: 0 0 20px;
+    font-size: 14px;
+    }
+
+    .admin-card a {
+    display: inline-block;
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: 14px;
+    text-decoration: none;
+    }
+
+    .admin-card a:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    }
+
+    .admin-card a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    }
+
+    /* 화면이 좁아지면 메뉴와 카드를 위아래로 배치 */
+    @media (max-width: 768px) {
+    .admin-layout {
+        padding: 48px 20px;
+    }
+
+    .admin-body {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .admin-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .admin-card-grid {
+        grid-template-columns: 1fr;
+    }
+}

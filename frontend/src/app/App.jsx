@@ -1,6 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
+
+// 공통 헤더, 푸터 컴포넌트
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+
+// 관리자 화면 관련 컴포넌트
+import AdminLayout from '../features/admin/AdminLayout';
+import AdminHomePage from '../features/admin/AdminHomePage';
+import AdminOrdersPage from '../features/admin/AdminOrdersPage';
+import AdminReviewsPage from '../features/admin/AdminReviewsPage';
 
 function HomePage() {
   return (
@@ -18,9 +26,22 @@ export default function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
+        <Routes>
+          {/* 기존 홈 화면 */}
+          <Route path="/" element={<HomePage />} />
+
+          {/* 관리자 공통 틀 */}
+          <Route path="/admin" element={<AdminLayout />}>
+            {/* /admin */}
+            <Route index element={<AdminHomePage />} />
+
+            {/* /admin/orders */}
+            <Route path="orders" element={<AdminOrdersPage />} />
+
+            {/* /admin/reviews */}
+            <Route path="reviews" element={<AdminReviewsPage />} />
+          </Route>
+        </Routes>
       <Footer />
     </>
   );
