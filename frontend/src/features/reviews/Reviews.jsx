@@ -7,6 +7,7 @@ const emptyForm = {rating: 5, content: ''}
 export default function Reviews({ albumId, isAuthenticated }) {
   const [reviews, setReviews] = useState([])
   const [form, setForm] = useState(emptyForm)
+  const [editForm, setEditForm] = useState(emptyForm)
   const [editingId, setEditingId] = useState(null)
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
@@ -26,8 +27,21 @@ export default function Reviews({ albumId, isAuthenticated }) {
 
   function edit(review) {
     setEditingId(review.id)
-    setForm({ rating: review.rating, content: review.content })
+    setEditForm({ rating: review.rating, content: review.content })
   }
+
+  async function saveEdit(event) {
+    event.preventDefault()
+    if (!editForm.content.trim()) { setError('리뷰 내용을 입력해 주세요.'); return }
+    setSubmitting(true); setError('')
+    try {
+      await updateReview(editingId, editForm)
+      setEditingId(null); await refresh()
+    } catch (e) {setError(e.message)}
+    finally {setSubmitting(false)}
+  }
+
+  function cancelEdit() { setEditingId(null); setError('') }
 
   async function submit(event) {
     event.preventDefault()
@@ -36,18 +50,16 @@ export default function Reviews({ albumId, isAuthenticated }) {
 
     setSubmitting(true); setError('')
     try {
-      if (editingId) await updateReview(editingId, form)
-      else await createAlbumReview(albumId, form)
-      setEditingId(null); setForm(emptyForm); await refresh()
+      await createAlbumReview(albumId, form)
+      setForm(emptyForm); await refresh()
     } catch (e) {setError(e.message)}
-    finally {setSubmitting(false)}
   }
 
   async function remove(reviewId) {
     if (!window.confirm('리뷰를 삭제하시겠습니까?')) return;
     try {
       await deleteReview(reviewId)
-      if (reviewId === editingId) { setEditingId(null); setForm(emptyForm) }
+      if (reviewId === editingId) setEditingId(null)
       await refresh()
     }
     catch (e) {setError(e.message)}
@@ -62,7 +74,7 @@ export default function Reviews({ albumId, isAuthenticated }) {
           onChange={(e) => setForm({ ...form, content: e.target.value })} />
       </label>
 
-      <button disabled={submitting} type="submit">{editingId ? '수정' : '저장'}</button>
+      <button disabled={submitting} type="submit">저장</button>
       {editingId && <button type="button" onClick={() => {setEditingId(null); setForm(emptyForm);}}>취소</button>}
     </form>}
 
@@ -70,11 +82,33 @@ export default function Reviews({ albumId, isAuthenticated }) {
     {loading ? <p>리뷰를 불러오는 중입니다.</p> : reviews.length === 0
       ? <p>등록된 리뷰가 없습니다.</p>
       : reviews.map((review) => <article key={review.id}>
-        <p>{review.rating}점 - 작성자 {review.username}</p>
-        <p>{review.content}</p>
-        <small>작성 {new Date(review.created_at).toLocaleString()}</small>
-        {review.is_mine && <div><button onClick={() => edit(review)}>수정</button>
-          <button onClick={() => remove(review.id)}>삭제</button></div>}
-      </article>)} 
+        {editingId === review.id ? (
+          <form onSubmit={saveEdit}>
+            <StarRating value={editForm.rating} onChange={(rating) => setEditForm({ ...editForm, rating })} />
+            <label>내용
+              <textarea required minLength={1} maxLength={1000} value={editForm.content}
+                onChange={(e) => setEditForm({ ...editForm, content: e.target.value })} />
+            </label>
+            <button disabled={submitting} type="submit">수정 완료</button>
+            <button type="button" onClick={cancelEdit}>취소</button>
+          </form>
+        ) : (
+          <>
+          <p>
+              <span role="img" aria-label={`${review.rating}점`}>
+              {[1, 2, 3, 4, 5].map((score) => (
+                <span key={score} aria-hidden="true"
+                  className={score <= review.rating ? 'star-rating__star is-selected' : 'star-rating__star'}>★</span>
+              ))}
+            </span>
+            {' '}- 작성자 {review.username}
+          </p>
+          <p>{review.content}</p>
+          <small>작성 {new Date(review.created_at).toLocaleString()}</small>
+          {review.is_mine && <div><button onClick={() => edit(review)}>수정</button>
+            <button onClick={() => remove(review.id)}>삭제</button></div>}
+          </>
+        )}
+      </article>)}
   </section>;
 }
