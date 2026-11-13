@@ -37,3 +37,7 @@ class ReviewResponse(BaseModel):
     content: str
     created_at: datetime
     is_mine: bool
+
+
+class MyReviewResponse(ReviewResponse):
+    album_title: str

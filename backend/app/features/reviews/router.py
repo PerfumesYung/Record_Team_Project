@@ -10,7 +10,7 @@ from app.models.user import User
 
 from . import service
 from .dependencies import get_current_user_optional
-from .schemas import ReviewCreate, ReviewResponse, ReviewUpdate
+from .schemas import MyReviewResponse, ReviewCreate, ReviewResponse, ReviewUpdate
 
 
 router = APIRouter(prefix="/api", tags=["reviews"])
@@ -66,3 +66,12 @@ def delete_my_review(
     
     service.delete_review(db, id, current_user)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+# 내 리뷰 목록 (마이페이지)
+@router.get("/users/me/reviews", response_model=list[MyReviewResponse])
+def get_my_reviews(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    return service.list_my_reviews(db, current_user)

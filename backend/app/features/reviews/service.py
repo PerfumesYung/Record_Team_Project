@@ -117,3 +117,18 @@ def delete_review(db: Session, review_id: int, user: User) -> None:
     review = _get_my_review_or_error(db, review_id, user)
     db.delete(review)
     db.commit()
+
+
+# GET /api/users/me/reviews
+def list_my_reviews(db: Session, user: User) -> list[dict]:
+    rows = (
+        db.query(Review, Album.title)
+        .join(Album, Album.id == Review.album_id)
+        .filter(Review.user_id == user.id, Review.hidden == 0, Album.hidden == 0)
+        .order_by(Review.created_at.desc(), Review.id.desc())
+        .all()
+    )
+    return [
+        {**_to_response(review, user.username, user.id), "album_title": title}
+        for review, title in rows
+    ]
