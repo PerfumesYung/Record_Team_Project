@@ -9,6 +9,7 @@ import AdminLayout from '../features/admin/AdminLayout';
 import AdminHomePage from '../features/admin/AdminHomePage';
 import AdminOrdersPage from '../features/admin/AdminOrdersPage';
 import AdminReviewsPage from '../features/admin/AdminReviewsPage';
+import MyPage from '../features/mypage/MyPage';
 
 function HomePage() {
   return (
@@ -29,6 +30,8 @@ export default function App() {
         <Routes>
           {/* 기존 홈 화면 */}
           <Route path="/" element={<HomePage />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/mypage/reviews" element={<MyPage showReviews />} />
 
           {/* 관리자 공통 틀 */}
           <Route path="/admin" element={<AdminLayout />}>
