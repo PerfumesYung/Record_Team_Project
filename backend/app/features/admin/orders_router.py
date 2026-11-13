@@ -8,7 +8,7 @@ from app.db.database import get_db
 from app.features.auth.security import get_current_admin
 
 
-# /api/admin은 통합하는 쪽에서 붙입니다.
+# /api/admin은 통합 후 관리자 API 붙이기
 router = APIRouter(
     prefix="/orders",
     tags=["관리자 주문"],
