@@ -2,6 +2,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+
+#인증 라우터 등록
+from app.features.auth.router import router as auth_router
+from app.features.admin.orders_router import router as admin_orders_router
+
 app = FastAPI(title="낙원레코드 API")
 
 # 로컬 React 개발 서버가 API를 호출할 수 있도록 허용합니다.
@@ -12,6 +17,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(auth_router)
+app.include_router(admin_orders_router, prefix="/api/admin")
 
 
 @app.get("/api/health", tags=["서버 확인"])
