@@ -37,24 +37,39 @@ export default function App() {
   // 로그인한 사용자 정보 저장
   const [currentUser, setCurrentUser] = useState(null);
 
+  // 로그인 정보 확인 로딩
+  const [authLoading, setAuthLoading] = useState(true);
+
+  // 오류 메시지 표시
+  const [authError, setAuthError] = useState('');
+
   // 토큰으로 로그인 한 사용자 가져오기
   async function loadCurrentUser() {
     const user = await getCurrentUser();
+
     setCurrentUser(user);
+    setAuthError('');
   }
 
-  // 새로고침했을 때 저장된 토큰이 있으면 로그인 정보 불러오기
+  // 새로고침했을 때 저장된 토큰으로 로그인 정보를 불러오기
   useEffect(() => {
     async function restoreLogin() {
+      // 저장된 토큰이 없으면 로그인 확인 끝냄
       if (!getAccessToken()) {
+        setAuthLoading(false);
         return;
       }
 
       try {
         const user = await getCurrentUser();
         setCurrentUser(user);
+        setAuthError('');
       } catch {
+        // 서버가 없거나 토큰이 없으면 오류 메시지
         setCurrentUser(null);
+        setAuthError('로그인 정보를 확인하지 못했어요. 서버 상태나 로그인을 확인해 주세요.');
+      } finally {
+        setAuthLoading(false);
       }
     }
 
@@ -65,6 +80,7 @@ export default function App() {
   function handleLogout() {
     logout();
     setCurrentUser(null);
+    setAuthError('');
   }
   return (
     <>
@@ -74,8 +90,9 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<AuthPage key="login" onLogin={loadCurrentUser} />} />
           <Route path="/signup" element={<AuthPage key="signup" signup />} />
-          <Route path="/mypage" element={<MyPage />} />
-          <Route path="/mypage/reviews" element={<MyPage showReviews />} />
+
+          <Route path="/mypage" element={ <MyPage currentUser={currentUser} authLoading={authLoading} authError={authError} />}/>
+          <Route path="/mypage/reviews" element={ <MyPage showReviews currentUser={currentUser} authLoading={authLoading} authError={authError} /> }/>
 
           {/* 관리자 공통 틀 */}
           <Route path="/admin" element={<AdminLayout />}>

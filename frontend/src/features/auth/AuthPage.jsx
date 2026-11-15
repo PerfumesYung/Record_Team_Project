@@ -55,12 +55,12 @@ export default function AuthPage({ signup = false, onLogin }) {
           },
         });
       } else {
-        // 로그인에 성공하면 api.js에서 토큰을 저장합니다.
+        // 로그인에 성공하면 토큰 저장
         await login(email, password);
 
 
         await onLogin();
-        
+
         // 로그인 성공 후 홈 화면으로 이동합니다.
         navigate('/');
       }
