@@ -1,0 +1,108 @@
+    .admin-orders {
+    width: 100%;
+    }
+
+    .admin-orders__heading {
+    margin-bottom: 28px;
+    }
+
+    .admin-orders__label {
+    margin: 0 0 10px;
+    color: var(--color-text-muted);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    }
+
+    .admin-orders__heading h2 {
+    margin: 0 0 12px;
+    font-size: 28px;
+    }
+
+    .admin-orders__heading p {
+    margin: 0;
+    }
+
+    .admin-orders__notice {
+    margin: 0 0 24px;
+    padding: 14px 16px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 13px;
+    }
+
+    /* 화면이 좁을 때 표를 옆으로 움직여 볼 수 있습니다. */
+    .admin-orders__table-wrap {
+    overflow-x: auto;
+    }
+
+    .admin-orders__table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    text-align: left;
+    }
+
+    .admin-orders__table th,
+    .admin-orders__table td {
+    padding: 18px 14px;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 14px;
+    }
+
+    .admin-orders__table th {
+    color: var(--color-text-muted);
+    font-weight: 500;
+    }
+
+    .admin-orders__table td {
+    color: var(--color-text);
+    }
+
+    .admin-orders__table button {
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-muted);
+    font: inherit;
+    }
+
+    .admin-orders__table button:disabled {
+    cursor: not-allowed;
+    }
+
+    .admin-orders__notice select {
+    margin-left: 8px;
+    padding: 8px 36px 8px 12px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font: inherit;
+    }
+
+    .admin-orders__notice p {
+    margin: 12px 0 0;
+    }
+
+    .admin-orders__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 28px;
+    }
+
+    .admin-orders__pagination button {
+    padding: 8px 14px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    cursor: pointer;
+    }
+
+    .admin-orders__pagination button:disabled {
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 0.5;
+    }

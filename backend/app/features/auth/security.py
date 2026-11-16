@@ -82,10 +82,23 @@ def get_current_user(
     except (InvalidTokenError, KeyError, ValueError, TypeError):
         raise credentials_error
 
-    # 수업에서 사용한 query / filter 방식으로 로그인 사용자 찾기
     current_user = db.query(User).filter(User.id == user_id).first()
 
     if current_user is None:
         raise credentials_error
+
+    return current_user
+
+#관리자 권한 확인 함수
+def get_current_admin(
+    current_user: User = Depends(get_current_user),
+) -> User:
+    """로그인한 사용자가 관리자인지 확인."""
+
+    if current_user.role != "ADMIN":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="관리자만 사용할 수 있습니다.",
+        )
 
     return current_user

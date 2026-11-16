@@ -4,7 +4,7 @@ import ProfileIcon from '../ui/icons/ProfileIcon';
 import CartIcon from '../ui/icons/CartIcon';
 import './Header.css';
 
-export default function Header() {
+export default function Header({ currentUser, onLogout }) {
   return (
     <header className="site-header">
       <p className="site-header__notice">NAKWON RECORDS — OBJECTS FOR YOUR EVERYDAY LISTENING</p>
@@ -23,7 +23,24 @@ export default function Header() {
 
         <nav className="site-header__actions" aria-label="사용자 메뉴">
           <button type="button" disabled><SearchIcon /> <span>검색</span></button>
-          <button type="button" disabled><ProfileIcon size={26} /> <span>로그인</span></button>
+          
+          {currentUser ? (
+              <>
+                <Link className="site-header__account" to="/mypage">
+                  <ProfileIcon size={26} />
+                  <span>내 계정</span>
+                </Link>
+                <button type="button" onClick={onLogout}>
+                  로그아웃
+                </button>
+                {currentUser.is_admin === true && ( <Link to="/admin" className="whitespace-nowrap text-[12px] text-[var(--color-text)] no-underline hover:text-[var(--color-accent)]"> 관리자 페이지 </Link> )}
+              </>
+            ) : (
+              <Link className="site-header__account" to="/login">
+                <ProfileIcon size={26} />
+                <span>로그인</span>
+              </Link>
+            )}
           <button type="button" disabled><CartIcon /> <span>장바구니</span></button>
         </nav>
       </div>
