@@ -21,14 +21,14 @@ export default function Footer() {
         <section className="site-footer__section">
           <h3>MY COLLECTION</h3>
           <span>내 계정</span>
-          <span>주문 내역</span>
+          <Link to="/orders">주문 내역</Link>
           <span>찜한 음반</span>
         </section>
 
         <section className="site-footer__section">
           <h3>LISTENING GUIDE</h3>
           <span>LP·CD 입문 안내</span>
-          <span>장바구니</span>
+          <Link to="/cart">장바구니</Link>
         </section>
       </div>
       <div className="site-footer__bottom">© NAKWON RECORDS · TEAM PROJECT</div>

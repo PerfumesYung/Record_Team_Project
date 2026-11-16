@@ -19,3 +19,7 @@
   .site-header__actions { gap: 8px; }
   .site-header__actions button { gap: 4px; font-size: 11px; }
 }
+
+.site-header__action-link { display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: 12px; white-space: nowrap; color: var(--color-text); text-decoration: none; }
+.site-header__action-link:hover { color: var(--color-accent); }
+.site-header__action-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 5px; }
