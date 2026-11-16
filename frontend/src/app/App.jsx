@@ -18,6 +18,7 @@ import AdminOrdersPage from '../features/admin/AdminOrdersPage';
 import AdminReviewsPage from '../features/admin/AdminReviewsPage';
 import MyPage from '../features/mypage/MyPage';
 import AuthPage from '../features/auth/AuthPage';
+import AdminOrderDetailPage from '../features/admin/AdminOrderDetailPage';
 
 
 
@@ -100,7 +101,8 @@ export default function App() {
             <Route index element={<AdminHomePage />} />
 
             {/* /admin/orders */}
-            <Route path="orders" element={<AdminOrdersPage />} />
+            <Route path="orders" element={<AdminOrdersPage />} /> 
+            <Route path="orders/:orderId" element={<AdminOrderDetailPage />} />
 
             {/* /admin/reviews */}
             <Route path="reviews" element={<AdminReviewsPage />} />
