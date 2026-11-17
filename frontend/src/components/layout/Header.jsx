@@ -24,7 +24,7 @@ export default function Header() {
         <nav className="site-header__actions" aria-label="사용자 메뉴">
           <button type="button" disabled><SearchIcon /> <span>검색</span></button>
           <button type="button" disabled><ProfileIcon size={26} /> <span>로그인</span></button>
-          <button type="button" disabled><CartIcon /> <span>장바구니</span></button>
+          <Link to="/cart" className="site-header__action-link"><CartIcon /> <span>장바구니</span></Link>
         </nav>
       </div>
     </header>
