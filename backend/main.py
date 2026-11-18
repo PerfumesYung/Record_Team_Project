@@ -1,8 +1,13 @@
 """낙원레코드 API 시작점. 각 기능 라우터는 구현 후 등록합니다."""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+
+#라우터영역
 from app.features.cart.router import router as cart_router
 from app.features.orders.router import router as orders_router
+from app.features.admin.albums_router import router as admin_albums_router
+from app.features.admin.recommendations_router import router as admin_recommendations_router
 
 
 #인증 라우터 등록
@@ -24,6 +29,8 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(admin_orders_router, prefix="/api/admin")
+app.include_router(admin_albums_router, prefix="/api/admin")
+app.include_router(admin_recommendations_router, prefix="/api/admin")
 
 
 @app.get("/api/health", tags=["서버 확인"])

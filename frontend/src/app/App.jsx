@@ -19,6 +19,9 @@ import AdminReviewsPage from '../features/admin/AdminReviewsPage';
 import MyPage from '../features/mypage/MyPage';
 import AuthPage from '../features/auth/AuthPage';
 import AdminOrderDetailPage from '../features/admin/AdminOrderDetailPage';
+import AdminAlbumsPage from '../features/admin/albums/AdminAlbumsPage';
+import AlbumFormPage from '../features/admin/albums/AlbumFormPage';
+import AdminRecommendationsPage from '../features/admin/recommendations/AdminRecommendationsPage';
 
 
 
@@ -97,15 +100,28 @@ export default function App() {
 
           {/* 관리자 공통 틀 */}
           <Route path="/admin" element={<AdminLayout />}>
-            {/* /admin */}
+            {/* 관리자 메인 화면: /admin */}
             <Route index element={<AdminHomePage />} />
 
-            {/* /admin/orders */}
+            {/* 관리자 주문 목록: /admin/orders */}
             <Route path="orders" element={<AdminOrdersPage />} /> 
+            {/* 관리자 주문 상세: /admin/orders/주문번호 */}
             <Route path="orders/:orderId" element={<AdminOrderDetailPage />} />
 
-            {/* /admin/reviews */}
+            {/* 관리자 리뷰 관리: /admin/reviews */}
             <Route path="reviews" element={<AdminReviewsPage />} />
+
+            {/* 관리자 음반 목록: /admin/albums */}
+            <Route path="albums" element={<AdminAlbumsPage />} />
+
+            {/* 관리자 음반 등록: /admin/albums/new */}
+            <Route path="albums/new" element={<AlbumFormPage />} />
+
+            {/* 관리자 음반 수정: /admin/albums/음반번호/edit */}
+            <Route path="albums/:id/edit" element={<AlbumFormPage />} />
+
+            {/* 관리자 추천 설정: /admin/recommendations */}
+            <Route path="recommendations" element={<AdminRecommendationsPage />} />
           </Route>
         </Routes>
       <Footer />
