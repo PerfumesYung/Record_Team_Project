@@ -31,7 +31,8 @@ function HomePage() {
       <p className="starter-label">TEAM PROJECT · LP &amp; CD</p>
       <h1 className="font-heading">NAKWON RECORDS</h1>
       <p>낙원레코드 프로젝트가 시작됐어요.</p>
-      <p className="starter-note">이 화면은 각 기능을 개발하면서 교체할 기본 화면입니다.</p>
+      <p className="starter-note">홈·음반 목록은 해당 기능 담당자가 완성하면 이 페이지와 교체합니다.</p>
+      <p><Link className="commerce-primary" to="/cart">장바구니 보기 ↗</Link></p>
     </main>
   );
 }
