@@ -4,6 +4,8 @@
 .site-header__menu, .site-header__actions { display: flex; align-items: center; gap: 20px; }
 .site-header__actions { justify-content: flex-end; }
 .site-header button { display: inline-flex; align-items: center; gap: 7px; padding: 0; border: 0; background: transparent; color: var(--color-text); font: inherit; font-size: 12px; white-space: nowrap; }
+.site-header__account { display: inline-flex; align-items: center; gap: 7px; color: var(--color-text); font-size: 12px; text-decoration: none; white-space: nowrap; }
+.site-header__account:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 5px; }
 .site-header button:disabled { cursor: default; }
 .site-header__brand { color: var(--color-text); text-align: center; text-decoration: none; font-size: 25px; font-weight: 800; line-height: 1.1; white-space: nowrap; }
 .site-header__brand small { display: block; margin-top: 7px; color: var(--color-text-muted); font-family: var(--font-heading); font-size: 9px; font-weight: 400; letter-spacing: .2em; }
@@ -19,7 +21,3 @@
   .site-header__actions { gap: 8px; }
   .site-header__actions button { gap: 4px; font-size: 11px; }
 }
-
-.site-header__action-link { display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: 12px; white-space: nowrap; color: var(--color-text); text-decoration: none; }
-.site-header__action-link:hover { color: var(--color-accent); }
-.site-header__action-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 5px; }

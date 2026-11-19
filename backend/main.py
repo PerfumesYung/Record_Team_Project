@@ -5,6 +5,11 @@ from app.features.auth.router import router as auth_router
 from app.features.cart.router import router as cart_router
 from app.features.orders.router import router as orders_router
 
+
+#인증 라우터 등록
+from app.features.auth.router import router as auth_router
+from app.features.admin.orders_router import router as admin_orders_router
+
 app = FastAPI(title="낙원레코드 API")
 
 <<<<<<< HEAD
@@ -21,6 +26,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(auth_router)
+app.include_router(admin_orders_router, prefix="/api/admin")
 
 
 @app.get("/api/health", tags=["서버 확인"])
