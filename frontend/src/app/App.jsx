@@ -34,7 +34,12 @@ import OrderDetailPage from '../features/orders/OrderDetailPage';
 // 장바구니와 주문 화면 공통 스타일
 import '../features/cart/commerce.css';
 
+// 일반 사용자 음반 화면
+import AlbumList from '../features/albums/AlbumList';
+import AlbumDetail from '../features/albums/AlbumDetail';
 
+// 취향 추천 화면
+import RecommendationsPage from '../features/recommendations/RecommendationsPage';
 
 function HomePage() {
   return (
@@ -110,6 +115,9 @@ export default function App() {
           <Route path="/mypage" element={ <MyPage currentUser={currentUser} authLoading={authLoading} authError={authError} />}/>
           <Route path="/mypage/reviews" element={ <MyPage showReviews currentUser={currentUser} authLoading={authLoading} authError={authError} /> }/>
 
+          {/* 취향 추천 */}
+          <Route path="/recommendations" element={<RecommendationsPage />} />
+
           {/* 관리자 공통 틀 */}
           <Route path="/admin" element={<AdminLayout />}>
             {/* 관리자 메인 화면: /admin */}
@@ -150,6 +158,11 @@ export default function App() {
             {/* 내 주문 상세 */}
             <Route path="/orders/:orderId" element={<OrderDetailPage />} />
 
+            {/* 음반 목록 */}
+            <Route path="/albums" element={<AlbumList />} />
+            
+            {/* 음반 상세 */}
+            <Route path="/albums/:albumId" element={<AlbumDetail currentUser={currentUser} />} />
         </Routes>
       <Footer />
     </>

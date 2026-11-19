@@ -7,6 +7,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.features.auth.router import router as auth_router
 from app.features.cart.router import router as cart_router
 from app.features.orders.router import router as orders_router
+from app.features.albums.router import router as albums_router
+from app.features.recommendations.router import router as recommendations_router
+from app.features.reviews.router import router as reviews_router
 
 # 관리자 기능 라우터
 from app.features.admin.orders_router import router as admin_orders_router
@@ -34,6 +37,13 @@ app.include_router(orders_router)
 app.include_router(admin_orders_router, prefix="/api/admin")
 app.include_router(admin_albums_router, prefix="/api/admin")
 app.include_router(admin_recommendations_router, prefix="/api/admin")
+
+#앨범 상세페이지 라우터 연결
+app.include_router(albums_router)
+
+# 추천과 리뷰 API 연결
+app.include_router(recommendations_router)
+app.include_router(reviews_router)
 
 
 @app.get("/api/health", tags=["서버 확인"])

@@ -10,10 +10,10 @@ export default function Header({ currentUser, onLogout }) {
       <p className="site-header__notice">NAKWON RECORDS — OBJECTS FOR YOUR EVERYDAY LISTENING</p>
       <div className="site-header__inner">
         <nav className="site-header__menu" aria-label="음반 메뉴">
-          <button type="button" disabled>ALL RECORDS</button>
+          <Link to="/albums">ALL RECORDS</Link>
           <button type="button" disabled>LP</button>
           <button type="button" disabled>CD</button>
-          <button type="button" disabled>취향 추천</button>
+          <Link to="/recommendations">취향 추천</Link>
         </nav>
 
         <Link className="site-header__brand" to="/" aria-label="낙원레코드 홈">

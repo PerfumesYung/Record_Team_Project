@@ -2,7 +2,14 @@ import '../../styles/design-tokens.css';
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-function AlbumDetail() {
+import AddToCartButton from '../cart/AddToCartButton';
+import Reviews from '../reviews/Reviews';
+
+
+// .env에 설정한 FastAPI 주소를 사용
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
+
+function AlbumDetail({ currentUser }) {
   const { albumId } = useParams();
   const navigate = useNavigate();
 
@@ -15,7 +22,7 @@ function AlbumDetail() {
       setLoading(true);
       setError('');
       try {
-        const response = await fetch(`/api/albums/${albumId}`);
+        const response = await fetch(`${API_BASE}/api/albums/${albumId}`);
         if (!response.ok) {
           throw new Error('음반 정보를 찾을 수 없습니다.');
         }
@@ -110,21 +117,16 @@ function AlbumDetail() {
               </div>
             </div>
 
-            {/* 다른 팀원 기능 연결 자리 (장바구니 / 찜하기) */}
+            {/* 장바구니 버튼 */}
             <div className="mt-8 pt-6 border-t border-(--color-border)">
-              <p className="text-xs text-(--color-text-muted)">
-                * 장바구니 담기(POST /api/cart/items) 및 찜하기(PUT /api/users/me/wishlist/{album.id}) 버튼 연결 영역
-              </p>
+              <AddToCartButton albumId={album.id} stock={album.stock}/>
             </div>
           </div>
         </div>
 
-        {/* 하단: 리뷰 영역 연결 자리 */}
+        {/* 음반 리뷰 */}
         <div className="mt-8 bg-(--color-surface) border border-(--color-border) p-6 rounded-xl">
-          <h2 className="font-heading text-xl font-bold mb-2">구매자 리뷰</h2>
-          <p className="text-sm text-(--color-text-muted)">
-            * 리뷰 목록(GET /api/albums/{album.id}/reviews) 및 작성 컴포넌트 연결 영역
-          </p>
+          <Reviews albumId={album.id} isAuthenticated={Boolean(currentUser)} />
         </div>
       </div>
     </div>

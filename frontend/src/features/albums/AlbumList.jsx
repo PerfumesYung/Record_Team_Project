@@ -3,6 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GenreFilter from './GenreFilter';
 
+
+
+// .env에 설정한 FastAPI 주소를 사용
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
+
 const FORMATS = [
   { label: '전체 포맷', value: '' },
   { label: 'LP', value: 'LP' },
@@ -44,12 +49,14 @@ function AlbumList() {
         params.append('page', String(page));
         params.append('size', String(size));
 
-        const response = await fetch(`/api/albums?${params.toString()}`);
+        const response = await fetch(`${API_BASE}/api/albums?${params.toString()}`);
+
         if (!response.ok) {
           throw new Error(`서버 응답 오류: ${response.status}`);
         }
 
         const data = await response.json();
+
         setAlbums(Array.isArray(data.items) ? data.items : []);
         setTotal(typeof data.total === 'number' ? data.total : 0);
       } catch (error) {
