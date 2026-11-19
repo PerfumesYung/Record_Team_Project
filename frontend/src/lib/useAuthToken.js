@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const TOKEN_KEY = 'access_token';
+const TOKEN_KEY = 'accessToken';
 export function readToken() {
   return localStorage.getItem(TOKEN_KEY) || '';
 }

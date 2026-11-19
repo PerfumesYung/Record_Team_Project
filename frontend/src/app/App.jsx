@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import {
@@ -22,6 +22,17 @@ import AdminOrderDetailPage from '../features/admin/AdminOrderDetailPage';
 import AdminAlbumsPage from '../features/admin/albums/AdminAlbumsPage';
 import AlbumFormPage from '../features/admin/albums/AlbumFormPage';
 import AdminRecommendationsPage from '../features/admin/recommendations/AdminRecommendationsPage';
+
+
+// 장바구니와 주문 화면
+import CartPage from '../features/cart/CartPage';
+import CheckoutPage from '../features/orders/CheckoutPage';
+import OrderCompletePage from '../features/orders/OrderCompletePage';
+import OrdersPage from '../features/orders/OrderPage';
+import OrderDetailPage from '../features/orders/OrderDetailPage';
+
+// 장바구니와 주문 화면 공통 스타일
+import '../features/cart/commerce.css';
 
 
 
@@ -124,6 +135,21 @@ export default function App() {
             {/* 관리자 추천 설정: /admin/recommendations */}
             <Route path="recommendations" element={<AdminRecommendationsPage />} />
           </Route>
+            {/* 장바구니 */}
+            <Route path="/cart" element={<CartPage />} />
+
+            {/* 주문서 */}
+            <Route path="/orders/new" element={<CheckoutPage />} />
+
+            {/* 주문 완료 */}
+            <Route path="/orders/complete/:orderId" element={<OrderCompletePage />}/>
+
+            {/* 내 주문 목록 */}
+            <Route path="/orders" element={<OrdersPage />} />
+
+            {/* 내 주문 상세 */}
+            <Route path="/orders/:orderId" element={<OrderDetailPage />} />
+
         </Routes>
       <Footer />
     </>

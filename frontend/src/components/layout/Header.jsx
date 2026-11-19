@@ -41,7 +41,7 @@ export default function Header({ currentUser, onLogout }) {
                 <span>로그인</span>
               </Link>
             )}
-          <button type="button" disabled><CartIcon /> <span>장바구니</span></button>
+          <Link to="/cart"> <CartIcon /> <span>장바구니</span> </Link>
         </nav>
       </div>
     </header>

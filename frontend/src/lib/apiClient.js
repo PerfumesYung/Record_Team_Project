@@ -30,7 +30,7 @@ export async function apiRequest(path, { method = 'GET', token, body, signal } =
 
   if (!response.ok) {
     if (response.status === 401) {
-      localStorage.removeItem('access_token');
+      localStorage.removeItem('accessToken');
       window.dispatchEvent(new Event('nakwon-auth-changed'));
       throw new Error('로그인이 만료되었거나 인증이 필요합니다. 다시 로그인해 주세요.');
     }
