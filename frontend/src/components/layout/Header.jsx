@@ -11,8 +11,8 @@ export default function Header({ currentUser, onLogout }) {
       <div className="site-header__inner">
         <nav className="site-header__menu" aria-label="음반 메뉴">
           <Link to="/albums">ALL RECORDS</Link>
-          <button type="button" disabled>LP</button>
-          <button type="button" disabled>CD</button>
+          <Link to="/albums?format=LP">LP</Link>
+          <Link to="/albums?format=CD">CD</Link>
           <Link to="/recommendations">취향 추천</Link>
         </nav>
 
@@ -22,7 +22,7 @@ export default function Header({ currentUser, onLogout }) {
         </Link>
 
         <nav className="site-header__actions" aria-label="사용자 메뉴">
-          <button type="button" disabled><SearchIcon /> <span>검색</span></button>
+          <Link to="/albums" className="site-header__account"><SearchIcon /><span>검색</span></Link>
           
           {currentUser ? (
               <>
@@ -41,7 +41,7 @@ export default function Header({ currentUser, onLogout }) {
                 <span>로그인</span>
               </Link>
             )}
-          <Link to="/cart"> <CartIcon /> <span>장바구니</span> </Link>
+          <Link to="/cart" className="site-header__account"><CartIcon /><span>장바구니</span></Link>
         </nav>
       </div>
     </header>

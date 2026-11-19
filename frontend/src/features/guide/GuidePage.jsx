@@ -91,7 +91,7 @@ export default function GuidePage() {
         <h1 className="font-heading mt-4 text-4xl font-bold md:text-6xl">
           Your first physical record.
         </h1>
-        <p className="mt-4 text-sm text-[color:var(--color-text-muted)]">
+        <p className="mt-4 text-base leading-relaxed text-[color:var(--color-text-muted)]">
           처음 만나는 LP와 CD, 나에게 맞는 한 장을 고르는 방법.
         </p>
       </header>
@@ -104,7 +104,7 @@ export default function GuidePage() {
             <div className="mt-8">
               <Icon />
             </div>
-            <p className="mt-8 text-sm leading-7 text-[color:var(--color-text-muted)]">
+            <p className="mt-8 text-base leading-7 text-[color:var(--color-text-muted)]">
               {description}
             </p>
             <a href={href} className={`${LINK_BUTTON_CLASS} mt-8`}>
@@ -133,7 +133,7 @@ export default function GuidePage() {
             </li>
           ))}
         </ol>
-        <p className="mt-4 text-sm text-[color:var(--color-text-muted)]">
+        <p className="mt-4 text-sm leading-7 text-[color:var(--color-text-muted)]">
           매체는 LP·CD 같은 음반 형태, 장르는 음악의 분류, 재고는 주문할 수 있는 남은 수량입니다.
         </p>
         <a href={GUIDE_LINKS.recommendations} className={`${LINK_BUTTON_CLASS} mt-6`}>

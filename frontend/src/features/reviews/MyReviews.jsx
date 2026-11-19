@@ -19,8 +19,7 @@ export default function MyReviews({ isAuthenticated }) {
 
   if (!isAuthenticated) return <p>로그인 후 이용할 수 있습니다.</p>
 
-  return <section aria-labelledby="my-reviews-heading">
-    <h2 id="my-reviews-heading">내 리뷰</h2>
+  return <section aria-label="내가 쓴 리뷰 목록">
     {error && <p role="alert">{error}</p>}
     {loading ? <p>리뷰를 불러오는 중입니다.</p> : reviews.length === 0
       ? <p>작성한 리뷰가 없습니다.</p>

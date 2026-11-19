@@ -41,6 +41,10 @@ import AlbumDetail from '../features/albums/AlbumDetail';
 // 취향 추천 화면
 import RecommendationsPage from '../features/recommendations/RecommendationsPage';
 
+// 찜한 음반과 LP·CD 입문 안내 화면
+import Wishlist from '../features/wishlist/Wishlist';
+import GuidePage from '../features/guide/GuidePage';  
+
 function HomePage() {
   return (
     <main className="starter min-h-screen">
@@ -160,9 +164,15 @@ export default function App() {
 
             {/* 음반 목록 */}
             <Route path="/albums" element={<AlbumList />} />
-            
+
             {/* 음반 상세 */}
             <Route path="/albums/:albumId" element={<AlbumDetail currentUser={currentUser} />} />
+
+            {/* 찜한 음반 */}
+            <Route path="/wishlist" element={ authLoading ? <p>로그인 정보를 확인하고 있습니다.</p> : <Wishlist isAuthenticated={Boolean(currentUser)} />} />
+
+            {/* LP·CD 입문 안내 */}
+            <Route path="/guide" element={<GuidePage />} />
         </Routes>
       <Footer />
     </>

@@ -1,6 +1,6 @@
 import '../../styles/design-tokens.css';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import GenreFilter from './GenreFilter';
 
 
@@ -22,13 +22,28 @@ const SORT_OPTIONS = [
 ];
 
 function AlbumList() {
+  // 주소의 format 값이 헤더와 목록의 포맷 선택 기준입니다.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const formatParam = searchParams.get('format');
+  const selectedFormat = formatParam === 'LP' || formatParam === 'CD' ? formatParam : '';
+
   const [albums, setAlbums] = useState([]);
   const [total, setTotal] = useState(0);
-  const [page, setPage] = useState(1);
+  // 페이지 번호도 주소에서 관리해 포맷 변경 시 첫 페이지로 돌아갑니다.
+  const requestedPage = Number(searchParams.get('page'));
+  const page = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+  const setPage = (value) => {
+    setSearchParams((current) => {
+      const params = new URLSearchParams(current);
+      const nextPage = typeof value === 'function' ? value(page) : value;
+      if (nextPage === 1) params.delete('page');
+      else params.set('page', String(nextPage));
+      return params;
+    });
+  };
   const size = 12;
 
   const [selectedGenre, setSelectedGenre] = useState('');
-  const [selectedFormat, setSelectedFormat] = useState('');
   const [sort, setSort] = useState('latest');
   const [searchInput, setSearchInput] = useState('');
   const [keyword, setKeyword] = useState('');
@@ -78,8 +93,19 @@ function AlbumList() {
   };
 
   const handleSelectFormat = (format) => {
-    setSelectedFormat(format);
-    setPage(1);
+    // 기존 주소 조건을 복사
+    const params = new URLSearchParams(searchParams);
+
+    if (format) {
+      // LP 또는 CD 선택
+      params.set('format', format);
+    } else {
+      // 전체 포맷 선택
+      params.delete('format');
+    }
+
+    params.delete('page');
+    setSearchParams(params);
   };
 
   const handleSelectSort = (e) => {
@@ -97,9 +123,14 @@ function AlbumList() {
     setSearchInput('');
     setKeyword('');
     setSelectedGenre('');
-    setSelectedFormat('');
+
+    // 주소에 있는 포맷 조건도 지우기
+    const params = new URLSearchParams(searchParams);
+    params.delete('format');
+    params.delete('page');
+    setSearchParams(params);
+
     setSort('latest');
-    setPage(1);
   };
 
   const totalPages = Math.max(1, Math.ceil(total / size));
