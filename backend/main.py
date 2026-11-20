@@ -16,6 +16,7 @@ from app.features.wishlist.router import router as wishlist_router
 from app.features.admin.orders_router import router as admin_orders_router
 from app.features.admin.albums_router import router as admin_albums_router
 from app.features.admin.recommendations_router import router as admin_recommendations_router
+from app.features.admin.reviews_router import router as admin_reviews_router
 
 
 app = FastAPI(title="낙원레코드 API")
@@ -38,6 +39,7 @@ app.include_router(orders_router)
 app.include_router(admin_orders_router, prefix="/api/admin")
 app.include_router(admin_albums_router, prefix="/api/admin")
 app.include_router(admin_recommendations_router, prefix="/api/admin")
+app.include_router(admin_reviews_router, prefix="/api/admin")
 
 #앨범 상세페이지 라우터 연결
 app.include_router(albums_router)

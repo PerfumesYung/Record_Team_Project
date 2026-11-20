@@ -69,7 +69,7 @@ export default function CartPage() {
       extra={<div className="commerce-heading-count"><strong>{totalCount}</strong><span>ITEMS IN CART</span></div>} />
     <div className="commerce-progress" aria-label="주문 단계"><span className="is-current">01 장바구니</span><i/><span>02 주문서</span><i/><span>03 주문 완료</span></div>
     {error && <Message onRetry={() => { setLoading(true); setRetry((value) => value + 1); }}>{error}</Message>}
-    {loading && !cart ? <Loading/> : !cart ? null : lines.length === 0 ? <EmptyState title="장바구니가 비어 있습니다" text="마음에 드는 LP와 CD를 담아 나만의 컬렉션을 시작해 보세요."/> : <div className="commerce-layout">
+    {loading && !cart ? <Loading/> : !cart ? null : lines.length === 0 ? <EmptyState title="장바구니가 비어 있습니다" text="마음에 드는 LP와 CD를 담아 나만의 컬렉션을 시작해 보세요." to="/albums"/> : <div className="commerce-layout">
       <div className="commerce-primary-column">
         <SectionCaption index="01" title="선택한 음반" note="수량 변경 시 현재 재고와 가격을 다시 확인합니다." />
         <div className="commerce-lines">{lines.map((item) => {
