@@ -33,7 +33,7 @@ export default function Reviews({ albumId, isAuthenticated }) {
     {isAuthenticated && !loading && !hasMyReview && <ReviewForm onSubmit={create} />}
     {error && <p role="alert">{error}</p>}
     {loading ? <p>리뷰를 불러오는 중입니다.</p> : reviews.length === 0
-      ? <p>등록된 리뷰가 없습니다.</p>
+    ? <p className="mt-6 text-sm text-[color:var(--color-text-muted)]"> 등록된 리뷰가 없습니다. </p>
       : reviews.map((review) => <ReviewItem key={review.id} review={review} onChanged={refresh} />)}
   </section>
 }
