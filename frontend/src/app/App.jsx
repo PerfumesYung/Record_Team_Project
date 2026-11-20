@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import {
@@ -19,8 +19,31 @@ import AdminReviewsPage from '../features/admin/AdminReviewsPage';
 import MyPage from '../features/mypage/MyPage';
 import AuthPage from '../features/auth/AuthPage';
 import AdminOrderDetailPage from '../features/admin/AdminOrderDetailPage';
+import AdminAlbumsPage from '../features/admin/albums/AdminAlbumsPage';
+import AlbumFormPage from '../features/admin/albums/AlbumFormPage';
+import AdminRecommendationsPage from '../features/admin/recommendations/AdminRecommendationsPage';
 
 
+// 장바구니와 주문 화면
+import CartPage from '../features/cart/CartPage';
+import CheckoutPage from '../features/orders/CheckoutPage';
+import OrderCompletePage from '../features/orders/OrderCompletePage';
+import OrdersPage from '../features/orders/OrderPage';
+import OrderDetailPage from '../features/orders/OrderDetailPage';
+
+// 장바구니와 주문 화면 공통 스타일
+import '../features/cart/commerce.css';
+
+// 일반 사용자 음반 화면
+import AlbumList from '../features/albums/AlbumList';
+import AlbumDetail from '../features/albums/AlbumDetail';
+
+// 취향 추천 화면
+import RecommendationsPage from '../features/recommendations/RecommendationsPage';
+
+// 찜한 음반과 LP·CD 입문 안내 화면
+import Wishlist from '../features/wishlist/Wishlist';
+import GuidePage from '../features/guide/GuidePage';  
 
 function HomePage() {
   return (
@@ -96,18 +119,60 @@ export default function App() {
           <Route path="/mypage" element={ <MyPage currentUser={currentUser} authLoading={authLoading} authError={authError} />}/>
           <Route path="/mypage/reviews" element={ <MyPage showReviews currentUser={currentUser} authLoading={authLoading} authError={authError} /> }/>
 
+          {/* 취향 추천 */}
+          <Route path="/recommendations" element={<RecommendationsPage />} />
+
           {/* 관리자 공통 틀 */}
           <Route path="/admin" element={<AdminLayout />}>
-            {/* /admin */}
+            {/* 관리자 메인 화면: /admin */}
             <Route index element={<AdminHomePage />} />
 
-            {/* /admin/orders */}
+            {/* 관리자 주문 목록: /admin/orders */}
             <Route path="orders" element={<AdminOrdersPage />} /> 
+            {/* 관리자 주문 상세: /admin/orders/주문번호 */}
             <Route path="orders/:orderId" element={<AdminOrderDetailPage />} />
 
-            {/* /admin/reviews */}
+            {/* 관리자 리뷰 관리: /admin/reviews */}
             <Route path="reviews" element={<AdminReviewsPage />} />
+
+            {/* 관리자 음반 목록: /admin/albums */}
+            <Route path="albums" element={<AdminAlbumsPage />} />
+
+            {/* 관리자 음반 등록: /admin/albums/new */}
+            <Route path="albums/new" element={<AlbumFormPage />} />
+
+            {/* 관리자 음반 수정: /admin/albums/음반번호/edit */}
+            <Route path="albums/:id/edit" element={<AlbumFormPage />} />
+
+            {/* 관리자 추천 설정: /admin/recommendations */}
+            <Route path="recommendations" element={<AdminRecommendationsPage />} />
           </Route>
+            {/* 장바구니 */}
+            <Route path="/cart" element={<CartPage />} />
+
+            {/* 주문서 */}
+            <Route path="/orders/new" element={<CheckoutPage />} />
+
+            {/* 주문 완료 */}
+            <Route path="/orders/complete/:orderId" element={<OrderCompletePage />}/>
+
+            {/* 내 주문 목록 */}
+            <Route path="/orders" element={<OrdersPage />} />
+
+            {/* 내 주문 상세 */}
+            <Route path="/orders/:orderId" element={<OrderDetailPage />} />
+
+            {/* 음반 목록 */}
+            <Route path="/albums" element={<AlbumList />} />
+
+            {/* 음반 상세 */}
+            <Route path="/albums/:albumId" element={<AlbumDetail currentUser={currentUser} />} />
+
+            {/* 찜한 음반 */}
+            <Route path="/wishlist" element={ authLoading ? <p>로그인 정보를 확인하고 있습니다.</p> : <Wishlist isAuthenticated={Boolean(currentUser)} />} />
+
+            {/* LP·CD 입문 안내 */}
+            <Route path="/guide" element={<GuidePage />} />
         </Routes>
       <Footer />
     </>

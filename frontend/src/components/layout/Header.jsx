@@ -10,10 +10,10 @@ export default function Header({ currentUser, onLogout }) {
       <p className="site-header__notice">NAKWON RECORDS — OBJECTS FOR YOUR EVERYDAY LISTENING</p>
       <div className="site-header__inner">
         <nav className="site-header__menu" aria-label="음반 메뉴">
-          <button type="button" disabled>ALL RECORDS</button>
-          <button type="button" disabled>LP</button>
-          <button type="button" disabled>CD</button>
-          <button type="button" disabled>취향 추천</button>
+          <Link to="/albums">ALL RECORDS</Link>
+          <Link to="/albums?format=LP">LP</Link>
+          <Link to="/albums?format=CD">CD</Link>
+          <Link to="/recommendations">취향 추천</Link>
         </nav>
 
         <Link className="site-header__brand" to="/" aria-label="낙원레코드 홈">
@@ -22,7 +22,7 @@ export default function Header({ currentUser, onLogout }) {
         </Link>
 
         <nav className="site-header__actions" aria-label="사용자 메뉴">
-          <button type="button" disabled><SearchIcon /> <span>검색</span></button>
+          <Link to="/albums" className="site-header__account"><SearchIcon /><span>검색</span></Link>
           
           {currentUser ? (
               <>
@@ -41,7 +41,7 @@ export default function Header({ currentUser, onLogout }) {
                 <span>로그인</span>
               </Link>
             )}
-          <button type="button" disabled><CartIcon /> <span>장바구니</span></button>
+          <Link to="/cart" className="site-header__account"><CartIcon /><span>장바구니</span></Link>
         </nav>
       </div>
     </header>

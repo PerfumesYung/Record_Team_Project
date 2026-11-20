@@ -26,6 +26,7 @@ export async function login(email, password) {
   }
 
   localStorage.setItem(TOKEN_KEY, data.access_token);
+  window.dispatchEvent(new Event('nakwon-auth-changed'));
   return data;
 }
 
@@ -61,8 +62,8 @@ export async function getCurrentUser() {
 // 로그아웃할 하면 토큰 삭제
 export function logout() {
   localStorage.removeItem(TOKEN_KEY);
+  window.dispatchEvent(new Event('nakwon-auth-changed'));
 }
-
 
 // 회원가입 정보를 서버에 보냄
 export async function signup(username, email, password) {
