@@ -1,19 +1,18 @@
-    import { useEffect, useState } from 'react';
-    import { getAccessToken } from '../auth/api';
+import { useEffect, useState } from 'react';
+import { getAccessToken } from '../auth/api';
 
-    import './AdminOrdersPage.css';
+import './AdminOrdersPage.css';
 
-    const API_BASE = import.meta.env.VITE_API_BASE_URL ?? '';
+const API_BASE = import.meta.env.VITE_API_BASE_URL ?? '';
+export default function AdminReviewsPage() {
+const [reviews, setReviews] = useState([]);
+const [total, setTotal] = useState(0);
+const [page, setPage] = useState(1);
+const [loading, setLoading] = useState(true);
+const [savingId, setSavingId] = useState(null);
+const [error, setError] = useState('');
 
-    export default function AdminReviewsPage() {
-    const [reviews, setReviews] = useState([]);
-    const [total, setTotal] = useState(0);
-    const [page, setPage] = useState(1);
-    const [loading, setLoading] = useState(true);
-    const [savingId, setSavingId] = useState(null);
-    const [error, setError] = useState('');
-
-    const size = 12;
+const size = 12;
 
     useEffect(() => {
         let active = true;
@@ -134,7 +133,7 @@
 
 const totalPages = Math.max(1, Math.ceil(total / size));
 
-    return (
+return (
         <section className="admin-orders">
         <div className="admin-orders__heading">
             <p className="admin-orders__label">REVIEW MANAGEMENT</p>
@@ -218,4 +217,4 @@ const totalPages = Math.max(1, Math.ceil(total / size));
         </div>
         </section>
     );
-}
+    }
