@@ -3,10 +3,15 @@
 from typing import Optional
 from fastapi import APIRouter, Depends, Response, status
 from sqlalchemy.orm import Session
+from sqlalchemy import delete, event, exists, select
+
 
 from app.features.auth.security import get_current_user
+from app.features.orders.tables import Order, OrderItem
 from app.db.database import get_db           
 from app.models.user import User
+from app.models.review import Review
+
 
 from . import service
 from .dependencies import get_current_user_optional
@@ -75,3 +80,28 @@ def get_my_reviews(
     current_user: User = Depends(get_current_user),
 ):
     return service.list_my_reviews(db, current_user)
+
+
+
+@event.listens_for(OrderItem, "after_delete")
+def delete_review_when_order_item_deleted(mapper, connection, target):
+    user_id = connection.execute(
+        select(Order.user_id).where(Order.id == target.order_id)
+    ).scalar()
+    if user_id is None:
+        return
+
+    # 같은 음반을 1과 2 시기에 구매하고, 2 시기에 구매한 주문만을 취소했을 경우에는 리뷰 남겨놔야 함
+    still_ordered = connection.execute(
+        select(exists().where(
+            OrderItem.order_id == Order.id,
+            Order.user_id == user_id,
+            OrderItem.album_id == target.album_id,
+        ))
+    ).scalar()
+    if still_ordered:
+        return
+
+    connection.execute(
+        delete(Review).where(Review.user_id == user_id, Review.album_id == target.album_id)
+    )
