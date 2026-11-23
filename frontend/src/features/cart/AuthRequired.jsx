@@ -15,11 +15,11 @@ export default function AuthRequired({ title = '나의 컬렉션' }) {
 
         <h2>음악이 쌓이는 공간</h2>
         <p>로그인하면 담아둔 LP와 CD, 주문 기록을 이어서 볼 수 있습니다.</p>
-
+        <br />
         <Link to="/login" className="commerce-primary">
           로그인하기
         </Link>
-
+        <br />
         <Link to="/" className="commerce-text-link">
           홈으로 돌아가기 ↗
         </Link>

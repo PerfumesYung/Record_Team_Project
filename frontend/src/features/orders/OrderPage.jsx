@@ -28,12 +28,11 @@ export default function OrdersPage() {
   if (!token) return <AuthRequired title="내 주문 내역" />;
   const totalPages = data ? Math.max(1, Math.ceil(data.total / data.size)) : 1;
   return <main className="commerce-page">
-    <PageHeading eyebrow="MY ACCOUNT / ORDER HISTORY" title="내 주문 내역" description="주문한 LP와 CD의 접수 일시, 금액, 진행 상태를 확인해 보세요."
-      extra={<div className="commerce-heading-count"><strong>{data?.total || 0}</strong><span>TOTAL ORDERS</span></div>}/>
+    <PageHeading eyebrow="MY ACCOUNT / ORDER HISTORY" title="내 주문 내역" extra={<div className="commerce-heading-count"><strong>{data?.total || 0}</strong><span>TOTAL ORDERS</span></div>}/>
     {params.get('deleted') === '1' && <Message type="success">주문이 취소되었습니다.</Message>}
     {error && <Message onRetry={() => { setLoading(true); setRetry((n) => n + 1); }}>{error}</Message>}
     {loading && !data ? <Loading/> : !data ? null : data.items.length === 0 ? <EmptyState title="아직 주문 내역이 없습니다" text="마음에 드는 음반을 찾아 나만의 컬렉션을 완성해 보세요."/> : <>
-      <SectionCaption index="01" title="최근 주문" note={`총 ${data.total}건 · 최신 주문부터 표시됩니다.`}/>
+      <SectionCaption title="최근 주문" note={`총 ${data.total}건 · 최신 주문부터 표시됩니다.`}/>
       <div className="commerce-history-list">{data.items.map((order) => <article className="commerce-history" key={order.id}>
         <div className="commerce-history-head"><div><span>{formatDate(order.created_at)}</span><h2>ORDER <span>#{order.id}</span></h2></div><Status status={order.status}/></div>
         <div className="commerce-history-body"><div><p>낙원레코드 주문 #{order.id}</p><small>상품 상세는 주문 상세 화면에서 확인할 수 있습니다.</small></div><strong>{formatPrice(order.total_amount)}</strong></div>
