@@ -6,7 +6,7 @@ from app.features.cart.tables import CartItem
 from app.models.album import Album
 from .schemas import OrderItemRead, OrderPage, OrderRead, OrderSummary
 from .tables import Order, OrderItem
-
+from app.models.review import Review
 
 def utc_time(value):
     if value.tzinfo is None:
@@ -101,27 +101,55 @@ def checkout(db: Session, user_id: int, requested_items):
 
 def delete_order(db: Session, order_id: int, user_id: int):
     require_user(db, user_id)
+
     try:
         order = db.query(Order).filter(
-            Order.id == order_id, Order.user_id == user_id
+            Order.id == order_id,
+            Order.user_id == user_id
         ).with_for_update().first()
+
         if order is None:
             raise HTTPException(404, "주문을 찾을 수 없습니다")
+
         if order.status != "RECEIVED":
             raise HTTPException(409, "접수된 주문만 삭제할 수 있습니다")
 
-        order_list = db.query(OrderItem).filter(OrderItem.order_id == order_id).all()
-        # 동일한 잠금 순서를 사용해 동시 주문/삭제 충돌을 줄입니다.
+        order_list = db.query(OrderItem).filter(
+            OrderItem.order_id == order_id
+        ).all()
+
         for item in sorted(order_list, key=lambda item: item.album_id):
-            album = db.query(Album).filter(Album.id == item.album_id).with_for_update().first()
+            album = db.query(Album).filter(
+                Album.id == item.album_id
+            ).with_for_update().first()
+
             if album is None:
                 raise HTTPException(409, "재고를 복구할 음반을 찾을 수 없습니다")
+
             album.stock += item.quantity
+            other_order = db.query(OrderItem).join(
+                Order, Order.id == OrderItem.order_id
+            ).filter(
+                Order.user_id == user_id,
+                Order.id != order_id,
+                OrderItem.album_id == item.album_id
+            ).first()
+
+            if other_order is None:
+                review = db.query(Review).filter(
+                    Review.user_id == user_id,
+                    Review.album_id == item.album_id
+                ).first()
+
+                if review is not None:
+                    db.delete(review)
+
             db.delete(item)
 
         db.flush()
         db.delete(order)
         db.commit()
+
     except Exception:
         db.rollback()
         raise

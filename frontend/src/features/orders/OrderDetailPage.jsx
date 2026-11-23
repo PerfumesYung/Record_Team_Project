@@ -36,7 +36,7 @@ export default function OrderDetailPage() {
     {!order ? !error && <Loading /> : <div className="commerce-layout">
       <div className="commerce-primary-column">
         <section className="commerce-detail-meta"><span className="commerce-card-kicker">ORDER INFORMATION</span><div><div><small>주문 번호</small><h2>#{order.id}</h2></div><Status status={order.status}/></div><p>주문 접수일 <strong>{formatDate(order.created_at)}</strong></p></section>
-        <SectionCaption index="01" title="주문 음반" />
+        <SectionCaption title="주문 음반" />
         <div className="commerce-detail-items">{order.items.map((item) => <div className="commerce-detail-item" key={item.album_id}><div className="commerce-detail-record-icon">♪</div><div><h3>{item.title}</h3><p>{formatPrice(item.unit_price)} × {item.quantity}개</p></div><strong>{formatPrice(item.unit_price * item.quantity)}</strong></div>)}</div>
         <section className="commerce-info-panel"><div className="commerce-info-mark">i</div><div><h3>주문 상태 안내</h3><p>접수 완료 → 처리 중 → 처리 완료 순서로 변경됩니다. 접수 완료 상태에서만 주문 취소가 가능하며, 취소한 주문은 주문 내역에서 사라집니다.</p></div></section>
       </div>
