@@ -17,8 +17,10 @@ export default function AdminLayout() {
             {/* 관리자 공통 메뉴 */}
             <nav className="admin-menu" aria-label="관리자 메뉴">
                 <Link to="/admin">관리 개요</Link>
+                <Link to="/admin/albums">음반 관리</Link>
                 <Link to="/admin/orders">주문 관리</Link>
                 <Link to="/admin/reviews">리뷰 관리</Link>
+                <Link to="/admin/recommendations">추천 관리</Link>
             </nav>
 
             {/* 주소에 맞는 관리자 화면이 들어오는 자리 */}

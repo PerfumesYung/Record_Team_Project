@@ -14,20 +14,20 @@ export default function Footer() {
         <nav className="site-footer__section" aria-label="음반 메뉴">
           <h3>RECORDS</h3>
           <Link to="/">홈</Link>
-          <span>전체 음반</span>
-          <span>취향 추천</span>
+          <Link to="/albums">전체 음반</Link>
+          <Link to="/recommendations">취향 추천</Link>
         </nav>
 
         <section className="site-footer__section">
           <h3>MY COLLECTION</h3>
-          <span>내 계정</span>
+          <Link to="/mypage">내 계정</Link>
           <Link to="/orders">주문 내역</Link>
-          <span>찜한 음반</span>
+          <Link to="/wishlist">찜한 음반</Link>
         </section>
 
         <section className="site-footer__section">
           <h3>LISTENING GUIDE</h3>
-          <span>LP·CD 입문 안내</span>
+          <Link to="/guide">LP·CD 입문 안내</Link>
           <Link to="/cart">장바구니</Link>
         </section>
       </div>

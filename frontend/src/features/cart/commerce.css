@@ -202,3 +202,21 @@
   .commerce-confirmed-table > div { font-size: 12px; }
   .commerce-auth-gate { padding: 29px 18px; }
 }
+
+/* 음반 상세 화면의 장바구니 버튼 */
+.commerce-add-item .commerce-primary {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #111 !important;
+  cursor: pointer;
+}
+
+.commerce-add-item .commerce-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 장바구니에 담은 뒤 표시되는 안내 문구 */
+.commerce-add-item span {
+  color: var(--color-text);
+}
