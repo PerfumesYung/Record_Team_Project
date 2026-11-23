@@ -1,6 +1,6 @@
 # 낙원레코드 팀 프로젝트
 
-LP·CD 입문자를 위한 음반 쇼핑몰입니다. 이 저장소에는 React(JavaScript + ESLint + Tailwind CSS), FastAPI, MySQL 개발을 시작하기 위한 기본 틀이 있습니다. 로그인·음반·주문 기능은 각 담당자가 구현합니다.
+LP·CD 입문자를 위한 음반 쇼핑몰입니다. 이 저장소에는 React(JavaScript + ESLint + Tailwind CSS), FastAPI, MySQL 로컬 개발과 테스트에 필요한 코드가 있습니다.
 
 ## 운영체제별 실행 안내
 
