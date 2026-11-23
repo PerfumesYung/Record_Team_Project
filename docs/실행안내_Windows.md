@@ -1,6 +1,6 @@
 # Windows 설치·실행 안내
 
-이 문서는 **Windows의 VS Code 터미널에서 PowerShell을 사용하는 기준**입니다. 프로젝트는 현재 개발 시작용 기본 틀이며, 로그인·음반·주문 기능은 아직 구현하지 않았습니다.
+이 문서는 **Windows의 VS Code 터미널에서 PowerShell을 사용하는 기준**입니다. 각자의 컴퓨터에서 프론트엔드, 백엔드, MySQL을 실행하는 방법입니다.
 
 ## 1. 필요한 프로그램 확인
 
@@ -49,11 +49,12 @@ VS Code에서 프로젝트 최상위 폴더를 열고 **새 PowerShell 터미널
 ```powershell
 cd backend
 py -m venv .venv
+$env:PYTHONUTF8 = "1"
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 ```
 
-`.env`가 이미 있다면 `Copy-Item`을 다시 실행해 기존 설정을 덮어쓰지 말고 파일을 열어 확인하세요. 생성된 `backend/.env`에서 `USERNAME`과 `PASSWORD`를 본인 MySQL 계정 정보로 바꾸고 `SECRET_KEY`도 본인만 사용하는 긴 임의의 값으로 바꿉니다. 실제 `.env`는 공유하거나 Git에 올리지 않습니다. 비밀번호에 `@`, `:`, `/`, `#` 등 URL에서 특별한 의미가 있는 문자가 있다면 URL 인코딩이 필요합니다.
+`.env`가 이미 있다면 `Copy-Item`을 다시 실행해 기존 설정을 덮어쓰지 말고 파일을 열어 확인하세요. 생성된 `backend/.env`의 `DATABASE_URL`에서 예시 계정 `root`와 비밀번호 `0000`을 본인의 MySQL 계정 정보로 바꾸고 `SECRET_KEY`도 본인만 사용하는 긴 임의의 값으로 바꿉니다. 실제 `.env`는 공유하거나 Git에 올리지 않습니다. 비밀번호에 `@`, `:`, `/`, `#` 등 URL에서 특별한 의미가 있는 문자가 있다면 URL 인코딩이 필요합니다.
 
 ```powershell
 .\.venv\Scripts\python.exe -m uvicorn main:app --reload
@@ -64,7 +65,7 @@ if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 - Swagger: http://127.0.0.1:8000/docs
 - 서버 실행 확인: http://127.0.0.1:8000/api/health
 
-서버 확인 주소는 서버 실행만 확인하고 **실제 DB 연결은 확인하지 않습니다.** MySQL 접속과 SQL 실행은 Workbench에서 별도로 확인합니다. 현재 기본 틀에는 앱에서 DB 연결을 확인하는 경로가 없으므로 앱과 DB의 연결 여부는 별도 점검이 필요합니다. 서버 종료는 해당 터미널에서 `Ctrl + C`입니다.
+서버 확인 주소는 서버 실행만 확인하고 **실제 DB 연결은 확인하지 않습니다.** MySQL 접속과 SQL 실행은 Workbench에서 별도로 확인합니다. 앱에서 실제 DB를 읽는 음반 목록이나 Swagger의 API 요청도 확인해 주세요. 서버 종료는 해당 터미널에서 `Ctrl + C`입니다.
 
 ## 5. 프론트엔드 준비와 실행
 
@@ -72,13 +73,14 @@ if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 
 ```powershell
 cd frontend
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 npm ci
 npm run dev
 ```
 
-터미널에 표시되는 주소(기본 http://127.0.0.1:5173)를 엽니다. 현재는 임시 시작 화면만 나옵니다. 코드 검사는 별도 터미널에서 `frontend` 폴더로 이동해 `npm run lint`를 실행합니다.
+터미널에 표시되는 주소(기본 http://127.0.0.1:5173)를 엽니다. 코드 검사는 별도 터미널에서 `frontend` 폴더로 이동해 `npm run lint`를 실행합니다.
 
-프론트에서 API 주소 설정이 필요한 기능을 연결할 때는 `frontend` 폴더에서 `if (-not (Test-Path .env)) { Copy-Item .env.example .env }`로 복사할 수 있습니다. 이미 `.env`가 있다면 덮어쓰지 마세요. 설정을 바꾸면 프론트 개발 서버를 다시 시작합니다.
+위 명령은 `frontend/.env`가 없을 때만 예시를 복사합니다. 이미 파일이 있다면 덮어쓰지 않고 열어서 `VITE_API_BASE_URL=http://127.0.0.1:8000`을 확인하세요. 백엔드를 다른 포트로 켰다면 그 포트로 맞추고, 설정을 바꾼 뒤 프론트 서버를 종료했다가 다시 실행합니다.
 
 ## 6. 자주 헷갈리는 부분
 
@@ -86,4 +88,7 @@ npm run dev
 - MySQL 접속 오류: 서버가 실행 중인지, `.env`의 계정·비밀번호·DB 이름이 맞는지 확인합니다. 실제 비밀번호는 채팅에 붙여 넣지 않습니다.
 - `npm`을 찾지 못함: Node.js 설치 후 VS Code를 다시 열고 `node --version`, `npm --version`을 확인합니다.
 - PowerShell이 `npm.ps1` 실행을 막는 경우: 실행 정책을 무작정 바꾸지 말고 터미널을 명령 프롬프트(CMD)로 전환해 `npm ci`, `npm run dev`를 실행할 수 있습니다. 위 백엔드 명령은 PowerShell 기준입니다.
-- 업무 API는 아직 구현 전이므로 Swagger에는 서버 확인 경로만 표시됩니다.
+- Swagger에서 사용할 API가 안 보이면 `backend` 폴더에서 `main:app`으로 서버를 실행했는지 확인합니다.
+
+- 회원가입 요청이 `404`라면 크롬 개발자 도구의 Network에서 요청 주소를 확인합니다. `http://127.0.0.1:5173/api/users`라면 프론트 API 주소 설정을 확인하고 프론트 서버를 재시작합니다. `8000/api/users`도 404라면 백엔드가 최신 코드의 `main:app`인지 확인합니다.
+- `VITE_`로 시작하는 값은 브라우저에 공개되므로 비밀번호나 비밀키를 넣지 않습니다. `frontend/.env`와 `backend/.env`는 서로 다른 파일입니다.
