@@ -48,7 +48,7 @@ export default function CheckoutPage() {
     {error && <Message onRetry={() => { setLoading(true); setRetry((value) => value + 1); }}>{error}</Message>}
     {loading && !cart ? <Loading/> : !cart ? null : items.length === 0 ? <EmptyState title="주문할 음반이 없습니다" text="장바구니에 음반을 담아 다시 방문해 주세요."/> : <div className="commerce-layout">
       <div className="commerce-primary-column">
-        <SectionCaption index="01" title="주문 상품"/>
+        <SectionCaption title="주문 상품"/>
         <div className="commerce-order-product-list">{items.map(({ id, album, quantity, subtotal, unit_price }) => <article className="commerce-order-product" key={id}>
           <Cover album={album}/><div><span className="commerce-format">{album.format}</span><h3>{album.title}</h3><p>{album.artist}</p><small>{formatPrice(unit_price)} × {quantity}개</small></div><strong>{formatPrice(subtotal)}</strong>
         </article>)}</div>
