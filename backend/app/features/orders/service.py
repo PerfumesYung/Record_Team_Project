@@ -16,21 +16,41 @@ def utc_time(value):
 
 def read_order(db: Session, order_id: int, user_id: int):
     require_user(db, user_id)
-    order = db.query(Order).filter(Order.id == order_id, Order.user_id == user_id).first()
+
+    order = db.query(Order).filter(
+        Order.id == order_id,
+        Order.user_id == user_id
+    ).first()
+
     if order is None:
         raise HTTPException(404, "주문을 찾을 수 없습니다")
 
-    order_list = db.query(OrderItem).filter(OrderItem.order_id == order.id).order_by(OrderItem.id).all()
+    order_list = db.query(OrderItem).filter(
+        OrderItem.order_id == order.id
+    ).order_by(OrderItem.id).all()
+
     items = []
+
     for item in order_list:
+        album = db.query(Album).filter(
+            Album.id == item.album_id
+        ).first()
+
         items.append(OrderItemRead(
-            album_id=item.album_id, title=item.title,
-            unit_price=item.unit_price, quantity=item.quantity
+            album_id=item.album_id,
+            title=item.title,
+            unit_price=item.unit_price,
+            quantity=item.quantity,
+            image_url=album.image_url if album else None
         ))
 
-    return OrderRead(id=order.id, status=order.status, total_amount=order.total_amount,
-                     created_at=utc_time(order.created_at), items=items)
-
+    return OrderRead(
+        id=order.id,
+        status=order.status,
+        total_amount=order.total_amount,
+        created_at=utc_time(order.created_at),
+        items=items
+    )
 
 def list_orders(db: Session, user_id: int, page: int, size: int):
     require_user(db, user_id)
