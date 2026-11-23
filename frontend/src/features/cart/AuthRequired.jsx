@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { PageHeading } from './CommerceUI';
+import { Link } from "react-router-dom";
+import { PageHeading } from "./CommerceUI";
 
-export default function AuthRequired({ title = '나의 컬렉션' }) {
+export default function AuthRequired({ title = "나의 컬렉션" }) {
   return (
     <main className="commerce-page">
       <PageHeading
@@ -11,7 +11,9 @@ export default function AuthRequired({ title = '나의 컬렉션' }) {
       />
 
       <div className="commerce-auth-gate">
-        <div className="commerce-auth-icon" aria-hidden="true">↗</div>
+        <div className="commerce-auth-icon" aria-hidden="true">
+          ↗
+        </div>
 
         <h2>음악이 쌓이는 공간</h2>
         <p>로그인하면 담아둔 LP와 CD, 주문 기록을 이어서 볼 수 있습니다.</p>
