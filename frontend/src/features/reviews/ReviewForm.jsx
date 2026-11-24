@@ -41,16 +41,16 @@ export default function ReviewForm({ initial = emptyForm, submitLabel = '저장'
           value={form.content}
           onChange={(e) => setForm({ ...form, content: e.target.value })}
           placeholder="음반에 대한 감상을 작성해 주세요."
-          className="h-36 w-full resize-none rounded-md border border-[#3A3D45] bg-[#0D0E10] px-4 py-3 text-sm leading-relaxed text-white placeholder:text-[#8A8A93] focus:border-[#FF4E00] focus:outline-none"
+          className="h-36 w-full resize-none rounded-md border border-(--color-border) bg-(--color-background) px-4 py-3 text-sm leading-relaxed text-(--color-text) placeholder:text-(--color-text-muted) focus:border-(--color-accent) focus:outline-none"
         />
       </label>
 
-      {/* 저장과 취소 버튼 */}
+      {/* 저장 & 취소 버튼 */}
       <div className="flex flex-wrap gap-3">
         <button
           disabled={submitting}
           type="submit"
-          className="rounded-md bg-[#FF4E00] px-5 py-3 text-sm font-bold text-white disabled:opacity-50"
+          className="rounded-md bg-(--color-accent) px-5 py-3 text-sm font-bold text-white transition hover:brightness-110 disabled:opacity-50"
         >
           {submitting ? '저장 중...' : submitLabel}
         </button>
@@ -59,7 +59,7 @@ export default function ReviewForm({ initial = emptyForm, submitLabel = '저장'
           <button
             type="button"
             onClick={onCancel}
-            className="rounded-md border border-[#3A3D45] px-5 py-3 text-sm text-white"
+            className="rounded-md border border-(--color-border) px-5 py-3 text-sm text-(--color-text) transition hover:bg-(--color-surface-hover)"
           >
             취소
           </button>
@@ -67,7 +67,7 @@ export default function ReviewForm({ initial = emptyForm, submitLabel = '저장'
       </div>
 
       {error && (
-        <p role="alert" className="text-sm text-[#FF4E00]">
+        <p role="alert" className="text-sm text-(--color-accent)">
           {error}
         </p>
       )}

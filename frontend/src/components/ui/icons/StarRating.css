@@ -5,4 +5,15 @@
 .star-rating__choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .star-rating__choice:has(input:focus-visible) { outline: 2px solid #ff6b2c; outline-offset: 2px; }
 .star-rating__star { font-size: 30px; line-height: 1; color: #8a8a93; }
-.star-rating__star.is-selected { color: #ff6b2c; }
+.star-rating__star.is-selected {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffc58f 0%, var(--color-accent) 55%, #e5481a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
+/* 보여주기용 작은 별 (리뷰 목록...etc) */
+.star-rating--display .star-rating__star { font-size: 18px; }
+.star-rating--display .star-rating__star:not(.is-selected) { color: var(--color-border); }
