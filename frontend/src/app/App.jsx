@@ -112,6 +112,9 @@ export default function App() {
           <Route path="/mypage" element={ <MyPage currentUser={currentUser} authLoading={authLoading} authError={authError} />}/>
           <Route path="/mypage/reviews" element={ <MyPage showReviews currentUser={currentUser} authLoading={authLoading} authError={authError} /> }/>
 
+          {/* [추가] 마이페이지 내 찜한 음반 라우트 */}
+          <Route path="/mypage/wishlist" element={<MyPage showWishlist currentUser={currentUser} authLoading={authLoading} authError={authError} />}/>
+
           {/* 취향 추천 */}
           <Route path="/recommendations" element={<RecommendationsPage />} />
 

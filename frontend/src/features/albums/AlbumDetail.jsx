@@ -4,7 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import AddToCartButton from '../cart/AddToCartButton';
 import Reviews from '../reviews/Reviews';
-
+import HeartIcon from '../../components/ui/icons/HeartIcon';
+import { getWishlist, addWishlist, removeWishlist } from '../../utils/api';
 
 // .env에 설정한 FastAPI 주소를 사용
 const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
@@ -16,6 +17,10 @@ function AlbumDetail({ currentUser }) {
   const [album, setAlbum] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  // 찜 상태 관리
+  const [isWished, setIsWished] = useState(false);
+  const [wishLoading, setWishLoading] = useState(false);
 
   useEffect(() => {
     const fetchAlbumDetail = async () => {
@@ -40,6 +45,48 @@ function AlbumDetail({ currentUser }) {
       fetchAlbumDetail();
     }
   }, [albumId]);
+
+  // 로그인 상태일 때 현재 앨범이 찜 목록에 있는지 확인
+  useEffect(() => {
+    if (!currentUser || !albumId) {
+      setIsWished(false);
+      return;
+    }
+
+    getWishlist()
+      .then((result) => {
+        const items = result.items ?? result;
+        const wished = items.some((item) => Number(item.id) === Number(albumId));
+        setIsWished(wished);
+      })
+      .catch((err) => console.error('찜 상태 조회 실패:', err));
+  }, [currentUser, albumId]);
+
+  // 하트 버튼 클릭 핸들러 (찜 등록 / 해제 토글)
+  const handleToggleWishlist = async () => {
+    if (!currentUser) {
+      alert('로그인 후 이용할 수 있습니다.');
+      navigate('/login');
+      return;
+    }
+
+    if (wishLoading) return;
+    setWishLoading(true);
+
+    try {
+      if (isWished) {
+        await removeWishlist(album.id);
+        setIsWished(false);
+      } else {
+        await addWishlist(album.id);
+        setIsWished(true);
+      }
+    } catch (err) {
+      alert(err.message || '처리 중 오류가 발생했습니다.');
+    } finally {
+      setWishLoading(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -117,9 +164,21 @@ function AlbumDetail({ currentUser }) {
               </div>
             </div>
 
-            {/* 장바구니 버튼 */}
-            <div className="mt-8 pt-6 border-t border-(--color-border)">
-              <AddToCartButton albumId={album.id} stock={album.stock}/>
+            {/* 장바구니 버튼 + 찜(하트) 버튼 */}
+            <div className="mt-8 pt-6 border-t border-(--color-border) flex items-center gap-3">
+              <div className="flex-1">
+                <AddToCartButton albumId={album.id} stock={album.stock} />
+              </div>
+              <button
+                type="button"
+                onClick={handleToggleWishlist}
+                disabled={wishLoading}
+                aria-label={isWished ? '찜 해제' : '찜하기'}
+                className="flex items-center justify-center p-3.5 rounded-lg border border-(--color-border) bg-(--color-background) hover:border-(--color-text) transition cursor-pointer"
+                style={{ color: isWished ? 'var(--color-accent)' : 'var(--color-text)' }}
+              >
+                <HeartIcon size={22} filled={isWished} />
+              </button>
             </div>
           </div>
         </div>
