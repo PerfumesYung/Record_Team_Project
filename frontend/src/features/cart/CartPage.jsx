@@ -188,7 +188,7 @@ export default function CartPage() {
                             disabled={busy || quantity <= 1}
                             onClick={() => change(id, quantity - 1)}
                           >
-                            −
+                            -
                           </button>
 
                           <span aria-live="polite">{quantity}</span>
