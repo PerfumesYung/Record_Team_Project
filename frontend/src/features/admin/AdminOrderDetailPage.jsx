@@ -8,15 +8,15 @@ import './AdminOrdersPage.css';
     // 서버의 주문 상태를 화면에 표시할 글자로 바꾸기
 function getStatusText(status) {
     if (status === 'RECEIVED') {
-        return '접수';
+        return '접수 완료';
 }
 
     if (status === 'PROCESSING') {
-        return '처리 중';
+        return '주문 처리 중';
     }
 
     if (status === 'COMPLETED') {
-        return '완료';
+        return '처리 완료';
     }
 
     return '상태 확인 필요';
@@ -47,6 +47,16 @@ export default function AdminOrderDetailPage() {
     // 로딩 상태와 오류 메시지
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+
+    // 관리자가 선택한 주문 상태
+    const [selectedStatus, setSelectedStatus] = useState('');
+
+    // 상태 변경 중인지 확인
+    const [savingStatus, setSavingStatus] = useState(false);
+
+    // 상태 변경 결과와 오류 메시지
+    const [statusMessage, setStatusMessage] = useState('');
+    const [statusError, setStatusError] = useState('');
 
     useEffect(() => {
         let active = true;
@@ -94,6 +104,7 @@ export default function AdminOrderDetailPage() {
 
             if (active) {
                 setOrder(data);
+                setSelectedStatus(data.status);
             }
         } catch (err) {
             if (active) {
@@ -115,6 +126,65 @@ export default function AdminOrderDetailPage() {
         };
     }, [orderId]);
 
+    // 관리자가 선택한 주문 상태를 서버에 저장
+    async function handleStatusChange() {
+        const token = getAccessToken();
+
+        if (!token) {
+            setStatusError('로그인이 필요해요. 다시 로그인해 주세요.');
+            return;
+        }
+
+        setSavingStatus(true);
+        setStatusMessage('');
+        setStatusError('');
+
+        try {
+            const response = await fetch(
+                `${API_BASE}/api/admin/orders/${orderId}/status`,
+                {
+                    method: 'PATCH',
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        status: selectedStatus,
+                    }),
+                },
+            );
+
+            if (!response.ok) {
+                const data = await response.json().catch(() => null);
+
+                // 서버가 보낸 오류가 문자열일 때만 화면에 표시
+                const detail =
+                    typeof data?.detail === 'string'
+                        ? data.detail
+                        : '주문 상태를 변경하지 못했어요.';
+
+                throw new Error(detail);
+            }
+
+            const data = await response.json();
+
+            // 서버에서 저장된 상태를 받아 화면에도 반영
+            setOrder((previous) => ({
+                ...previous,
+                status: data.status,
+            }));
+
+            setSelectedStatus(data.status);
+            setStatusMessage('주문 상태가 변경됐어요.');
+        } catch (err) {
+            setStatusError(
+                err.message || '주문 상태를 변경하는 중 오류가 발생했어요.',
+            );
+        } finally {
+            setSavingStatus(false);
+        }
+    }
+
     return (
         <section className="admin-orders">
         <div className="admin-orders__heading">
@@ -134,29 +204,62 @@ export default function AdminOrderDetailPage() {
         {!loading && !error && order && (
             <>
             <div className="admin-order-detail__summary">
-                <p>
-                <strong>주문 번호</strong> #{order.id}
-                </p>
+                <p className="admin-order-detail__eyebrow">ORDER INFORMATION</p>
+                <div className="admin-order-detail__headline">
+                    <h3>주문 #{order.id}</h3>
+                    <span className="admin-order-detail__badge">{getStatusText(order.status)}</span>
+                </div>
+                <dl className="admin-order-detail__facts">
+                    <div><dt>주문자 번호</dt><dd>{order.user_id}</dd></div>
+                    <div><dt>주문일</dt><dd>{formatDate(order.created_at)}</dd></div>
+                    <div><dt>총 주문 금액</dt><dd>{Number(order.total_amount).toLocaleString()}원</dd></div>
+                </dl>
+                <div className="admin-order-detail__status">
+                    <label htmlFor="change-order-status">
+                        변경할 주문 상태
+                    </label>
 
-                <p>
-                <strong>주문자 번호</strong> {order.user_id}
-                </p>
+                    <select
+                        id="change-order-status"
+                        value={selectedStatus}
+                        onChange={(event) => {
+                            setSelectedStatus(event.target.value);
+                            setStatusMessage('');
+                            setStatusError('');
+                        }}
+                        disabled={savingStatus}
+                        className="admin-order-detail__select"
+                    >
+                        <option value="RECEIVED">접수 완료</option>
+                        <option value="PROCESSING">주문 처리 중</option>
+                        <option value="COMPLETED">처리 완료</option>
+                    </select>
 
-                <p>
-                <strong>주문일</strong> {formatDate(order.created_at)}
-                </p>
+                    <button
+                        type="button"
+                        onClick={handleStatusChange}
+                        disabled={savingStatus || selectedStatus === order.status}
+                        className="admin-order-detail__save"
+                    >
+                        {savingStatus ? '변경 중...' : '상태 변경'}
+                    </button>
 
-                <p>
-                <strong>주문 상태</strong> {getStatusText(order.status)}
-                </p>
+                    {statusMessage && (
+                        <p role="status" className="mt-3">
+                            {statusMessage}
+                        </p>
+                    )}
 
-                <p>
-                <strong>총 주문 금액</strong>{' '}
-                {Number(order.total_amount).toLocaleString()}원
-                </p>
+                    {statusError && (
+                        <p role="alert" className="mt-3">
+                            {statusError}
+                        </p>
+                    )}
+                </div>
+
             </div>
 
-            <h3>주문한 음반</h3>
+            <h3 className="admin-order-detail__items-heading">주문한 음반</h3>
 
             {order.items.length === 0 ? (
                 <p>주문한 음반 정보가 없어요.</p>
@@ -195,4 +298,4 @@ export default function AdminOrderDetailPage() {
         )}
         </section>
     );
-    }
+}

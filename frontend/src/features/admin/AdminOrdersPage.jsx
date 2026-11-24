@@ -10,15 +10,15 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL ?? '';
     // 백엔드에 저장된 주문 상태 프론트에 보이는 단어로 변경
 function getStatusText(status) {
     if (status === 'RECEIVED') {
-        return '접수';
+        return '접수 완료';
     }
 
     if (status === 'PROCESSING') {
-        return '처리 중';
+        return '주문 처리 중';
     }
 
     if (status === 'COMPLETED') {
-        return '완료';
+        return '처리 완료';
     }
 
     return '상태 확인 필요';
@@ -164,9 +164,9 @@ export default function AdminOrdersPage() {
             onChange={handleStatusChange}
             >
             <option value="">전체</option>
-            <option value="RECEIVED">접수</option>
-            <option value="PROCESSING">처리 중</option>
-            <option value="COMPLETED">완료</option>
+            <option value="RECEIVED">접수 완료</option>
+            <option value="PROCESSING">주문 처리 중</option>
+            <option value="COMPLETED">처리 완료</option>
             </select>
 
             <p>총 {total}건</p>
