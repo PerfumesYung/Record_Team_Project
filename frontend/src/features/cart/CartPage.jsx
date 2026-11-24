@@ -131,7 +131,6 @@ export default function CartPage() {
         <div className="commerce-layout">
           <div className="commerce-primary-column">
             <SectionCaption
-              index="01"
               title="선택한 음반"
               note="수량 변경 시 현재 재고와 가격을 다시 확인합니다."
             />
@@ -188,7 +187,7 @@ export default function CartPage() {
                             disabled={busy || quantity <= 1}
                             onClick={() => change(id, quantity - 1)}
                           >
-                            −
+                            -
                           </button>
 
                           <span aria-live="polite">{quantity}</span>
