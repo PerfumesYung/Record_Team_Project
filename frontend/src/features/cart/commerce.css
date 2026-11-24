@@ -220,3 +220,25 @@
 .commerce-add-item span {
   color: var(--color-text);
 }
+
+.commerce-detail-item .commerce-cover {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+}
+
+.commerce-detail-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.commerce-detail-title-link:hover h3 {
+  color: #ff6b2c;
+}
+
+@media (max-width: 470px) {
+  .commerce-detail-item .commerce-cover {
+    width: 40px;
+    height: 40px;
+  }
+}
