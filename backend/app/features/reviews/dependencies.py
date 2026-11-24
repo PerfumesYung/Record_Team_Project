@@ -11,20 +11,20 @@
 from typing import Optional
 
 from fastapi import Depends, HTTPException
-from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 
 from app.features.auth.security import get_current_user
 from app.db.database import get_db  
 from app.models.user import User
 
-_optional_bearer = HTTPBearer(auto_error=False)
+_optional_oauth2 = OAuth2PasswordBearer(tokenUrl="/api/auth/token", auto_error=False)
 
-def get_current_user_optional(credentials: Optional[HTTPAuthorizationCredentials] = Depends(_optional_bearer),
-    db: Session = Depends(get_db),) -> Optional[User]:
-    if credentials is None:
+def get_current_user_optional(token: Optional[str] = Depends(_optional_oauth2), 
+                              db: Session = Depends(get_db),) -> Optional[User]:
+    if token is None:
         return None
     try:
-        return get_current_user(token=credentials.credentials, db=db)
+        return get_current_user(token=token, db=db)
     except HTTPException:
         return None
