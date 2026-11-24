@@ -119,7 +119,9 @@ export default function App() {
           <Route path="/recommendations" element={<RecommendationsPage />} />
 
           {/* 관리자 공통 틀 */}
-          <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/admin" element={
+              <AdminLayout currentUser={currentUser} authLoading={authLoading} authError={authError} />
+            }>
             {/* 관리자 메인 화면: /admin */}
             <Route index element={<AdminHomePage />} />
 
