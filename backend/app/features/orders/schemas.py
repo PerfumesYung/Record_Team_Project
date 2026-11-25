@@ -19,6 +19,7 @@ class OrderItemRead(BaseModel):
     unit_price: int
     quantity: int
     image_url: str | None = None
+    artist: str | None = None
 
 
 class OrderRead(BaseModel):
@@ -34,6 +35,7 @@ class OrderSummary(BaseModel):
     status: str
     total_amount: int
     created_at: datetime
+    items: list[OrderItemRead]
 
 
 class OrderPage(BaseModel):

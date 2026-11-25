@@ -10,6 +10,7 @@ import {
   PageHeading,
   SectionCaption,
   Status,
+  Cover,
 } from "../cart/CommerceUI";
 import { getOrders } from "./api";
 
@@ -87,15 +88,33 @@ export default function OrdersPage() {
                 <div className="commerce-history-head">
                   <div>
                     <span>{formatDate(order.created_at)}</span>
-                    <h2>
-                      ORDER <span>#{order.id}</span>
-                    </h2>
+                    <div className="commerce-history-albums">
+                      {order.items.map((item) => (
+                        <div
+                          className="commerce-history-album"
+                          key={item.album_id}
+                        >
+                          <Link to={`/albums/${item.album_id}`}>
+                            <Cover album={item} />
+                          </Link>
+                          <div>
+                            <Link
+                              to={`/albums/${item.album_id}`}
+                              className="commerce-detail-title-link"
+                            >
+                              <h3>{item.title}</h3>
+                            </Link>
+                            <p>{item.artist}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                   <Status status={order.status} />
                 </div>
                 <div className="commerce-history-body">
                   <div>
-                    <p>낙원레코드 주문 #{order.id}</p>
+                    <p>ORDER #{order.id}</p>
                     <small>
                       상품 상세는 주문 상세 화면에서 확인할 수 있습니다.
                     </small>
