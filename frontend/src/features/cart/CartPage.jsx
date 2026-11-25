@@ -143,7 +143,9 @@ export default function CartPage() {
 
                 return (
                   <article className="commerce-line" key={id}>
-                    <Cover album={album} />
+                    <Link to={`/albums/${item.album_id}`}>
+                      <Cover album={album} />
+                    </Link>
 
                     <div className="commerce-line-main">
                       <div className="commerce-line-title-row">
@@ -162,7 +164,12 @@ export default function CartPage() {
                         </button>
                       </div>
 
-                      <h2>{album.title}</h2>
+                      <Link
+                        to={`/albums/${item.album_id}`}
+                        className="commerce-detail-title-link"
+                      >
+                        <h2>{album.title}</h2>
+                      </Link>
                       <p className="commerce-artist">{album.artist}</p>
 
                       <p className="commerce-unit-price">
