@@ -18,11 +18,9 @@ import { createOrder } from "./api";
 export default function CheckoutPage() {
   const token = useAuthToken();
   const navigate = useNavigate();
-    // 주소에서 바로 주문할 음반 번호를 읽습니다.
   const [searchParams] = useSearchParams();
   const directAlbumId = searchParams.get("albumId");
 
-  // 음반 상세 정보를 가져올 백엔드 주소
   const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
   const [cart, setCart] = useState(null);
   const [error, setError] = useState("");
@@ -31,78 +29,74 @@ export default function CheckoutPage() {
   const [retry, setRetry] = useState(0);
 
   useEffect(() => {
-  if (!token) return;
+    if (!token) return;
 
-  const controller = new AbortController();
+    const controller = new AbortController();
 
-  async function loadCheckout() {
-    setLoading(true);
-    setError("");
-    setCart(null);
+    async function loadCheckout() {
+      setLoading(true);
+      setError("");
+      setCart(null);
 
-    try {
-      // 주소에 albumId가 있으면 해당 음반 한 장만 불러옵니다.
-      if (directAlbumId !== null) {
-        // 음반 번호는 1 이상의 정수여야 합니다.
-        if (!/^[1-9]\d*$/.test(directAlbumId)) {
-          throw new Error("올바른 음반 번호가 아니에요.");
+      try {
+        if (directAlbumId !== null) {
+          if (!/^[1-9]\d*$/.test(directAlbumId)) {
+            throw new Error("올바른 음반 번호가 아니에요.");
+          }
+
+          const response = await fetch(
+            `${API_BASE}/api/albums/${directAlbumId}`,
+            { signal: controller.signal },
+          );
+
+          if (!response.ok) {
+            throw new Error("주문할 음반을 불러오지 못했어요.");
+          }
+
+          const album = await response.json();
+          const quantity = 1;
+
+          const directOrder = {
+            items: [
+              {
+                id: album.id,
+                album_id: album.id,
+                album,
+                quantity,
+                unit_price: album.price,
+                subtotal: album.price * quantity,
+              },
+            ],
+            total_amount: album.price * quantity,
+          };
+
+          if (!controller.signal.aborted) {
+            setCart(directOrder);
+          }
+        } else {
+          const result = await getCart(token, controller.signal);
+
+          if (!controller.signal.aborted) {
+            setCart(result);
+          }
         }
-
-        const response = await fetch(
-          `${API_BASE}/api/albums/${directAlbumId}`,
-          { signal: controller.signal },
-        );
-
-        if (!response.ok) {
-          throw new Error("주문할 음반을 불러오지 못했어요.");
-        }
-
-        const album = await response.json();
-        const quantity = 1;
-
-        // 기존 주문서 화면이 이해할 수 있는 모양으로 만듭니다.
-        const directOrder = {
-          items: [
-            {
-              id: album.id,
-              album_id: album.id,
-              album,
-              quantity,
-              unit_price: album.price,
-              subtotal: album.price * quantity,
-            },
-          ],
-          total_amount: album.price * quantity,
-        };
-
+      } catch (err) {
         if (!controller.signal.aborted) {
-          setCart(directOrder);
+          setError(err.message || "주문 정보를 불러오지 못했어요.");
         }
-      } else {
-        // 장바구니 주문은 저장된 장바구니를 불러옵니다.
-        const result = await getCart(token, controller.signal);
-
+      } finally {
         if (!controller.signal.aborted) {
-          setCart(result);
+          setLoading(false);
         }
-      }
-    } catch (err) {
-      if (!controller.signal.aborted) {
-        setError(err.message || "주문 정보를 불러오지 못했어요.");
-      }
-    } finally {
-      if (!controller.signal.aborted) {
-        setLoading(false);
       }
     }
-  }
 
-  loadCheckout();
+    loadCheckout();
 
-  return () => {
-    controller.abort();
-  };
-}, [token, retry, directAlbumId, API_BASE]);
+    return () => {
+      controller.abort();
+    };
+  }, [token, retry, directAlbumId, API_BASE]);
 
   async function submitOrder() {
     if (busy || !cart?.items.length) return;
@@ -113,13 +107,13 @@ export default function CheckoutPage() {
         album_id: item.album_id,
         quantity: item.quantity,
       }));
-      // 장바구니 주문일 때만 주문한 음반을 장바구니에서 제거합니다.
+
       const clearCart = directAlbumId === null;
       const result = await createOrder(token, items, clearCart);
       navigate(`/orders/complete/${result.id}`, { replace: true });
     } catch (err) {
       setError(err.message);
-      // 장바구니 주문에서만 장바구니를 다시 불러옵니다.
+
       if (directAlbumId === null) {
         try {
           setCart(await getCart(token));
@@ -173,10 +167,17 @@ export default function CheckoutPage() {
             <div className="commerce-order-product-list">
               {items.map(({ id, album, quantity, subtotal, unit_price }) => (
                 <article className="commerce-order-product" key={id}>
-                  <Cover album={album} />
+                  <Link to={`/albums/${album.id}`}>
+                    <Cover album={album} />
+                  </Link>
                   <div>
                     <span className="commerce-format">{album.format}</span>
-                    <h3>{album.title}</h3>
+                    <Link
+                      to={`/albums/${album.id}`}
+                      className="commerce-detail-title-link"
+                    >
+                      <h3>{album.title}</h3>
+                    </Link>
                     <p>{album.artist}</p>
                     <small>
                       {formatPrice(unit_price)} × {quantity}개

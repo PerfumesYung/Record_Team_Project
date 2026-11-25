@@ -242,3 +242,17 @@
     height: 40px;
   }
 }
+
+.commerce-line .commerce-detail-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.commerce-line .commerce-detail-title-link:hover h2 {
+  color: #ff6b2c;
+}
+
+.commerce-line > a {
+  display: block;
+  text-decoration: none;
+}
