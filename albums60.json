@@ -1,0 +1,1005 @@
+[
+  {
+    "title": "Kind of Blue",
+    "artist": "Miles Davis",
+    "genre": "Jazz",
+    "format": "LP",
+    "price": 32000,
+    "stock": 10,
+    "recommended": 1,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/375526b3-aa4a-4cf5-9078-e3688a229dd4/front-500",
+    "search_artist": "Miles Davis",
+    "search_titles": [
+      "Kind of Blue"
+    ],
+    "seq": 1
+  },
+  {
+    "title": "Waltz for Debby",
+    "artist": "Bill Evans Trio",
+    "genre": "Jazz",
+    "format": "CD",
+    "price": 19000,
+    "stock": 2,
+    "recommended": 0,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release-group/392e7fcf-5ae9-37f6-b8c9-57901cfbee1f/front-500",
+    "search_artist": "Bill Evans Trio",
+    "search_titles": [
+      "Waltz for Debby"
+    ],
+    "search_artists": [
+      "Bill Evans Trio",
+      "Bill Evans"
+    ],
+    "seq": 2
+  },
+  {
+    "title": "Blue Train",
+    "artist": "John Coltrane",
+    "genre": "Jazz",
+    "format": "LP",
+    "price": 35000,
+    "stock": 0,
+    "recommended": 0,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/4ca248f9-8f10-462b-a3bd-6ff48f25f151/front-500",
+    "search_artist": "John Coltrane",
+    "search_titles": [
+      "Blue Train"
+    ],
+    "seq": 3
+  },
+  {
+    "title": "Thriller",
+    "artist": "Michael Jackson",
+    "genre": "Pop",
+    "format": "LP",
+    "price": 29000,
+    "stock": 12,
+    "recommended": 1,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release-group/f32fab67-77dd-3937-addc-9062e28e4c37/front-500",
+    "search_artist": "Michael Jackson",
+    "search_titles": [
+      "Thriller"
+    ],
+    "seq": 4
+  },
+  {
+    "title": "21",
+    "artist": "Adele",
+    "genre": "Pop",
+    "format": "CD",
+    "price": 17000,
+    "stock": 1,
+    "recommended": 0,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release-group/e4174758-d333-4a8e-a31f-dd0edd51518e/front-500",
+    "search_artist": "Adele",
+    "search_titles": [
+      "21"
+    ],
+    "seq": 5
+  },
+  {
+    "title": "1989",
+    "artist": "Taylor Swift",
+    "genre": "Pop",
+    "format": "CD",
+    "price": 18000,
+    "stock": 0,
+    "recommended": 0,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/9f6d3b39-9dfb-4961-b70d-fcf61da18e7b/front-500",
+    "search_artist": "Taylor Swift",
+    "search_titles": [
+      "1989"
+    ],
+    "seq": 6
+  },
+  {
+    "title": "The Dark Side of the Moon",
+    "artist": "Pink Floyd",
+    "genre": "Rock",
+    "format": "LP",
+    "price": 34000,
+    "stock": 8,
+    "recommended": 1,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/b84ee12a-09ef-421b-82de-0441a926375b/front-500",
+    "search_artist": "Pink Floyd",
+    "search_titles": [
+      "The Dark Side of the Moon"
+    ],
+    "seq": 7
+  },
+  {
+    "title": "Nevermind",
+    "artist": "Nirvana",
+    "genre": "Rock",
+    "format": "CD",
+    "price": 18500,
+    "stock": 2,
+    "recommended": 0,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/8e061dc4-790e-4587-ba53-011e7852f88d/front-500",
+    "search_artist": "Nirvana",
+    "search_titles": [
+      "Nevermind"
+    ],
+    "seq": 8
+  },
+  {
+    "title": "Led Zeppelin IV",
+    "artist": "Led Zeppelin",
+    "genre": "Rock",
+    "format": "LP",
+    "price": 31000,
+    "stock": 0,
+    "recommended": 0,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/a1f2ad19-3e0f-4e74-a949-a5f04968cdfe/front-500",
+    "search_artist": "Led Zeppelin",
+    "search_titles": [
+      "Led Zeppelin IV",
+      "Untitled",
+      "IV",
+      "[untitled]"
+    ],
+    "seq": 9
+  },
+  {
+    "title": "Whatever People Say I Am, That’s What I’m Not",
+    "artist": "Arctic Monkeys",
+    "genre": "Indie",
+    "format": "LP",
+    "price": 30000,
+    "stock": 9,
+    "recommended": 1,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/37f0c94a-12bc-4371-bb35-790003c32a75/front-500",
+    "search_artist": "Arctic Monkeys",
+    "search_titles": [
+      "Whatever People Say I Am, That’s What I’m Not"
+    ],
+    "seq": 10
+  },
+  {
+    "title": "Is This It",
+    "artist": "The Strokes",
+    "genre": "Indie",
+    "format": "CD",
+    "price": 16500,
+    "stock": 1,
+    "recommended": 0,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/9920c28f-e1a6-36a5-9fb4-31fde24b2c43/front-500",
+    "search_artist": "The Strokes",
+    "search_titles": [
+      "Is This It"
+    ],
+    "seq": 11
+  },
+  {
+    "title": "In Rainbows",
+    "artist": "Radiohead",
+    "genre": "Indie",
+    "format": "LP",
+    "price": 28000,
+    "stock": 4,
+    "recommended": 0,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/a58f4eb2-9829-37d5-b46c-e8163038e0f5/front-500",
+    "search_artist": "Radiohead",
+    "search_titles": [
+      "In Rainbows"
+    ],
+    "seq": 12
+  },
+  {
+    "title": "Voodoo",
+    "artist": "D’Angelo",
+    "genre": "R&B",
+    "format": "LP",
+    "price": 33000,
+    "stock": 7,
+    "recommended": 1,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/6dffd7a8-e42c-45db-a0b1-faf47a9eb638/front-500",
+    "search_artist": "D’Angelo",
+    "search_titles": [
+      "Voodoo"
+    ],
+    "seq": 13
+  },
+  {
+    "title": "The Miseducation of Lauryn Hill",
+    "artist": "Lauryn Hill",
+    "genre": "R&B",
+    "format": "CD",
+    "price": 17500,
+    "stock": 2,
+    "recommended": 0,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/952d8e63-8afd-4049-a746-7f50aaeaa3e2/front-500",
+    "search_artist": "Lauryn Hill",
+    "search_titles": [
+      "The Miseducation of Lauryn Hill"
+    ],
+    "search_artists": [
+      "Lauryn Hill",
+      "Ms. Lauryn Hill"
+    ],
+    "seq": 14
+  },
+  {
+    "title": "Songs in the Key of Life",
+    "artist": "Stevie Wonder",
+    "genre": "R&B",
+    "format": "LP",
+    "price": 29500,
+    "stock": 0,
+    "recommended": 0,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/cdbc768e-1962-4c31-a847-a26fa74e089e/front-500",
+    "search_artist": "Stevie Wonder",
+    "search_titles": [
+      "Songs in the Key of Life"
+    ],
+    "seq": 15
+  },
+  {
+    "title": "Symphonien nos. 5 & 7",
+    "artist": "Beethoven; Wiener Philharmoniker, Carlos Kleiber",
+    "genre": "Classical",
+    "format": "CD",
+    "price": 27000,
+    "stock": 11,
+    "recommended": 1,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/e1bb14ae-cb3d-4582-b4be-7ed1f558a0cb/front-500",
+    "search_artist": "Carlos Kleiber",
+    "search_titles": [
+      "Symphonien nos. 5 & 7",
+      "Symphonies Nos. 5 & 7",
+      "Symphonies 5 & 7",
+      "Symphonien Nr. 5 & 7",
+      "Symphonies Nos. 5 and 7",
+      "Symphonien Nr. 5 und 7",
+      "Symphonies No. 5 & 7"
+    ],
+    "classical_match": true,
+    "seq": 16
+  },
+  {
+    "title": "Variations Goldberg",
+    "artist": "Bach; Glenn Gould",
+    "genre": "Classical",
+    "format": "LP",
+    "price": 36000,
+    "stock": 1,
+    "recommended": 0,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/15da7592-9359-4da6-9f7a-38f09718c97d/front-500",
+    "search_artist": "Glenn Gould",
+    "search_titles": [
+      "Variations Goldberg",
+      "Goldberg Variations",
+      "Bach: Goldberg Variations",
+      "Goldberg Variations (1955)",
+      "Goldberg-Variationen"
+    ],
+    "classical_match": true,
+    "seq": 17
+  },
+  {
+    "title": "The Cello Suites: Inspired by Bach",
+    "artist": "Yo-Yo Ma",
+    "genre": "Classical",
+    "format": "CD",
+    "price": 20000,
+    "stock": 5,
+    "recommended": 0,
+    "hidden": 0,
+    "old": true,
+    "prior_url": "https://coverartarchive.org/release/9480dfa9-08dd-4278-9a6e-4682b934c887/front-500",
+    "search_artist": "Yo-Yo Ma",
+    "search_titles": [
+      "The Cello Suites: Inspired by Bach",
+      "Inspired by Bach: The Cello Suites"
+    ],
+    "classical_match": true,
+    "seq": 18
+  },
+  {
+    "title": "A Love Supreme",
+    "artist": "John Coltrane",
+    "genre": "Jazz",
+    "format": "LP",
+    "price": 29000,
+    "stock": 5,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "John Coltrane",
+    "search_titles": [
+      "A Love Supreme"
+    ],
+    "seq": 19
+  },
+  {
+    "title": "Time Out",
+    "artist": "The Dave Brubeck Quartet",
+    "genre": "Jazz",
+    "format": "LP",
+    "price": 31000,
+    "stock": 6,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "The Dave Brubeck Quartet",
+    "search_titles": [
+      "Time Out"
+    ],
+    "seq": 20
+  },
+  {
+    "title": "Mingus Ah Um",
+    "artist": "Charles Mingus",
+    "genre": "Jazz",
+    "format": "LP",
+    "price": 33000,
+    "stock": 7,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Charles Mingus",
+    "search_titles": [
+      "Mingus Ah Um"
+    ],
+    "seq": 21
+  },
+  {
+    "title": "Head Hunters",
+    "artist": "Herbie Hancock",
+    "genre": "Jazz",
+    "format": "CD",
+    "price": 16000,
+    "stock": 5,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Herbie Hancock",
+    "search_titles": [
+      "Head Hunters"
+    ],
+    "seq": 22
+  },
+  {
+    "title": "Speak No Evil",
+    "artist": "Wayne Shorter",
+    "genre": "Jazz",
+    "format": "CD",
+    "price": 17500,
+    "stock": 6,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Wayne Shorter",
+    "search_titles": [
+      "Speak No Evil"
+    ],
+    "seq": 23
+  },
+  {
+    "title": "The Sidewinder",
+    "artist": "Lee Morgan",
+    "genre": "Jazz",
+    "format": "CD",
+    "price": 19000,
+    "stock": 7,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Lee Morgan",
+    "search_titles": [
+      "The Sidewinder"
+    ],
+    "seq": 24
+  },
+  {
+    "title": "Saxophone Colossus",
+    "artist": "Sonny Rollins",
+    "genre": "Jazz",
+    "format": "CD",
+    "price": 20500,
+    "stock": 8,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Sonny Rollins",
+    "search_titles": [
+      "Saxophone Colossus"
+    ],
+    "seq": 25
+  },
+  {
+    "title": "Bad",
+    "artist": "Michael Jackson",
+    "genre": "Pop",
+    "format": "LP",
+    "price": 29000,
+    "stock": 5,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Michael Jackson",
+    "search_titles": [
+      "Bad"
+    ],
+    "seq": 26
+  },
+  {
+    "title": "Like a Prayer",
+    "artist": "Madonna",
+    "genre": "Pop",
+    "format": "LP",
+    "price": 31000,
+    "stock": 6,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Madonna",
+    "search_titles": [
+      "Like a Prayer"
+    ],
+    "seq": 27
+  },
+  {
+    "title": "The Fame",
+    "artist": "Lady Gaga",
+    "genre": "Pop",
+    "format": "LP",
+    "price": 33000,
+    "stock": 7,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Lady Gaga",
+    "search_titles": [
+      "The Fame"
+    ],
+    "seq": 28
+  },
+  {
+    "title": "Future Nostalgia",
+    "artist": "Dua Lipa",
+    "genre": "Pop",
+    "format": "LP",
+    "price": 35000,
+    "stock": 8,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Dua Lipa",
+    "search_titles": [
+      "Future Nostalgia"
+    ],
+    "seq": 29
+  },
+  {
+    "title": "25",
+    "artist": "Adele",
+    "genre": "Pop",
+    "format": "CD",
+    "price": 16000,
+    "stock": 5,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Adele",
+    "search_titles": [
+      "25"
+    ],
+    "seq": 30
+  },
+  {
+    "title": "Teenage Dream",
+    "artist": "Katy Perry",
+    "genre": "Pop",
+    "format": "CD",
+    "price": 17500,
+    "stock": 6,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Katy Perry",
+    "search_titles": [
+      "Teenage Dream"
+    ],
+    "seq": 31
+  },
+  {
+    "title": "Back to Black",
+    "artist": "Amy Winehouse",
+    "genre": "Pop",
+    "format": "CD",
+    "price": 19000,
+    "stock": 7,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Amy Winehouse",
+    "search_titles": [
+      "Back to Black"
+    ],
+    "seq": 32
+  },
+  {
+    "title": "Abbey Road",
+    "artist": "The Beatles",
+    "genre": "Rock",
+    "format": "LP",
+    "price": 29000,
+    "stock": 5,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "The Beatles",
+    "search_titles": [
+      "Abbey Road"
+    ],
+    "seq": 33
+  },
+  {
+    "title": "Wish You Were Here",
+    "artist": "Pink Floyd",
+    "genre": "Rock",
+    "format": "LP",
+    "price": 31000,
+    "stock": 6,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Pink Floyd",
+    "search_titles": [
+      "Wish You Were Here"
+    ],
+    "seq": 34
+  },
+  {
+    "title": "A Night at the Opera",
+    "artist": "Queen",
+    "genre": "Rock",
+    "format": "LP",
+    "price": 33000,
+    "stock": 7,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Queen",
+    "search_titles": [
+      "A Night at the Opera"
+    ],
+    "seq": 35
+  },
+  {
+    "title": "Ten",
+    "artist": "Pearl Jam",
+    "genre": "Rock",
+    "format": "CD",
+    "price": 16000,
+    "stock": 5,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Pearl Jam",
+    "search_titles": [
+      "Ten"
+    ],
+    "seq": 36
+  },
+  {
+    "title": "OK Computer",
+    "artist": "Radiohead",
+    "genre": "Rock",
+    "format": "CD",
+    "price": 17500,
+    "stock": 6,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Radiohead",
+    "search_titles": [
+      "OK Computer"
+    ],
+    "seq": 37
+  },
+  {
+    "title": "American Idiot",
+    "artist": "Green Day",
+    "genre": "Rock",
+    "format": "CD",
+    "price": 19000,
+    "stock": 7,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Green Day",
+    "search_titles": [
+      "American Idiot"
+    ],
+    "seq": 38
+  },
+  {
+    "title": "The Colour and the Shape",
+    "artist": "Foo Fighters",
+    "genre": "Rock",
+    "format": "CD",
+    "price": 20500,
+    "stock": 8,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Foo Fighters",
+    "search_titles": [
+      "The Colour and the Shape"
+    ],
+    "seq": 39
+  },
+  {
+    "title": "AM",
+    "artist": "Arctic Monkeys",
+    "genre": "Indie",
+    "format": "LP",
+    "price": 29000,
+    "stock": 5,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Arctic Monkeys",
+    "search_titles": [
+      "AM"
+    ],
+    "seq": 40
+  },
+  {
+    "title": "Funeral",
+    "artist": "Arcade Fire",
+    "genre": "Indie",
+    "format": "LP",
+    "price": 31000,
+    "stock": 6,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Arcade Fire",
+    "search_titles": [
+      "Funeral"
+    ],
+    "seq": 41
+  },
+  {
+    "title": "For Emma, Forever Ago",
+    "artist": "Bon Iver",
+    "genre": "Indie",
+    "format": "LP",
+    "price": 33000,
+    "stock": 7,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Bon Iver",
+    "search_titles": [
+      "For Emma, Forever Ago"
+    ],
+    "seq": 42
+  },
+  {
+    "title": "Turn On the Bright Lights",
+    "artist": "Interpol",
+    "genre": "Indie",
+    "format": "CD",
+    "price": 16000,
+    "stock": 5,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Interpol",
+    "search_titles": [
+      "Turn On the Bright Lights"
+    ],
+    "seq": 43
+  },
+  {
+    "title": "Plans",
+    "artist": "Death Cab for Cutie",
+    "genre": "Indie",
+    "format": "CD",
+    "price": 17500,
+    "stock": 6,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Death Cab for Cutie",
+    "search_titles": [
+      "Plans"
+    ],
+    "seq": 44
+  },
+  {
+    "title": "The Suburbs",
+    "artist": "Arcade Fire",
+    "genre": "Indie",
+    "format": "CD",
+    "price": 19000,
+    "stock": 7,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Arcade Fire",
+    "search_titles": [
+      "The Suburbs"
+    ],
+    "seq": 45
+  },
+  {
+    "title": "Lonerism",
+    "artist": "Tame Impala",
+    "genre": "Indie",
+    "format": "CD",
+    "price": 20500,
+    "stock": 8,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Tame Impala",
+    "search_titles": [
+      "Lonerism"
+    ],
+    "seq": 46
+  },
+  {
+    "title": "What’s Going On",
+    "artist": "Marvin Gaye",
+    "genre": "R&B",
+    "format": "LP",
+    "price": 29000,
+    "stock": 5,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Marvin Gaye",
+    "search_titles": [
+      "What’s Going On"
+    ],
+    "seq": 47
+  },
+  {
+    "title": "Innervisions",
+    "artist": "Stevie Wonder",
+    "genre": "R&B",
+    "format": "LP",
+    "price": 31000,
+    "stock": 6,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Stevie Wonder",
+    "search_titles": [
+      "Innervisions"
+    ],
+    "seq": 48
+  },
+  {
+    "title": "Baduizm",
+    "artist": "Erykah Badu",
+    "genre": "R&B",
+    "format": "LP",
+    "price": 33000,
+    "stock": 7,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Erykah Badu",
+    "search_titles": [
+      "Baduizm"
+    ],
+    "seq": 49
+  },
+  {
+    "title": "Brown Sugar",
+    "artist": "D’Angelo",
+    "genre": "R&B",
+    "format": "CD",
+    "price": 16000,
+    "stock": 5,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "D’Angelo",
+    "search_titles": [
+      "Brown Sugar"
+    ],
+    "seq": 50
+  },
+  {
+    "title": "Confessions",
+    "artist": "Usher",
+    "genre": "R&B",
+    "format": "CD",
+    "price": 17500,
+    "stock": 6,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Usher",
+    "search_titles": [
+      "Confessions"
+    ],
+    "seq": 51
+  },
+  {
+    "title": "The Diary of Alicia Keys",
+    "artist": "Alicia Keys",
+    "genre": "R&B",
+    "format": "CD",
+    "price": 19000,
+    "stock": 7,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Alicia Keys",
+    "search_titles": [
+      "The Diary of Alicia Keys"
+    ],
+    "seq": 52
+  },
+  {
+    "title": "4",
+    "artist": "Beyoncé",
+    "genre": "R&B",
+    "format": "CD",
+    "price": 20500,
+    "stock": 8,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Beyoncé",
+    "search_titles": [
+      "4"
+    ],
+    "seq": 53
+  },
+  {
+    "title": "Glassworks",
+    "artist": "Philip Glass",
+    "genre": "Classical",
+    "format": "LP",
+    "price": 29000,
+    "stock": 5,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Philip Glass",
+    "search_titles": [
+      "Glassworks"
+    ],
+    "seq": 54
+  },
+  {
+    "title": "The Blue Notebooks",
+    "artist": "Max Richter",
+    "genre": "Classical",
+    "format": "LP",
+    "price": 31000,
+    "stock": 6,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Max Richter",
+    "search_titles": [
+      "The Blue Notebooks"
+    ],
+    "seq": 55
+  },
+  {
+    "title": "In a Time Lapse",
+    "artist": "Ludovico Einaudi",
+    "genre": "Classical",
+    "format": "LP",
+    "price": 33000,
+    "stock": 7,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Ludovico Einaudi",
+    "search_titles": [
+      "In a Time Lapse"
+    ],
+    "seq": 56
+  },
+  {
+    "title": "re:member",
+    "artist": "Ólafur Arnalds",
+    "genre": "Classical",
+    "format": "LP",
+    "price": 35000,
+    "stock": 8,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Ólafur Arnalds",
+    "search_titles": [
+      "re:member"
+    ],
+    "seq": 57
+  },
+  {
+    "title": "Sleep",
+    "artist": "Max Richter",
+    "genre": "Classical",
+    "format": "CD",
+    "price": 16000,
+    "stock": 5,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Max Richter",
+    "search_titles": [
+      "Sleep"
+    ],
+    "seq": 58
+  },
+  {
+    "title": "Divenire",
+    "artist": "Ludovico Einaudi",
+    "genre": "Classical",
+    "format": "CD",
+    "price": 17500,
+    "stock": 6,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Ludovico Einaudi",
+    "search_titles": [
+      "Divenire"
+    ],
+    "seq": 59
+  },
+  {
+    "title": "Orphée",
+    "artist": "Jóhann Jóhannsson",
+    "genre": "Classical",
+    "format": "CD",
+    "price": 19000,
+    "stock": 7,
+    "hidden": 0,
+    "recommended": 0,
+    "old": false,
+    "search_artist": "Jóhann Jóhannsson",
+    "search_titles": [
+      "Orphée"
+    ],
+    "seq": 60
+  }
+]
