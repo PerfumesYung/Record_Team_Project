@@ -1,4 +1,5 @@
 import '../../styles/design-tokens.css';
+import './album-detail-actions.css';
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -61,7 +62,17 @@ function AlbumDetail({ currentUser }) {
       })
       .catch((err) => console.error('찜 상태 조회 실패:', err));
   }, [currentUser, albumId]);
+  // 현재 보고 있는 음반을 바로 주문
+  const handleDirectOrder = () => {
+    // 로그인하지 않았다면 로그인 화면으로 이동
+    if (!currentUser) {
+      navigate('/login');
+      return;
+    }
 
+    // 현재 음반 번호를 주문서 주소에 전달
+    navigate(`/orders/new?albumId=${album.id}`);
+  };
   // 하트 버튼 클릭 핸들러 (찜 등록 / 해제 토글)
   const handleToggleWishlist = async () => {
     if (!currentUser) {
@@ -120,7 +131,7 @@ function AlbumDetail({ currentUser }) {
           className="text-sm text-(--color-text-muted) hover:text-(--color-text) mb-6 cursor-pointer"
         >
           ← 음반 목록으로 돌아가기
-        </button>
+        </button> 
 
         {/* 상단: 음반 커버 및 상세 정보 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-(--color-surface) border border-(--color-border) p-6 rounded-xl">
@@ -163,22 +174,34 @@ function AlbumDetail({ currentUser }) {
                 )}
               </div>
             </div>
-
-            {/* 장바구니 버튼 + 찜(하트) 버튼 */}
-            <div className="mt-8 pt-6 border-t border-(--color-border) flex items-center gap-3">
-              <div className="flex-1">
-                <AddToCartButton albumId={album.id} stock={album.stock} />
+            <div>
+              {/* 바로 주문 버튼 */}
+              <div className="mt-8 pt-6 border-t border-(--color-border)">
+                <button
+                    type="button"
+                    onClick={handleDirectOrder}
+                    disabled={album.stock < 1}
+                    className="w-full bg-(--color-accent) px-5 py-4 font-bold text-(--color-background) disabled:opacity-60"
+                  >
+                  {album.stock < 1 ? '품절' : '주문서로 이동 →'}
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={handleToggleWishlist}
-                disabled={wishLoading}
-                aria-label={isWished ? '찜 해제' : '찜하기'}
-                className="flex items-center justify-center p-3.5 rounded-lg border border-(--color-border) bg-(--color-background) hover:border-(--color-text) transition cursor-pointer"
-                style={{ color: isWished ? 'var(--color-accent)' : 'var(--color-text)' }}
-              >
-                <HeartIcon size={22} filled={isWished} />
-              </button>
+              {/* 장바구니 버튼 + 찜(하트) 버튼 */}
+              <div className="album-purchase-actions mt-3 flex items-start gap-3">
+                <div className="flex-1">
+                  <AddToCartButton albumId={album.id} stock={album.stock} />
+                </div>
+                <button
+                  type="button"
+                  onClick={handleToggleWishlist}
+                  disabled={wishLoading}
+                  aria-label={isWished ? '찜 해제' : '찜하기'}
+                  className="album-wishlist-button flex items-center justify-center border border-(--color-border) bg-(--color-background) hover:border-(--color-text) transition cursor-pointer"
+                  style={{ color: isWished ? 'var(--color-accent)' : 'var(--color-text)' }}
+                >
+                  <HeartIcon size={22} filled={isWished} />
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -9,6 +9,8 @@ class OrderItemCreate(BaseModel):
 
 class OrderCreate(BaseModel):
     items: list[OrderItemCreate] = Field(min_length=1)
+    # True: 장바구니에서 주문 / False: 바로 주문
+    clear_cart: bool = True
 
 
 class OrderItemRead(BaseModel):

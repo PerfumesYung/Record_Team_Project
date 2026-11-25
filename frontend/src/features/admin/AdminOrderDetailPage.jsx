@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getAccessToken } from '../auth/api';
+import { formatDate } from '../../lib/apiClient';
 import './AdminOrdersPage.css';
 
     // 백엔드 서버 주소
@@ -21,21 +22,6 @@ function getStatusText(status) {
 
     return '상태 확인 필요';
     }
-
-    // 주문 날짜를 읽기 쉬운 형태로 바꾸기
-function formatDate(value) {
-    if (!value) {
-        return '-';
-    }
-
-    const date = new Date(value);
-
-    if (Number.isNaN(date.getTime())) {
-        return value;
-    }
-
-    return date.toLocaleString('ko-KR');
-}
 
 export default function AdminOrderDetailPage() {
     // 주소에서 주문 번호를 가져오기.

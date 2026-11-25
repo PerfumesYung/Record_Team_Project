@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAccessToken } from '../auth/api';
+import { formatDate } from '../../lib/apiClient';
 
 import './AdminOrdersPage.css';
 
@@ -22,21 +23,6 @@ function getStatusText(status) {
     }
 
     return '상태 확인 필요';
-    }
-
-    // 주문 시간 -> 화면에서 보이기 쉽게 변경
-function formatDate(value) {
-    if (!value) {
-        return '-';
-    }
-
-    const date = new Date(value);
-
-    if (Number.isNaN(date.getTime())) {
-        return value;
-    }
-
-    return date.toLocaleString('ko-KR');
     }
 
 export default function AdminOrdersPage() {

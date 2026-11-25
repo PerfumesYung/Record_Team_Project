@@ -160,7 +160,7 @@ export default function App() {
             <Route path="/orders/:orderId" element={<OrderDetailPage />} />
 
             {/* 음반 목록 */}
-            <Route path="/albums" element={<AlbumList />} />
+            <Route path="/albums" element={<AlbumList currentUser={currentUser} authLoading={authLoading} />}/>
 
             {/* 음반 상세 */}
             <Route path="/albums/:albumId" element={<AlbumDetail currentUser={currentUser} />} />
