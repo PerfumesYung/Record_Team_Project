@@ -30,7 +30,7 @@ export default function Header({ currentUser, onLogout }) {
                   <ProfileIcon size={26} />
                   <span>내 계정</span>
                 </Link>
-                <button type="button" onClick={onLogout}>
+                <button type="button" onClick={onLogout} className="cursor-pointer">
                   로그아웃
                 </button>
                 {currentUser.is_admin === true && ( <Link to="/admin" className="whitespace-nowrap text-[14px] text-[var(--color-text)] no-underline hover:text-[var(--color-accent)]"> 관리자 페이지 </Link> )}
