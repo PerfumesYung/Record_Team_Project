@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import HeartIcon from '../../components/ui/icons/HeartIcon';
+import { getWishlist, addWishlist, removeWishlist } from '../../utils/api';
 
 import './HomePage.css';
 
@@ -7,10 +9,66 @@ import './HomePage.css';
 const API_BASE =
 import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
 
-export default function HomePage() {
+export default function HomePage({ currentUser, authLoading }) {
+const navigate = useNavigate();
 const [albums, setAlbums] = useState([]);
 const [loading, setLoading] = useState(true);
 const [error, setError] = useState('');
+const [wishedIds, setWishedIds] = useState([]);
+const [wishLoading, setWishLoading] = useState(false);
+const [wishUnavailable, setWishUnavailable] = useState(false);
+const [busyIds, setBusyIds] = useState([]);
+const [wishError, setWishError] = useState('');
+
+// 로그인하면 저장된 찜 목록을 불러와 홈의 하트에 반영합니다.
+useEffect(() => {
+    let active = true;
+    if (!currentUser) {
+        setWishedIds([]);
+        setWishLoading(false);
+        setWishUnavailable(false);
+        setWishError('');
+        return () => { active = false; };
+    }
+    setWishLoading(true);
+    setWishUnavailable(false);
+    setWishError('');
+    getWishlist()
+        .then((result) => {
+            if (active) setWishedIds((result.items ?? []).map((item) => item.id));
+        })
+        .catch(() => {
+            if (active) {
+                setWishUnavailable(true);
+                setWishError('찜 상태를 불러오지 못했어요. 새로고침 후 다시 시도해 주세요.');
+            }
+        })
+        .finally(() => { if (active) setWishLoading(false); });
+    return () => { active = false; };
+}, [currentUser]);
+
+async function toggleWishlist(album) {
+    if (!currentUser) {
+        navigate('/login', { state: { from: '/' } });
+        return;
+    }
+    if (wishLoading || busyIds.includes(album.id)) return;
+    setBusyIds((ids) => [...ids, album.id]);
+    setWishError('');
+    try {
+        if (wishedIds.includes(album.id)) {
+            await removeWishlist(album.id);
+            setWishedIds((ids) => ids.filter((id) => id !== album.id));
+        } else {
+            await addWishlist(album.id);
+            setWishedIds((ids) => [...ids, album.id]);
+        }
+    } catch (err) {
+        setWishError(typeof err.message === 'string' ? err.message : '찜을 변경하지 못했어요.');
+    } finally {
+        setBusyIds((ids) => ids.filter((id) => id !== album.id));
+    }
+}
 
 useEffect(() => {
         // 화면을 벗어난 뒤에는 상태를 바꾸지 않도록 확인합니다.
@@ -120,10 +178,12 @@ useEffect(() => {
             <p className="home-message">등록된 음반이 아직 없어요.</p>
             )}
 
+            {wishError && <p className="home-wish-error" role="alert">{wishError}</p>}
             {!loading && !error && albums.length > 0 && (
             <div className="home-albums">
                 {albums.map((album) => (
-                <Link key={album.id} to={`/albums/${album.id}`} className="home-album">
+                <article key={album.id} className="home-album-card">
+                <Link to={`/albums/${album.id}`} className="home-album">
                     <img
                     src={album.image_url || '/images/albums/placeholder.svg'}
                     alt={`${album.title} 음반 표지`}
@@ -138,6 +198,17 @@ useEffect(() => {
                     <p className="home-album__artist">{album.artist}</p>
                     <p className="home-album__price"> {Number(album.price).toLocaleString('ko-KR')}원 </p>
                 </Link>
+                <button
+                    type="button"
+                    className={`home-album__wish${wishedIds.includes(album.id) ? ' is-wished' : ''}`}
+                    aria-label={`${album.title} ${wishedIds.includes(album.id) ? '찜 해제' : '찜하기'}`}
+                    aria-pressed={wishedIds.includes(album.id)}
+                    disabled={authLoading || wishLoading || busyIds.includes(album.id) || wishUnavailable}
+                    onClick={() => toggleWishlist(album)}
+                >
+                    <HeartIcon size={22} filled={wishedIds.includes(album.id)} />
+                </button>
+                </article>
                 ))}
             </div>
             )}

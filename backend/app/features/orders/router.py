@@ -11,7 +11,7 @@ router = APIRouter(prefix="/api/orders", tags=["주문"])
 @router.post("", status_code=201, response_model=OrderRead)
 def create_order(data: OrderCreate, user_id: int = Depends(current_user_id),
                  db: Session = Depends(get_db)):
-    return checkout(db, user_id, data.items)
+    return checkout(db, user_id, data.items, data.clear_cart)
 
 
 @router.get("", response_model=OrderPage)

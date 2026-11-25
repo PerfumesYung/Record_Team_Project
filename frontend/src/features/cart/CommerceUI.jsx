@@ -131,7 +131,7 @@ export function Status({ status }) {
     <span
       className={`commerce-status commerce-status--${String(status).toLowerCase()}`}
     >
-      {{ RECEIVED: "접수 완료", PROCESSING: "처리 중", COMPLETED: "처리 완료" }[
+      {{ RECEIVED: "접수 완료", PROCESSING: "주문 처리 중", COMPLETED: "처리 완료" }[
         status
       ] || status}
     </span>

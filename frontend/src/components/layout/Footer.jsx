@@ -22,7 +22,7 @@ export default function Footer() {
           <h3>MY COLLECTION</h3>
           <Link to="/mypage">내 계정</Link>
           <Link to="/orders">주문 내역</Link>
-          <Link to="/wishlist">찜한 음반</Link>
+          <Link to="/mypage/wishlist">찜한 음반</Link>
         </section>
 
         <section className="site-footer__section">

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import {
@@ -46,7 +46,6 @@ import AlbumDetail from '../features/albums/AlbumDetail';
 import RecommendationsPage from '../features/recommendations/RecommendationsPage';
 
 // 찜한 음반과 LP·CD 입문 안내 화면
-import Wishlist from '../features/wishlist/Wishlist';
 import GuidePage from '../features/guide/GuidePage';  
 
 
@@ -105,7 +104,7 @@ export default function App() {
       <Header currentUser={currentUser} onLogout={handleLogout} />
         <Routes>
           {/* 기존 홈 화면 */}
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage currentUser={currentUser} authLoading={authLoading} />} />
           <Route path="/login" element={<AuthPage key="login" onLogin={loadCurrentUser} />} />
           <Route path="/signup" element={<AuthPage key="signup" signup />} />
 
@@ -119,7 +118,9 @@ export default function App() {
           <Route path="/recommendations" element={<RecommendationsPage />} />
 
           {/* 관리자 공통 틀 */}
-          <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/admin" element={
+              <AdminLayout currentUser={currentUser} authLoading={authLoading} authError={authError} />
+            }>
             {/* 관리자 메인 화면: /admin */}
             <Route index element={<AdminHomePage />} />
 
@@ -159,13 +160,13 @@ export default function App() {
             <Route path="/orders/:orderId" element={<OrderDetailPage />} />
 
             {/* 음반 목록 */}
-            <Route path="/albums" element={<AlbumList />} />
+            <Route path="/albums" element={<AlbumList currentUser={currentUser} authLoading={authLoading} />}/>
 
             {/* 음반 상세 */}
             <Route path="/albums/:albumId" element={<AlbumDetail currentUser={currentUser} />} />
 
-            {/* 찜한 음반 */}
-            <Route path="/wishlist" element={ authLoading ? <p>로그인 정보를 확인하고 있습니다.</p> : <Wishlist isAuthenticated={Boolean(currentUser)} />} />
+            {/* 예전 찜 목록 주소는 마이페이지 찜 목록으로 이동 */}
+            <Route path="/wishlist" element={<Navigate to="/mypage/wishlist" replace />} />
 
             {/* LP·CD 입문 안내 */}
             <Route path="/guide" element={<GuidePage />} />

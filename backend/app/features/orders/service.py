@@ -67,7 +67,7 @@ def list_orders(db: Session, user_id: int, page: int, size: int):
     return OrderPage(items=items, total=total, page=page, size=size)
 
 
-def checkout(db: Session, user_id: int, requested_items):
+def checkout(db: Session, user_id: int, requested_items, clear_cart: bool = True):
     require_user(db, user_id)
     quantities = {}
     for item in requested_items:
@@ -104,12 +104,16 @@ def checkout(db: Session, user_id: int, requested_items):
                 order_id=order.id, album_id=album.id, title=album.title,
                 unit_price=album.price, quantity=quantity
             ))
+            
+            # 장바구니 주문일 때만 주문한 음반을 장바구니에서 제거
+            if clear_cart:
+                cart = db.query(CartItem).filter(
+                    CartItem.user_id == user_id,
+                    CartItem.album_id == album.id,
+                ).first()
 
-            cart = db.query(CartItem).filter(
-                CartItem.user_id == user_id, CartItem.album_id == album.id
-            ).first()
-            if cart is not None:
-                db.delete(cart)
+                if cart is not None:
+                    db.delete(cart)
 
         db.commit()
     except Exception:

@@ -1,8 +1,36 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Navigate, Outlet } from 'react-router-dom';
 import './AdminLayout.css';
 
-export default function AdminLayout() {
-    return (
+export default function AdminLayout({
+    currentUser,
+    authLoading,
+    authError,
+}) {
+    // 로그인 정보를 확인하는 동안 관리자 화면을 보여주지 않음
+    if (authLoading) {
+        return <p>로그인 정보를 확인하고 있어요.</p>;
+    }
+
+    // 서버 연결 문제 등으로 로그인 정보를 확인하지 못한 경우
+    if (authError) {
+        return (
+            <main className="admin-layout">
+                <p role="alert">{authError}</p>
+                <Link to="/login">로그인 화면으로 이동 →</Link>
+            </main>
+        );
+    }
+
+    // 로그인하지 않았다면 로그인 화면으로 이동
+    if (!currentUser) {
+        return <Navigate to="/login" replace />;
+    }
+
+    // 일반 회원이라면 관리자 화면 대신 홈으로 이동
+    if (!currentUser.is_admin) {
+        return <Navigate to="/" replace />;
+    }
+return (
         <main className="admin-layout">
             {/* 관리자 화면 제목 */}
         <header className="admin-heading">

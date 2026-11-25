@@ -187,7 +187,28 @@
     gap: 24px;
     }
 
+    .home-album-card { position: relative; min-width: 0; }
+    .home-album__wish {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--color-border);
+    background: var(--color-background);
+    color: var(--color-text);
+    cursor: pointer;
+    }
+    .home-album__wish.is-wished, .home-album__wish:hover { color: var(--color-accent); }
+    .home-album__wish:disabled { opacity: .55; cursor: wait; }
+    .home-album__wish:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+    .home-wish-error { color: var(--color-accent); margin: 0 0 20px; }
+
     .home-album {
+    display: block;
     color: var(--color-text);
     text-decoration: none;
     }

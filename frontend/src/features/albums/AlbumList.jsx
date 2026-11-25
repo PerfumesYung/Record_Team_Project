@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import GenreFilter from './GenreFilter';
 
-
+import HeartIcon from '../../components/ui/icons/HeartIcon';
+import { getWishlist, addWishlist, removeWishlist } from '../../utils/api';
 
 // .env에 설정한 FastAPI 주소를 사용
 const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
@@ -21,7 +22,7 @@ const SORT_OPTIONS = [
   { label: '제목순', value: 'title' },
 ];
 
-function AlbumList() {
+function AlbumList({ currentUser, authLoading }) {
   // 주소의 format 값이 헤더와 목록의 포맷 선택 기준입니다.
   const [searchParams, setSearchParams] = useSearchParams();
   const formatParam = searchParams.get('format');
@@ -29,6 +30,21 @@ function AlbumList() {
 
   const [albums, setAlbums] = useState([]);
   const [total, setTotal] = useState(0);
+
+  // 찜한 음반 번호를 저장합니다.
+  const [wishedIds, setWishedIds] = useState([]);
+
+  // 찜 목록을 불러오는 중인지 확인합니다.
+  const [wishLoading, setWishLoading] = useState(false);
+
+  // 찜 목록을 불러오지 못하면 버튼을 잠시 비활성화합니다.
+  const [wishUnavailable, setWishUnavailable] = useState(false);
+
+  // 요청 중인 음반의 번호를 저장합니다.
+  const [busyIds, setBusyIds] = useState([]);
+
+  // 오류가 있으면 화면에 표시합니다.
+  const [wishError, setWishError] = useState('');
   // 페이지 번호도 주소에서 관리해 포맷 변경 시 첫 페이지로 돌아갑니다.
   const requestedPage = Number(searchParams.get('page'));
   const page = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
@@ -50,7 +66,80 @@ function AlbumList() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  useEffect(() => {
+  let active = true;
 
+  // 로그아웃 상태면 이전 찜 상태를 비웁니다.
+  if (!currentUser) {
+    setWishedIds([]);
+    setWishLoading(false);
+    setWishUnavailable(false);
+    setWishError('');
+
+    return () => {
+      active = false;
+    };
+  }
+
+  setWishLoading(true);
+  setWishUnavailable(false);
+  setWishError('');
+
+  getWishlist()
+    .then((result) => {
+      if (active) {
+        const ids = (result.items ?? []).map((item) => item.id);
+        setWishedIds(ids);
+      }
+    })
+    .catch(() => {
+      if (active) {
+        setWishUnavailable(true);
+        setWishError('찜 목록을 불러오지 못했어요. 새로고침 후 다시 시도해 주세요.');
+      }
+    })
+    .finally(() => {
+      if (active) {
+        setWishLoading(false);
+      }
+    });
+
+  return () => {
+    active = false;
+  };
+  }, [currentUser]);
+async function handleToggleWishlist(event, album) {
+  // 하트를 눌렀을 때 부모 카드의 상세페이지 이동을 막습니다.
+  event.stopPropagation();
+
+  if (!currentUser) {
+    navigate('/login', { state: { from: '/albums' } });
+    return;
+  }
+
+  if (wishLoading || busyIds.includes(album.id)) {
+    return;
+  }
+
+  setBusyIds((ids) => [...ids, album.id]);
+  setWishError('');
+
+  try {
+    if (wishedIds.includes(album.id)) {
+      // 이미 찜했다면 찜 해제
+      await removeWishlist(album.id);
+      setWishedIds((ids) => ids.filter((id) => id !== album.id));
+    } else {
+      // 찜하지 않았다면 찜 등록
+      await addWishlist(album.id);
+      setWishedIds((ids) => [...ids, album.id]);
+    }
+  } catch (error) {
+    setWishError(error.message || '찜을 변경하지 못했어요.');
+  } finally {
+    setBusyIds((ids) => ids.filter((id) => id !== album.id));
+  }
+}
   useEffect(() => {
     const fetchAlbums = async () => {
       setLoading(true);
@@ -217,6 +306,12 @@ function AlbumList() {
         <GenreFilter currentGenre={selectedGenre} onSelectGenre={handleSelectGenre} />
       </div>
 
+      {wishError && (
+        <p role="alert" className="mt-4 text-sm text-(--color-accent)">
+          {wishError}
+        </p>
+      )}
+
       {/* 로딩 및 음반 카드 그리드 */}
       {loading ? (
         <div className="text-center py-10 text-(--color-text-muted)">음반 데이터를 조율하고 있습니다...</div>
@@ -240,6 +335,17 @@ function AlbumList() {
                           e.target.src = '/images/albums/placeholder.svg';
                         }}
                       />
+                      <button
+                        type="button"
+                        onClick={(event) => handleToggleWishlist(event, album)}
+                        disabled={authLoading || wishLoading || wishUnavailable || busyIds.includes(album.id)}
+                        aria-label={`${album.title} ${wishedIds.includes(album.id) ? '찜 해제' : '찜하기'}`}
+                        aria-pressed={wishedIds.includes(album.id)}
+                        className="absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center border border-(--color-border) bg-(--color-background) disabled:opacity-50 cursor-pointer"
+                        style={{ color: wishedIds.includes(album.id) ? 'var(--color-accent)' : 'var(--color-text)' }}
+                      >
+                        <HeartIcon size={22} filled={wishedIds.includes(album.id)} />
+                      </button>
                       {album.stock === 0 && (
                         <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
                           <span className="text-xs font-bold px-3 py-1 rounded bg-(--color-surface) border border-(--color-border) text-(--color-text-muted)">

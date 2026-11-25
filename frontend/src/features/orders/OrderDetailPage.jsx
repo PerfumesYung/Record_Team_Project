@@ -119,7 +119,7 @@ export default function OrderDetailPage() {
               <div>
                 <h3>주문 상태 안내</h3>
                 <p>
-                  접수 완료 → 처리 중 → 처리 완료 순서로 변경됩니다. 접수 완료
+                  접수 완료 → 주문 처리 중 → 처리 완료 순서로 변경됩니다. 접수 완료
                   상태에서만 주문 취소가 가능하며, 취소한 주문은 주문 내역에서
                   사라집니다.
                 </p>
@@ -156,7 +156,7 @@ export default function OrderDetailPage() {
               </button>
             ) : (
               <p className="commerce-detail-disabled">
-                처리 중 또는 완료된 주문은 취소할 수 없습니다.
+                주문 처리 중 또는 처리 완료된 주문은 취소할 수 없습니다.
               </p>
             )}
             <Link to="/orders" className="commerce-secondary commerce-wide">
