@@ -1,0 +1,61 @@
+장르 | 매체 | 앨범 | 아티스트
+Jazz | LP | Kind of Blue | Miles Davis
+Jazz | LP | Blue Train | John Coltrane
+Jazz | LP | A Love Supreme | John Coltrane
+Jazz | LP | Time Out | The Dave Brubeck Quartet
+Jazz | LP | Mingus Ah Um | Charles Mingus
+Jazz | CD | Waltz for Debby | Bill Evans Trio
+Jazz | CD | Head Hunters | Herbie Hancock
+Jazz | CD | Speak No Evil | Wayne Shorter
+Jazz | CD | The Sidewinder | Lee Morgan
+Jazz | CD | Saxophone Colossus | Sonny Rollins
+Pop | LP | Thriller | Michael Jackson
+Pop | LP | Bad | Michael Jackson
+Pop | LP | Like a Prayer | Madonna
+Pop | LP | The Fame | Lady Gaga
+Pop | LP | Future Nostalgia | Dua Lipa
+Pop | CD | 21 | Adele
+Pop | CD | 1989 | Taylor Swift
+Pop | CD | 25 | Adele
+Pop | CD | Teenage Dream | Katy Perry
+Pop | CD | Back to Black | Amy Winehouse
+Rock | LP | The Dark Side of the Moon | Pink Floyd
+Rock | LP | Led Zeppelin IV | Led Zeppelin
+Rock | LP | Abbey Road | The Beatles
+Rock | LP | Wish You Were Here | Pink Floyd
+Rock | LP | A Night at the Opera | Queen
+Rock | CD | Nevermind | Nirvana
+Rock | CD | Ten | Pearl Jam
+Rock | CD | OK Computer | Radiohead
+Rock | CD | American Idiot | Green Day
+Rock | CD | The Colour and the Shape | Foo Fighters
+Indie | LP | Whatever People Say I Am, That’s What I’m Not | Arctic Monkeys
+Indie | LP | In Rainbows | Radiohead
+Indie | LP | AM | Arctic Monkeys
+Indie | LP | Funeral | Arcade Fire
+Indie | LP | For Emma, Forever Ago | Bon Iver
+Indie | CD | Is This It | The Strokes
+Indie | CD | Turn On the Bright Lights | Interpol
+Indie | CD | Plans | Death Cab for Cutie
+Indie | CD | The Suburbs | Arcade Fire
+Indie | CD | Lonerism | Tame Impala
+R&B | LP | Voodoo | D’Angelo
+R&B | LP | Songs in the Key of Life | Stevie Wonder
+R&B | LP | What’s Going On | Marvin Gaye
+R&B | LP | Innervisions | Stevie Wonder
+R&B | LP | Baduizm | Erykah Badu
+R&B | CD | The Miseducation of Lauryn Hill | Lauryn Hill
+R&B | CD | Brown Sugar | D’Angelo
+R&B | CD | Confessions | Usher
+R&B | CD | The Diary of Alicia Keys | Alicia Keys
+R&B | CD | 4 | Beyoncé
+Classical | LP | Variations Goldberg | Bach; Glenn Gould
+Classical | LP | Glassworks | Philip Glass
+Classical | LP | The Blue Notebooks | Max Richter
+Classical | LP | In a Time Lapse | Ludovico Einaudi
+Classical | LP | re:member | Ólafur Arnalds
+Classical | CD | Symphonien nos. 5 & 7 | Beethoven; Wiener Philharmoniker, Carlos Kleiber
+Classical | CD | The Cello Suites: Inspired by Bach | Yo-Yo Ma
+Classical | CD | Sleep | Max Richter
+Classical | CD | Divenire | Ludovico Einaudi
+Classical | CD | Orphée | Jóhann Jóhannsson

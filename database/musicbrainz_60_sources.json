@@ -1,0 +1,901 @@
+{
+  "1": {
+    "signature": [
+      "Kind of Blue",
+      "Miles Davis",
+      "LP"
+    ],
+    "release_id": "9c56aa14-559f-4742-ae3c-34781cd83bcf",
+    "release_title": "Kind of Blue",
+    "release_artist": "Miles Davis / Miles Davis",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/9c56aa14-559f-4742-ae3c-34781cd83bcf/front-500",
+    "image_url": "/images/albums/mb60_01.webp"
+  },
+  "2": {
+    "signature": [
+      "Waltz for Debby",
+      "Bill Evans Trio",
+      "CD"
+    ],
+    "release_id": "0527d4e9-908d-4a64-9b94-cc9f12081811",
+    "release_title": "Waltz for Debby",
+    "release_artist": "Bill Evans Trio / Bill Evans Trio",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release-group/392e7fcf-5ae9-37f6-b8c9-57901cfbee1f/front-500",
+    "image_url": "/images/albums/mb60_02.webp"
+  },
+  "3": {
+    "signature": [
+      "Blue Train",
+      "John Coltrane",
+      "LP"
+    ],
+    "release_id": "4ca248f9-8f10-462b-a3bd-6ff48f25f151",
+    "release_title": "Blue Train",
+    "release_artist": "John Coltrane / John Coltrane",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/4ca248f9-8f10-462b-a3bd-6ff48f25f151/front-500",
+    "image_url": "/images/albums/mb60_03.webp"
+  },
+  "4": {
+    "signature": [
+      "Thriller",
+      "Michael Jackson",
+      "LP"
+    ],
+    "release_id": "680da302-ccde-453d-8f55-639421540d86",
+    "release_title": "Thriller",
+    "release_artist": "Michael Jackson / Michael Jackson",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release-group/f32fab67-77dd-3937-addc-9062e28e4c37/front-500",
+    "image_url": "/images/albums/mb60_04.webp"
+  },
+  "5": {
+    "signature": [
+      "21",
+      "Adele",
+      "CD"
+    ],
+    "release_id": "29f224ac-498d-4dcb-9a07-22b1293288ae",
+    "release_title": "21",
+    "release_artist": "Adele / Adele",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/29f224ac-498d-4dcb-9a07-22b1293288ae/front-500",
+    "image_url": "/images/albums/mb60_05.webp"
+  },
+  "6": {
+    "signature": [
+      "1989",
+      "Taylor Swift",
+      "CD"
+    ],
+    "release_id": "e4417eaf-7a8c-40e2-8ae1-979f3c793157",
+    "release_title": "1989",
+    "release_artist": "Taylor Swift / Taylor Swift",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/e4417eaf-7a8c-40e2-8ae1-979f3c793157/front-500",
+    "image_url": "/images/albums/mb60_06.webp"
+  },
+  "7": {
+    "signature": [
+      "The Dark Side of the Moon",
+      "Pink Floyd",
+      "LP"
+    ],
+    "release_id": "3df425d2-b33e-424c-acd3-d949ea09e2c8",
+    "release_title": "The Dark Side of the Moon",
+    "release_artist": "Pink Floyd / Pink Floyd",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/3df425d2-b33e-424c-acd3-d949ea09e2c8/front-500",
+    "image_url": "/images/albums/mb60_07.webp"
+  },
+  "8": {
+    "signature": [
+      "Nevermind",
+      "Nirvana",
+      "CD"
+    ],
+    "release_id": "9dce399d-3ec7-34a4-97d0-b4bac54e5f08",
+    "release_title": "Nevermind",
+    "release_artist": "Nirvana / Nirvana",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/9dce399d-3ec7-34a4-97d0-b4bac54e5f08/front-500",
+    "image_url": "/images/albums/mb60_08.webp"
+  },
+  "9": {
+    "signature": [
+      "Led Zeppelin IV",
+      "Led Zeppelin",
+      "LP"
+    ],
+    "release_id": "71eafe5d-33b0-4e41-9b51-754b8450302e",
+    "release_title": "[Led Zeppelin IV]",
+    "release_artist": "Led Zeppelin / Led Zeppelin",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/71eafe5d-33b0-4e41-9b51-754b8450302e/front-500",
+    "image_url": "/images/albums/mb60_09.webp"
+  },
+  "10": {
+    "signature": [
+      "Whatever People Say I Am, That’s What I’m Not",
+      "Arctic Monkeys",
+      "LP"
+    ],
+    "release_id": "c4acd09c-97c1-3b75-9cdb-6b8d7e90c857",
+    "release_title": "Whatever People Say I Am, That’s What I’m Not",
+    "release_artist": "Arctic Monkeys / Arctic Monkeys",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/c4acd09c-97c1-3b75-9cdb-6b8d7e90c857/front-500",
+    "image_url": "/images/albums/mb60_10.webp"
+  },
+  "11": {
+    "signature": [
+      "Is This It",
+      "The Strokes",
+      "CD"
+    ],
+    "release_id": "790324e7-e570-45e3-9d82-48568c50f5e9",
+    "release_title": "Is This It",
+    "release_artist": "The Strokes / The Strokes",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/790324e7-e570-45e3-9d82-48568c50f5e9/front-500",
+    "image_url": "/images/albums/mb60_11.webp"
+  },
+  "12": {
+    "signature": [
+      "In Rainbows",
+      "Radiohead",
+      "LP"
+    ],
+    "release_id": "ec6ee773-fdda-4d4a-a152-5d5768fe2d99",
+    "release_title": "In Rainbows",
+    "release_artist": "Radiohead / Radiohead",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/ec6ee773-fdda-4d4a-a152-5d5768fe2d99/front-500",
+    "image_url": "/images/albums/mb60_12.webp"
+  },
+  "13": {
+    "signature": [
+      "Voodoo",
+      "D’Angelo",
+      "LP"
+    ],
+    "release_id": "6dffd7a8-e42c-45db-a0b1-faf47a9eb638",
+    "release_title": "Voodoo",
+    "release_artist": "D’Angelo / D’Angelo",
+    "media": [
+      "12\" Vinyl",
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/6dffd7a8-e42c-45db-a0b1-faf47a9eb638/front-500",
+    "image_url": "/images/albums/mb60_13.webp"
+  },
+  "14": {
+    "signature": [
+      "The Miseducation of Lauryn Hill",
+      "Lauryn Hill",
+      "CD"
+    ],
+    "release_id": "0f15251e-7f5a-48bd-bfe2-31a329066371",
+    "release_title": "The Miseducation of Lauryn Hill",
+    "release_artist": "Lauryn Hill / Ms. Lauryn Hill",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/0f15251e-7f5a-48bd-bfe2-31a329066371/front-500",
+    "image_url": "/images/albums/mb60_14.webp"
+  },
+  "15": {
+    "signature": [
+      "Songs in the Key of Life",
+      "Stevie Wonder",
+      "LP"
+    ],
+    "release_id": "ab7b0bf0-b5df-40b5-be73-b121daef595a",
+    "release_title": "Songs in the Key of Life",
+    "release_artist": "Stevie Wonder / Stevie Wonder",
+    "media": [
+      "12\" Vinyl",
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/ab7b0bf0-b5df-40b5-be73-b121daef595a/front-500",
+    "image_url": "/images/albums/mb60_15.webp"
+  },
+  "16": {
+    "signature": [
+      "Symphonien nos. 5 & 7",
+      "Beethoven; Wiener Philharmoniker, Carlos Kleiber",
+      "CD"
+    ],
+    "release_id": "a9f748e3-e06a-41de-af19-f8afe8b6f88b",
+    "release_title": "Symphonien nos. 5 & 7",
+    "release_artist": "Ludwig van Beethoven / Ludwig van Beethoven / Wiener Philharmoniker / Wiener Philharmoniker / Carlos Kleiber / Carlos Kleiber",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/a9f748e3-e06a-41de-af19-f8afe8b6f88b/front-500",
+    "image_url": "/images/albums/mb60_16.webp"
+  },
+  "17": {
+    "signature": [
+      "Variations Goldberg",
+      "Bach; Glenn Gould",
+      "LP"
+    ],
+    "release_id": "15da7592-9359-4da6-9f7a-38f09718c97d",
+    "release_title": "Variations Goldberg",
+    "release_artist": "Bach / Johann Sebastian Bach / Glenn Gould / Glenn Gould",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/15da7592-9359-4da6-9f7a-38f09718c97d/front-500",
+    "image_url": "/images/albums/mb60_17.webp"
+  },
+  "18": {
+    "signature": [
+      "The Cello Suites: Inspired by Bach",
+      "Yo-Yo Ma",
+      "CD"
+    ],
+    "release_id": "2a018799-55cb-43f1-a0ae-4a54a319d768",
+    "release_title": "The Cello Suites: Inspired by Bach",
+    "release_artist": "Yo‐Yo Ma / Yo‐Yo Ma",
+    "media": [
+      "CD",
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/2a018799-55cb-43f1-a0ae-4a54a319d768/front-500",
+    "image_url": "/images/albums/mb60_18.webp"
+  },
+  "19": {
+    "signature": [
+      "A Love Supreme",
+      "John Coltrane",
+      "LP"
+    ],
+    "release_id": "43ed8f47-00ba-4fe7-a65c-231dba061490",
+    "release_title": "A Love Supreme",
+    "release_artist": "John Coltrane / John Coltrane",
+    "media": [
+      "12\" Vinyl",
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/43ed8f47-00ba-4fe7-a65c-231dba061490/front-500",
+    "image_url": "/images/albums/mb60_19.webp"
+  },
+  "20": {
+    "signature": [
+      "Time Out",
+      "The Dave Brubeck Quartet",
+      "LP"
+    ],
+    "release_id": "fdc00f1e-7d3b-4f5b-bf87-7da137060921",
+    "release_title": "Time Out",
+    "release_artist": "The Dave Brubeck Quartet / The Dave Brubeck Quartet",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/fdc00f1e-7d3b-4f5b-bf87-7da137060921/front-500",
+    "image_url": "/images/albums/mb60_20.webp"
+  },
+  "21": {
+    "signature": [
+      "Mingus Ah Um",
+      "Charles Mingus",
+      "LP"
+    ],
+    "release_id": "84bf5209-bd09-3b04-baa1-924abce51d77",
+    "release_title": "Mingus Ah Um",
+    "release_artist": "Charles Mingus / Charles Mingus",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/84bf5209-bd09-3b04-baa1-924abce51d77/front-500",
+    "image_url": "/images/albums/mb60_21.webp"
+  },
+  "22": {
+    "signature": [
+      "Head Hunters",
+      "Herbie Hancock",
+      "CD"
+    ],
+    "release_id": "23ff7ff5-2e82-3af4-b642-9df78d3ab736",
+    "release_title": "Head Hunters",
+    "release_artist": "Herbie Hancock / Herbie Hancock",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/23ff7ff5-2e82-3af4-b642-9df78d3ab736/front-500",
+    "image_url": "/images/albums/mb60_22.webp"
+  },
+  "23": {
+    "signature": [
+      "Speak No Evil",
+      "Wayne Shorter",
+      "CD"
+    ],
+    "release_id": "6a1bf115-5236-4f1c-af45-2548af3809db",
+    "release_title": "Speak No Evil",
+    "release_artist": "Wayne Shorter / Wayne Shorter",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/6a1bf115-5236-4f1c-af45-2548af3809db/front-500",
+    "image_url": "/images/albums/mb60_23.webp"
+  },
+  "24": {
+    "signature": [
+      "The Sidewinder",
+      "Lee Morgan",
+      "CD"
+    ],
+    "release_id": "ad72b472-6f93-4bd1-ba2d-46a24028084c",
+    "release_title": "The Sidewinder",
+    "release_artist": "Lee Morgan / Lee Morgan",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/ad72b472-6f93-4bd1-ba2d-46a24028084c/front-500",
+    "image_url": "/images/albums/mb60_24.webp"
+  },
+  "25": {
+    "signature": [
+      "Saxophone Colossus",
+      "Sonny Rollins",
+      "CD"
+    ],
+    "release_id": "666b4dcd-3a19-354a-b4c4-6ef61248c0c1",
+    "release_title": "Saxophone Colossus",
+    "release_artist": "Sonny Rollins / Sonny Rollins",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/666b4dcd-3a19-354a-b4c4-6ef61248c0c1/front-500",
+    "image_url": "/images/albums/mb60_25.webp"
+  },
+  "26": {
+    "signature": [
+      "Bad",
+      "Michael Jackson",
+      "LP"
+    ],
+    "release_id": "3999a976-55c8-4969-99c5-02d51c668041",
+    "release_title": "Bad",
+    "release_artist": "Michael Jackson / Michael Jackson",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/3999a976-55c8-4969-99c5-02d51c668041/front-500",
+    "image_url": "/images/albums/mb60_26.webp"
+  },
+  "27": {
+    "signature": [
+      "Like a Prayer",
+      "Madonna",
+      "LP"
+    ],
+    "release_id": "09dfcc05-dfbd-3d5e-910f-588960e46cb5",
+    "release_title": "Like a Prayer",
+    "release_artist": "Madonna / Madonna",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/09dfcc05-dfbd-3d5e-910f-588960e46cb5/front-500",
+    "image_url": "/images/albums/mb60_27.webp"
+  },
+  "28": {
+    "signature": [
+      "The Fame",
+      "Lady Gaga",
+      "LP"
+    ],
+    "release_id": "ea8fd34b-2aa4-449f-a271-b1dc3bfded3e",
+    "release_title": "The Fame",
+    "release_artist": "Lady Gaga / Lady Gaga",
+    "media": [
+      "12\" Vinyl",
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release-group/e5495719-b3ad-3eea-a533-fb70af43c23d/front-500",
+    "image_url": "/images/albums/mb60_28.webp"
+  },
+  "29": {
+    "signature": [
+      "Future Nostalgia",
+      "Dua Lipa",
+      "LP"
+    ],
+    "release_id": "25f15efb-04ca-43f5-8409-3b2bcf7a63b5",
+    "release_title": "Future Nostalgia",
+    "release_artist": "Dua Lipa / Dua Lipa",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/25f15efb-04ca-43f5-8409-3b2bcf7a63b5/front-500",
+    "image_url": "/images/albums/mb60_29.webp"
+  },
+  "30": {
+    "signature": [
+      "25",
+      "Adele",
+      "CD"
+    ],
+    "release_id": "b2dbd919-229f-41df-a6bf-eaa042c1a550",
+    "release_title": "25",
+    "release_artist": "Adele / Adele",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/b2dbd919-229f-41df-a6bf-eaa042c1a550/front-500",
+    "image_url": "/images/albums/mb60_30.webp"
+  },
+  "31": {
+    "signature": [
+      "Teenage Dream",
+      "Katy Perry",
+      "CD"
+    ],
+    "release_id": "8551cd49-7da6-3139-809d-e48f6f3453e8",
+    "release_title": "Teenage Dream",
+    "release_artist": "Katy Perry / Katy Perry",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/8551cd49-7da6-3139-809d-e48f6f3453e8/front-500",
+    "image_url": "/images/albums/mb60_31.webp"
+  },
+  "32": {
+    "signature": [
+      "Back to Black",
+      "Amy Winehouse",
+      "CD"
+    ],
+    "release_id": "1a6ecd02-a613-4239-abbe-21da23149fa6",
+    "release_title": "Back to Black",
+    "release_artist": "Amy Winehouse / Amy Winehouse",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/1a6ecd02-a613-4239-abbe-21da23149fa6/front-500",
+    "image_url": "/images/albums/mb60_32.webp"
+  },
+  "33": {
+    "signature": [
+      "Abbey Road",
+      "The Beatles",
+      "LP"
+    ],
+    "release_id": "c15a59e7-194c-437d-b8b0-c2eaebd806c2",
+    "release_title": "Abbey Road",
+    "release_artist": "The Beatles / The Beatles",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/c15a59e7-194c-437d-b8b0-c2eaebd806c2/front-500",
+    "image_url": "/images/albums/mb60_33.webp"
+  },
+  "34": {
+    "signature": [
+      "Wish You Were Here",
+      "Pink Floyd",
+      "LP"
+    ],
+    "release_id": "424db76a-8604-4350-a50f-766f58570470",
+    "release_title": "Wish You Were Here",
+    "release_artist": "Pink Floyd / Pink Floyd",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/424db76a-8604-4350-a50f-766f58570470/front-500",
+    "image_url": "/images/albums/mb60_34.webp"
+  },
+  "35": {
+    "signature": [
+      "A Night at the Opera",
+      "Queen",
+      "LP"
+    ],
+    "release_id": "1e14b2d6-8652-3dcc-b60b-4fb5fe79e024",
+    "release_title": "A Night at the Opera",
+    "release_artist": "Queen / Queen",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/1e14b2d6-8652-3dcc-b60b-4fb5fe79e024/front-500",
+    "image_url": "/images/albums/mb60_35.webp"
+  },
+  "36": {
+    "signature": [
+      "Ten",
+      "Pearl Jam",
+      "CD"
+    ],
+    "release_id": "c1e5dc78-454b-30b7-bfe3-70750b408d2f",
+    "release_title": "Ten",
+    "release_artist": "Pearl Jam / Pearl Jam",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/c1e5dc78-454b-30b7-bfe3-70750b408d2f/front-500",
+    "image_url": "/images/albums/mb60_36.webp"
+  },
+  "37": {
+    "signature": [
+      "OK Computer",
+      "Radiohead",
+      "CD"
+    ],
+    "release_id": "e8c3ff98-75f0-383f-a7d1-35db67661d89",
+    "release_title": "OK Computer",
+    "release_artist": "Radiohead / Radiohead",
+    "media": [
+      "CD",
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/e8c3ff98-75f0-383f-a7d1-35db67661d89/front-500",
+    "image_url": "/images/albums/mb60_37.webp"
+  },
+  "38": {
+    "signature": [
+      "American Idiot",
+      "Green Day",
+      "CD"
+    ],
+    "release_id": "dd7cbde9-bffc-467f-8a39-bda4ea2d0633",
+    "release_title": "American Idiot",
+    "release_artist": "Green Day / Green Day",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/dd7cbde9-bffc-467f-8a39-bda4ea2d0633/front-500",
+    "image_url": "/images/albums/mb60_38.webp"
+  },
+  "39": {
+    "signature": [
+      "The Colour and the Shape",
+      "Foo Fighters",
+      "CD"
+    ],
+    "release_id": "223140a9-b13a-4a9a-b3c2-f718e0bcfb0c",
+    "release_title": "The Colour and the Shape",
+    "release_artist": "Foo Fighters / Foo Fighters",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/223140a9-b13a-4a9a-b3c2-f718e0bcfb0c/front-500",
+    "image_url": "/images/albums/mb60_39.webp"
+  },
+  "40": {
+    "signature": [
+      "AM",
+      "Arctic Monkeys",
+      "LP"
+    ],
+    "release_id": "1fe16018-30cf-49b6-ac95-da845c8ad833",
+    "release_title": "AM",
+    "release_artist": "Arctic Monkeys / Arctic Monkeys",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/1fe16018-30cf-49b6-ac95-da845c8ad833/front-500",
+    "image_url": "/images/albums/mb60_40.webp"
+  },
+  "41": {
+    "signature": [
+      "Funeral",
+      "Arcade Fire",
+      "LP"
+    ],
+    "release_id": "0bce5b2f-adbe-35fb-8065-43f531427737",
+    "release_title": "Funeral",
+    "release_artist": "Arcade Fire / Arcade Fire",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/0bce5b2f-adbe-35fb-8065-43f531427737/front-500",
+    "image_url": "/images/albums/mb60_41.webp"
+  },
+  "42": {
+    "signature": [
+      "For Emma, Forever Ago",
+      "Bon Iver",
+      "LP"
+    ],
+    "release_id": "5370b447-ee3a-3699-a899-d5df024f6c4b",
+    "release_title": "For Emma, Forever Ago",
+    "release_artist": "Bon Iver / Bon Iver",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release-group/187935b5-a0a4-3e6f-9684-48b67a5190a1/front-500",
+    "image_url": "/images/albums/mb60_42.webp"
+  },
+  "43": {
+    "signature": [
+      "Turn On the Bright Lights",
+      "Interpol",
+      "CD"
+    ],
+    "release_id": "42716f0f-1431-41f4-905c-d576a644dc5d",
+    "release_title": "Turn On the Bright Lights",
+    "release_artist": "Interpol / Interpol",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/42716f0f-1431-41f4-905c-d576a644dc5d/front-500",
+    "image_url": "/images/albums/mb60_43.webp"
+  },
+  "44": {
+    "signature": [
+      "Plans",
+      "Death Cab for Cutie",
+      "CD"
+    ],
+    "release_id": "33be482c-0f66-4dd5-9ecd-55918565c6c1",
+    "release_title": "Plans",
+    "release_artist": "Death Cab for Cutie / Death Cab for Cutie",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/33be482c-0f66-4dd5-9ecd-55918565c6c1/front-500",
+    "image_url": "/images/albums/mb60_44.webp"
+  },
+  "45": {
+    "signature": [
+      "The Suburbs",
+      "Arcade Fire",
+      "CD"
+    ],
+    "release_id": "b875d457-d7b3-47b2-90d2-424b8d176b0b",
+    "release_title": "The Suburbs",
+    "release_artist": "Arcade Fire / Arcade Fire",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/b875d457-d7b3-47b2-90d2-424b8d176b0b/front-500",
+    "image_url": "/images/albums/mb60_45.webp"
+  },
+  "46": {
+    "signature": [
+      "Lonerism",
+      "Tame Impala",
+      "CD"
+    ],
+    "release_id": "82ec7c9c-9cba-4a9e-ba74-211e170149c6",
+    "release_title": "Lonerism",
+    "release_artist": "Tame Impala / Tame Impala",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/82ec7c9c-9cba-4a9e-ba74-211e170149c6/front-500",
+    "image_url": "/images/albums/mb60_46.webp"
+  },
+  "47": {
+    "signature": [
+      "What’s Going On",
+      "Marvin Gaye",
+      "LP"
+    ],
+    "release_id": "ba91f9e2-2391-4bbd-9114-c9eff138fd98",
+    "release_title": "What’s Going On",
+    "release_artist": "Marvin Gaye / Marvin Gaye",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/ba91f9e2-2391-4bbd-9114-c9eff138fd98/front-500",
+    "image_url": "/images/albums/mb60_47.webp"
+  },
+  "48": {
+    "signature": [
+      "Innervisions",
+      "Stevie Wonder",
+      "LP"
+    ],
+    "release_id": "7e0aa046-075a-4e49-8f85-99817b48b6df",
+    "release_title": "Innervisions",
+    "release_artist": "Stevie Wonder / Stevie Wonder",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release-group/e626b377-74c5-3b97-8f16-8cef5e1c04ea/front-500",
+    "image_url": "/images/albums/mb60_48.webp"
+  },
+  "49": {
+    "signature": [
+      "Baduizm",
+      "Erykah Badu",
+      "LP"
+    ],
+    "release_id": "82770ab1-f508-4743-a5b5-9eeebac15623",
+    "release_title": "Baduizm",
+    "release_artist": "Erykah Badu / Erykah Badu",
+    "media": [
+      "12\" Vinyl",
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/82770ab1-f508-4743-a5b5-9eeebac15623/front-500",
+    "image_url": "/images/albums/mb60_49.webp"
+  },
+  "50": {
+    "signature": [
+      "Brown Sugar",
+      "D’Angelo",
+      "CD"
+    ],
+    "release_id": "4ad0b48f-29c8-3e57-b55e-33b097190079",
+    "release_title": "Brown Sugar",
+    "release_artist": "D’Angelo / D’Angelo",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/4ad0b48f-29c8-3e57-b55e-33b097190079/front-500",
+    "image_url": "/images/albums/mb60_50.webp"
+  },
+  "51": {
+    "signature": [
+      "Confessions",
+      "Usher",
+      "CD"
+    ],
+    "release_id": "f8d5c611-69ff-312f-b9de-437e0164aa45",
+    "release_title": "Confessions",
+    "release_artist": "Usher / Usher",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release-group/0ee013ee-5f59-35d5-b6b8-26a0cb3e4372/front-500",
+    "image_url": "/images/albums/mb60_51.webp"
+  },
+  "52": {
+    "signature": [
+      "The Diary of Alicia Keys",
+      "Alicia Keys",
+      "CD"
+    ],
+    "release_id": "51b055d4-5784-4e5e-a8e8-ee272ad55ff1",
+    "release_title": "The Diary of Alicia Keys",
+    "release_artist": "Alicia Keys / Alicia Keys",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release-group/e53e291f-9a9c-38a0-96e0-86a9b63b776d/front-500",
+    "image_url": "/images/albums/mb60_52.webp"
+  },
+  "53": {
+    "signature": [
+      "4",
+      "Beyoncé",
+      "CD"
+    ],
+    "release_id": "b2f759ff-f151-4214-9c08-6c7b8f4bbf9e",
+    "release_title": "4",
+    "release_artist": "Beyoncé / Beyoncé",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/b2f759ff-f151-4214-9c08-6c7b8f4bbf9e/front-500",
+    "image_url": "/images/albums/mb60_53.webp"
+  },
+  "54": {
+    "signature": [
+      "Glassworks",
+      "Philip Glass",
+      "LP"
+    ],
+    "release_id": "b1e46ce4-2afb-4da6-bb3b-d68bcd1772db",
+    "release_title": "Glassworks",
+    "release_artist": "Philip Glass / Philip Glass",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/b1e46ce4-2afb-4da6-bb3b-d68bcd1772db/front-500",
+    "image_url": "/images/albums/mb60_54.webp"
+  },
+  "55": {
+    "signature": [
+      "The Blue Notebooks",
+      "Max Richter",
+      "LP"
+    ],
+    "release_id": "1393211f-e3a8-4e0d-891a-dba383c53200",
+    "release_title": "The Blue Notebooks",
+    "release_artist": "Max Richter / Max Richter",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release-group/85995b65-06fd-382d-9197-499c5b53f10d/front-500",
+    "image_url": "/images/albums/mb60_55.webp"
+  },
+  "57": {
+    "signature": [
+      "re:member",
+      "Ólafur Arnalds",
+      "LP"
+    ],
+    "release_id": "5f26db12-4ea4-4234-8c0e-255cc475f6d1",
+    "release_title": "re:member",
+    "release_artist": "Ólafur Arnalds / Ólafur Arnalds",
+    "media": [
+      "12\" Vinyl"
+    ],
+    "source_url": "https://coverartarchive.org/release/5f26db12-4ea4-4234-8c0e-255cc475f6d1/front-500",
+    "image_url": "/images/albums/mb60_57.webp"
+  },
+  "58": {
+    "signature": [
+      "Sleep",
+      "Max Richter",
+      "CD"
+    ],
+    "release_id": "65896d61-54f2-47fd-9dd6-f10244868991",
+    "release_title": "Sleep",
+    "release_artist": "Max Richter / Max Richter",
+    "media": [
+      "CD",
+      "CD",
+      "CD",
+      "CD",
+      "CD",
+      "CD",
+      "CD",
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release-group/98c79e9a-fc74-42ac-85eb-19f9ffc49b16/front-500",
+    "image_url": "/images/albums/mb60_58.webp"
+  },
+  "59": {
+    "signature": [
+      "Divenire",
+      "Ludovico Einaudi",
+      "CD"
+    ],
+    "release_id": "4694854e-5960-4fa2-b25e-46ad32707a31",
+    "release_title": "Divenire",
+    "release_artist": "Ludovico Einaudi / Ludovico Einaudi",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/4694854e-5960-4fa2-b25e-46ad32707a31/front-500",
+    "image_url": "/images/albums/mb60_59.webp"
+  },
+  "60": {
+    "signature": [
+      "Orphée",
+      "Jóhann Jóhannsson",
+      "CD"
+    ],
+    "release_id": "e2250b22-73ba-4b0f-abf1-d2b0d456be23",
+    "release_title": "Orphée",
+    "release_artist": "Jóhann Jóhannsson / Jóhann Jóhannsson",
+    "media": [
+      "CD"
+    ],
+    "source_url": "https://coverartarchive.org/release/e2250b22-73ba-4b0f-abf1-d2b0d456be23/front-500",
+    "image_url": "/images/albums/mb60_60.webp"
+  }
+}
