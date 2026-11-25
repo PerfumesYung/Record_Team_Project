@@ -183,7 +183,7 @@ function AlbumDetail({ currentUser }) {
                     disabled={album.stock < 1}
                     className="w-full bg-(--color-accent) px-5 py-4 font-bold text-(--color-background) disabled:opacity-60"
                   >
-                  {album.stock < 1 ? '품절' : '주문서로 이동 →'}
+                  {album.stock < 1 ? '품절' : '바로구매 →'}
                 </button>
               </div>
               {/* 장바구니 버튼 + 찜(하트) 버튼 */}
