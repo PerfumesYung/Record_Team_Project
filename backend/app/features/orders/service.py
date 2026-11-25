@@ -41,7 +41,8 @@ def read_order(db: Session, order_id: int, user_id: int):
             title=item.title,
             unit_price=item.unit_price,
             quantity=item.quantity,
-            image_url=album.image_url if album else None
+            image_url=album.image_url if album else None,
+            artist=album.artist if album else None
         ))
 
     return OrderRead(
@@ -54,17 +55,33 @@ def read_order(db: Session, order_id: int, user_id: int):
 
 def list_orders(db: Session, user_id: int, page: int, size: int):
     require_user(db, user_id)
+
     query = db.query(Order).filter(Order.user_id == user_id)
     total = query.count()
-    order_list = query.order_by(Order.created_at.desc(), Order.id.desc()).offset((page - 1) * size).limit(size).all()
+
+    order_list = query.order_by(
+        Order.created_at.desc(), Order.id.desc()
+    ).offset((page - 1) * size).limit(size).all()
 
     items = []
+
     for order in order_list:
+        order_detail = read_order(db, order.id, user_id)
+
         items.append(OrderSummary(
-            id=order.id, status=order.status, total_amount=order.total_amount,
-            created_at=utc_time(order.created_at)
+            id=order.id,
+            status=order.status,
+            total_amount=order.total_amount,
+            created_at=utc_time(order.created_at),
+            items=order_detail.items
         ))
-    return OrderPage(items=items, total=total, page=page, size=size)
+
+    return OrderPage(
+        items=items,
+        total=total,
+        page=page,
+        size=size
+    )
 
 
 def checkout(db: Session, user_id: int, requested_items, clear_cart: bool = True):
