@@ -6,7 +6,7 @@ from urllib.error import HTTPError
 from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parent
-UA = 'NakwonRecordsStudentDemo/2.0 (one-time catalog setup; MusicBrainz student project)'
+UA = 'NakwonRecordsStudentDemo/2.2 (one-time catalog setup; MusicBrainz student project)'
 MB = 'https://musicbrainz.org/ws/2/'
 CAA = 'https://coverartarchive.org/'
 last_mb = 0.0
@@ -101,6 +101,20 @@ def decode(data):
         return im.copy()
 
 def resolve(d):
+    # The LP edition is retained in the catalog. For this album use the
+    # verified MusicBrainz CD release's front art if necessary.
+    fallback = d.get('cover_release_id')
+    if fallback:
+        for size in ('front-500', 'front-250', 'front'):
+            url = CAA + 'release/' + fallback + '/' + size
+            try:
+                im = decode(fetch(url))
+                return im, {'release_id': fallback, 'release_title': d['title'],
+                            'release_artist': d['artist'], 'media': ['CD'],
+                            'source_url': url,
+                            'note': 'Same album CD front art used for LP product.'}
+            except (HTTPError, OSError, ValueError) as e:
+                print('   direct cover unavailable:', str(e), flush=True)
     checked=0
     groups=set()
     for r in candidates(d):
@@ -123,7 +137,7 @@ def sqlstr(s):
 
 def make_sql(rows):
     out=['-- 60 albums: 5 LP + 5 CD per genre. Existing matched rows keep IDs, prices and stock.',
-         '-- Existing images are preserved if no verified local cover is available. No DELETE.',
+         '-- Existing rows and references are preserved. Missing In a Time Lapse local cover may use the remote source. No DELETE.',
          'USE nakwon_records;', 'SET NAMES utf8mb4 COLLATE utf8mb4_0900_ai_ci;',
          'DROP TEMPORARY TABLE IF EXISTS tmp_nakwon_60;',
          'CREATE TEMPORARY TABLE tmp_nakwon_60 (seq INT PRIMARY KEY, title VARCHAR(120) NOT NULL, artist VARCHAR(100) NOT NULL, price INT UNSIGNED NOT NULL, genre VARCHAR(50) NOT NULL, format VARCHAR(2) CHARACTER SET ascii COLLATE ascii_bin NOT NULL, image_url VARCHAR(2048) NULL, stock INT UNSIGNED NOT NULL, recommended TINYINT NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;',
@@ -140,9 +154,12 @@ def make_sql(rows):
       "SELECT a.id, IF(s.recommended=1 AND a.stock>0,1,0), IF(s.recommended=1 AND a.stock>0,'처음 듣기 좋은 음반으로 골랐어요.','')",
       'FROM albums a JOIN tmp_nakwon_60 s ON a.title=s.title AND a.artist=s.artist AND a.format=s.format',
       'LEFT JOIN album_recommendations r ON r.album_id=a.id WHERE r.album_id IS NULL;',
+      'UPDATE albums a LEFT JOIN tmp_nakwon_60 s ON a.title=s.title AND a.artist=s.artist AND a.format=s.format',
+      'SET a.hidden=1 WHERE s.seq IS NULL AND a.hidden=0;',
       'COMMIT;',
-      '-- Verify the complete public catalog, including any pre-existing extra products.',
+      '-- Verify the public catalog.',
       "SELECT genre, SUM(format='LP') AS LP, SUM(format='CD') AS CD, COUNT(*) AS total FROM albums WHERE hidden=0 GROUP BY genre ORDER BY genre;",
+      'SELECT hidden, COUNT(*) AS total FROM albums GROUP BY hidden ORDER BY hidden;',
       'DROP TEMPORARY TABLE tmp_nakwon_60;']
     return '\n'.join(out)+'\n'
 
@@ -183,11 +200,17 @@ def main():
             cache.write_text(json.dumps(results,ensure_ascii=False,indent=2),encoding='utf-8')
         except Exception as e:
             failures.append((d['title'],str(e))); print('FAILED:',e,flush=True)
+    local_count = sum(d['image_url'] is not None for d in rows)
+    # A network failure must not produce a broken local filename.
+    # The known cover can temporarily use the verified remote source.
+    for d in rows:
+        if d['image_url'] is None and d.get('cover_release_id'):
+            d['image_url'] = CAA + 'release/' + d['cover_release_id'] + '/front-500'
     output.write_text(make_sql(rows),encoding='utf-8')
     print('\nSQL GENERATED:',output,flush=True)
-    print(f'Local covers: {sum(d["image_url"] is not None for d in rows)}/60',flush=True)
+    print(f'Local covers: {local_count}/60',flush=True)
     if failures:
         print('Missing covers:',json.dumps(failures,ensure_ascii=False,indent=2))
-        print('Existing DB images are preserved; new albums without verified covers have NULL image_url. Rerun without --sql-only to retry downloads.',flush=True)
+        print('In a Time Lapse uses its remote cover temporarily if local download failed. Other missing covers keep existing DB images or NULL. Rerun without --sql-only to retry downloads.',flush=True)
 
 if __name__=='__main__': main()
